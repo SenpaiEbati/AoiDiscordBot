@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-bot = commands.Bot("M.", 
+intents = disnake.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix=commands.when_mentioned_or("M."), intents=intents,
                    sync_commands_debug=True,
                    test_guilds = [1152151796870025228])
 
