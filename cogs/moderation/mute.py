@@ -8,19 +8,13 @@ class Slash_Mute(commands.Cog):
     @commands.slash_command(description="With this command you can mute one or more members and give a reason.")
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
         if ctx.author.guild_permissions.moderate_members:
-            embed = disnake.Embed(title='🔇 Mute 🔇', color=disnake.Color.yellow())
+            embed = disnake.Embed(title='🎙 Mute 🎙', color=disnake.Color.yellow())
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
-
-            dm_embed = disnake.Embed(title='🔇 Mute 🔇', color=disnake.Color.yellow())
-            dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
-            dm_embed.add_field(name='Reason', value=reason, inline=False)
-            dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
-            await member.send(embed=dm_embed)
-
-            await member.voice.deaf(True)
+            
+            await member.edit(mute=True)
         else:
             await ctx.send("You do not have permission to mute members.")
 
@@ -31,19 +25,13 @@ class NoSlash_Mute(commands.Cog):
     @commands.command(description="With this command you can mute one or more members and give a reason.")
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
         if ctx.author.guild_permissions.moderate_members:
-            embed = disnake.Embed(title='🔇 Mute 🔇', color=disnake.Color.yellow())
+            embed = disnake.Embed(title='🎙 Mute 🎙', color=disnake.Color.yellow())
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
-            
-            dm_embed = disnake.Embed(title='🔇 Mute 🔇', color=disnake.Color.yellow())
-            dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
-            dm_embed.add_field(name='Reason', value=reason, inline=False)
-            dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
-            await member.send(embed=dm_embed)
 
-            await member.voice.deaf(True)
+            await member.edit(mute=True)
         else:
             await ctx.send("You do not have permission to mute members.")
         
