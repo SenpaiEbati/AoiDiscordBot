@@ -9,7 +9,10 @@ class Slash_Timeout(commands.Cog):
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
         if ctx.author.guild_permissions.mute_members:
             if max(ctx.author.roles) > max(member.roles):
-                time=int(seconds)+int(minutes)*60+int(hours)*60*60+int(days)*24*60*60
+                if days == hours == minutes == seconds == 0:
+                    time = 259200
+                else:
+                    time=int(seconds)+int(minutes)*60+int(hours)*60*60+int(days)*24*60*60
                 if isinstance(time,int):
                     embed = disnake.Embed(title='⛓ Timeout ⛓', color=disnake.Color.red())
                     embed.add_field(name='Member', value=member.mention, inline=False)
@@ -24,8 +27,8 @@ class Slash_Timeout(commands.Cog):
                     dm_embed.add_field(name='Reason', value=reason, inline=False)
                     dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
                     await member.send(embed=dm_embed)
-                    if time != 0:
-                        await member.edit(timeout=time)
+                    
+                    await member.edit(timeout=time)
                 else:
                     await ctx.send("The time you enter must be in the form of numbers, not letters or symbols.")
             else:
