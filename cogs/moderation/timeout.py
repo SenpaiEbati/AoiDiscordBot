@@ -7,7 +7,7 @@ class Slash_Timeout(commands.Cog):
 
     @commands.slash_command(description="With this command you can timeout one or more members and give a reason.")
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
-        if ctx.author.guild_permissions.mute_members:
+        if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 if isinstance(days,int) and isinstance(hours,int) and isinstance(minutes,int) and isinstance(seconds,int):
                     if days == hours == minutes == seconds == 0:
@@ -44,7 +44,7 @@ class NoSlash_Timeout(commands.Cog):
 
     @commands.command(description="With this command you can timeout one or more members and give a reason.")
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
-        if ctx.author.guild_permissions.mute_members:
+        if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 if isinstance(days,int) and isinstance(hours,int) and isinstance(minutes,int) and isinstance(seconds,int):
                     if days == hours == minutes == seconds == 0:

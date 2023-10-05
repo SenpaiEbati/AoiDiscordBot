@@ -7,7 +7,7 @@ class Slash_UnTimeout(commands.Cog):
 
     @commands.slash_command(description="With this command you can remove timeout one or more members and give a reason.")
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
-        if ctx.author.guild_permissions.mute_members:
+        if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 embed = disnake.Embed(title='🔓 Timeout 🔓\n⠀⠀removed', color=disnake.Color(0x32CD32))
                 embed.add_field(name='Member', value=member.mention, inline=False)
@@ -33,7 +33,7 @@ class NoSlash_UnTimeout(commands.Cog):
 
     @commands.command(description="With this command you can timeout one or more members and give a reason.")
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
-        if ctx.author.guild_permissions.mute_members:
+        if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 embed = disnake.Embed(title='🔓 Timeout 🔓\n⠀⠀removed', color=disnake.Color(0x32CD32))
                 embed.add_field(name='Member', value=member.mention, inline=False)
