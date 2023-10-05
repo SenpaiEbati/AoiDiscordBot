@@ -8,7 +8,7 @@ class Slash_Deafen(commands.Cog):
     @commands.slash_command(description="With this command you can deafen one or more members and give a reason.")
     async def deafen(self, ctx, member: disnake.Member, *, reason="-"):
         if ctx.author.guild_permissions.moderate_members:
-            embed = disnake.Embed(title='🎧 Deafen 🎧', color=disnake.Color.yellow())
+            embed = disnake.Embed(title='🎧 Deafen 🎧', color=disnake.Color(0xFFFF33))
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
@@ -25,7 +25,7 @@ class NoSlash_Deafen(commands.Cog):
     @commands.command(description="With this command you can deafen one or more members and give a reason.")
     async def deafen(self, ctx, member: disnake.Member, *, reason="-"):
         if ctx.author.guild_permissions.moderate_members:
-            embed = disnake.Embed(title='🎧 Deafen 🎧', color=disnake.Color.yellow())
+            embed = disnake.Embed(title='🎧 Deafen 🎧', color=disnake.Color(0xFFFF33))
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)

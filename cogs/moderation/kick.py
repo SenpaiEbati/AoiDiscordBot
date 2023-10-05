@@ -10,13 +10,13 @@ class Slash_Kick(commands.Cog):
         if ctx.author == member:
             await ctx.send("You ebobo?")
         elif ctx.author.guild_permissions.kick_members:
-            embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color.red())
+            embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color(0xff0000))
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
             
-            dm_embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color.red())
+            dm_embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color(0xff0000))
             dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
             dm_embed.add_field(name='Reason', value=reason, inline=False)
             dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
@@ -35,13 +35,13 @@ class NoSlash_Kick(commands.Cog):
         if ctx.author == member:
             await ctx.send("You ebobo?")
         elif ctx.author.guild_permissions.kick_members:
-            embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color.red())
+            embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color(0xff0000))
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
             
-            dm_embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color.red())
+            dm_embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color(0xff0000))
             dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
             dm_embed.add_field(name='Reason', value=reason, inline=False)
             dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)

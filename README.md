@@ -1,4 +1,7 @@
 # MyDiscordBot
 Create Discord Bot - むらさき(murasaki)
 
-05.10.2023 01:01 - Correct the timeout.py file
+red - 0xff0000
+yellow - 0xFFFF33
+green - 0x32CD32
+

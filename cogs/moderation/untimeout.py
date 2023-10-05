@@ -9,13 +9,13 @@ class Slash_UnTimeout(commands.Cog):
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
         if ctx.author.guild_permissions.mute_members:
             if max(ctx.author.roles) > max(member.roles):
-                embed = disnake.Embed(title='⛓ Timeout removed ⛓', color=disnake.Color.green())
+                embed = disnake.Embed(title='🔓 Timeout 🔓\n⠀⠀removed', color=disnake.Color(0x32CD32))
                 embed.add_field(name='Member', value=member.mention, inline=False)
                 embed.add_field(name='Reason', value=reason, inline=False)
                 embed.add_field(name='From', value=ctx.author.mention, inline=False)
                 await ctx.send(embed=embed)
                 
-                dm_embed = disnake.Embed(title='⛓ Timeout removed ⛓', color=disnake.Color.green())
+                dm_embed = disnake.Embed(title='🔓 Timeout 🔓\n⠀⠀removed', color=disnake.Color(0x32CD32))
                 dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
                 dm_embed.add_field(name='Reason', value=reason, inline=False)
                 dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
@@ -35,13 +35,13 @@ class NoSlash_UnTimeout(commands.Cog):
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
         if ctx.author.guild_permissions.mute_members:
             if max(ctx.author.roles) > max(member.roles):
-                embed = disnake.Embed(title='⛓ Timeout removed ⛓', color=disnake.Color.green())
+                embed = disnake.Embed(title='🔓 Timeout 🔓\n⠀⠀removed', color=disnake.Color(0x32CD32))
                 embed.add_field(name='Member', value=member.mention, inline=False)
                 embed.add_field(name='Reason', value=reason, inline=False)
                 embed.add_field(name='From', value=ctx.author.mention, inline=False)
                 await ctx.send(embed=embed)
                 
-                dm_embed = disnake.Embed(title='⛓ Timeout removed ⛓', color=disnake.Color.green())
+                dm_embed = disnake.Embed(title='🔓 Timeout 🔓\n⠀⠀removed', color=disnake.Color(0x32CD32))
                 dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
                 dm_embed.add_field(name='Reason', value=reason, inline=False)
                 dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
