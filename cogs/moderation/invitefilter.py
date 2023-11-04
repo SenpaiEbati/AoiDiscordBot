@@ -18,7 +18,7 @@ class Slash_InviteFilter(commands.Cog):
                         components=[
                             disnake.ui.Button(label="On/Off", style=disnake.ButtonStyle.primary, custom_id="On/Off"),]
                             )
-        
+    
     @commands.Cog.listener()
     async def on_button_click(self,inter: disnake.Interaction):
         if inter.component.custom_id == "On/Off":
@@ -41,18 +41,6 @@ class Slash_InviteFilter(commands.Cog):
                         value=f"{n}", 
                         inline=False)
             await inter.response.edit_message(embed=embed)
-
-class NoSlash_InviteFilter(commands.Cog):
-    def __init__(self, bot):
-        self.bot = bot
-    @commands.command(description="With this command you can clear message.")
-    async def invitefilter(self,ctx):
-        if ctx.author.guild_permissions.manage_messages:
-            wddw= 1
-        else:
-            await ctx.send("You do not have permission to clear message.")
-        
-            
+       
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_InviteFilter(bot))
-    bot.add_cog(NoSlash_InviteFilter(bot))
