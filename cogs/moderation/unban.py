@@ -1,3 +1,4 @@
+from asyncio import sleep
 import disnake
 from disnake.ext import commands
 
@@ -22,7 +23,13 @@ class Slash_UnBan(commands.Cog):
 
             await member.unban() 
         else:
-            await ctx.send("You do not have permission to unban members.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to unban members."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
 
 class NoSlash_UnBan(commands.Cog):
     def __init__(self, bot):
@@ -45,8 +52,13 @@ class NoSlash_UnBan(commands.Cog):
 
             await member.unban() 
         else:
-            await ctx.send("You do not have permission to unban members.")
-        
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to unban members."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_UnBan(bot))
     bot.add_cog(NoSlash_UnBan(bot))

@@ -1,3 +1,4 @@
+from asyncio import sleep
 import disnake
 from disnake.ext import commands
 
@@ -20,7 +21,13 @@ class Slash_Warn(commands.Cog):
             dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
             await member.send(embed=dm_embed)
         else:
-            await ctx.send("You do not have permission to issue alerts.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to issue alerts."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
 
 class NoSlash_Warn(commands.Cog):
     def __init__(self, bot):
@@ -41,7 +48,13 @@ class NoSlash_Warn(commands.Cog):
             dm_embed.add_field(name='From', value=ctx.author.mention, inline=False)
             await member.send(embed=dm_embed)
         else:
-            await ctx.send("You do not have permission to issue alerts.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to issue alerts."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
         
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Warn(bot))

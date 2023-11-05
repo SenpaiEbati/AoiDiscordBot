@@ -1,3 +1,4 @@
+from asyncio import sleep
 import disnake
 from disnake.ext import commands
 
@@ -17,7 +18,13 @@ class Slash_UnMute(commands.Cog):
 
             await member.edit(mute=False)
         else:
-            await ctx.send("You do not have permission to unmute members.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to unmute members."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
 
 class NoSlash_UnMute(commands.Cog):
     def __init__(self, bot):
@@ -35,7 +42,14 @@ class NoSlash_UnMute(commands.Cog):
 
             await member.edit(mute=False)
         else:
-            await ctx.send("You do not have permission to unmute members.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to unmute members."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
+
         
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_UnMute(bot))

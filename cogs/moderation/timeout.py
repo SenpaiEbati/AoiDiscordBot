@@ -1,3 +1,4 @@
+from asyncio import sleep
 import disnake
 from disnake.ext import commands
 
@@ -32,11 +33,29 @@ class Slash_Timeout(commands.Cog):
                     
                     await member.edit(timeout=time)
                 else:
-                    await ctx.send("The time you enter must be in the form of numbers, not letters or symbols.")
+                    embed = disnake.Embed(title='❌ ERROR IN TIMEOUT ❌', color=disnake.Color(0xff0000))
+                    val = "The time you enter must be in the form of numbers, not letters or symbols."
+                    embed.add_field(name="",value=val, inline=False)
+                    await ctx.send(embed=embed)
+
+                    await sleep(5)
+                    await ctx.channel.purge(limit=1)
             else:
-                await ctx.send("You do not have permission to timeout members with a higher role.")
+                embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+                val = "You do not have permission to timeout members with a higher role."
+                embed.add_field(name="",value=val, inline=False)
+                await ctx.send(embed=embed)
+
+                await sleep(5)
+                await ctx.channel.purge(limit=1)
         else:
-            await ctx.send("You do not have permission to timeout members.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to timeout members."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
 
 class NoSlash_Timeout(commands.Cog):
     def __init__(self, bot):
@@ -69,11 +88,29 @@ class NoSlash_Timeout(commands.Cog):
                     
                     await member.edit(timeout=time)
                 else:
-                    await ctx.send("The time you enter must be in the form of numbers, not letters or symbols.")
+                    embed = disnake.Embed(title='❌ ERROR IN TIMEOUT ❌', color=disnake.Color(0xff0000))
+                    val = "The time you enter must be in the form of numbers, not letters or symbols."
+                    embed.add_field(name="",value=val, inline=False)
+                    await ctx.send(embed=embed)
+
+                    await sleep(5)
+                    await ctx.channel.purge(limit=1)
             else:
-                await ctx.send("You do not have permission to timeout members with a higher role.")
+                embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+                val = "You do not have permission to timeout members with a higher role."
+                embed.add_field(name="",value=val, inline=False)
+                await ctx.send(embed=embed)
+
+                await sleep(5)
+                await ctx.channel.purge(limit=1)
         else:
-            await ctx.send("You do not have permission to timeout members.")
+            embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
+            val = "You do not have permission to timeout members."
+            embed.add_field(name="",value=val, inline=False)
+            await ctx.send(embed=embed)
+
+            await sleep(5)
+            await ctx.channel.purge(limit=1)
 
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Timeout(bot))
