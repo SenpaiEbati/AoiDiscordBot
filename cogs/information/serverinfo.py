@@ -27,22 +27,22 @@ class Slash_Serverinfo(commands.Cog):
 
         member_count = f"👥 Total: **{server.member_count}**\n👤 Human: **{server.member_count - bot_count}**\n🤖 Bot: **{bot_count}**"
         status_count = f"🟢 Online: **{online_count}**\n🌙 Idle: **{idle_count}**\n⛔️ Do Not Disturb: **{dnd_count}**\n💿 Offline: **{offline_count}**"
-        channel_count = f"#️⃣ Total: **{len(server.channels)}**\n✏️ Text: **{len(server.text_channels)}**\n🗯️ Forums: **{len(server.forum_channels)}**\n🔊 Voices: **{len(server.voice_channels)}**"
+        channel_count = f"🗂️ Total: **{len(server.channels)}**\n✏️ Text: **{len(server.text_channels)}**\n🗯️ Forums: **{len(server.forum_channels)}**\n🔊 Voices: **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title="📊 Server Information 📊", color=0x1E90FF)
+        embed = disnake.Embed(title="📊 Server Info 📊", color=0x1E90FF)
         if server_icon:
             embed.set_thumbnail(url=server_icon)
-        embed.add_field(name="Server Name:", value=server_name, inline=True)
-        embed.add_field(name="Server ID:", value=server_id, inline=True)
-        embed.add_field(name="Server Owner:", value=server_owner, inline=True)
+        embed.add_field(name="🗃️ Server Name:", value=server_name, inline=True)
+        embed.add_field(name="🆔 Server ID:", value=server_id, inline=True)
+        embed.add_field(name="👑 Server Owner:", value=server_owner, inline=True)
 
-        embed.add_field(name="Creation Date:", value=creation_date, inline=True)
-        embed.add_field(name="Verification level:", value=verific_count, inline=True)
-        embed.add_field(name="Role Count:", value=role_count, inline=True)
+        embed.add_field(name="📅 Creation Date:", value=creation_date, inline=True)
+        embed.add_field(name="✔️ Verification level:", value=verific_count, inline=True)
+        embed.add_field(name="🧟 Role Count:", value=role_count, inline=True)
 
-        embed.add_field(name="Member:", value=member_count, inline=True)
-        embed.add_field(name="By status:", value=status_count, inline=True)
-        embed.add_field(name="Channel:", value=channel_count, inline=True)
+        embed.add_field(name="👨‍👩‍👧‍👦 Member:", value=member_count, inline=True)
+        embed.add_field(name="💤 By status:", value=status_count, inline=True)
+        embed.add_field(name="#️⃣ Channel:", value=channel_count, inline=True)
 
         await ctx.send(embed=embed)
 
@@ -72,22 +72,22 @@ class NoSlash_Serverinfo(commands.Cog):
 
         member_count = f"👥 Total: **{server.member_count}**\n👤 Human: **{server.member_count - bot_count}**\n🤖 Bot: **{bot_count}**"
         status_count = f"🟢 Online: **{online_count}**\n🌙 Idle: **{idle_count}**\n⛔️ Do Not Disturb: **{dnd_count}**\n💿 Offline: **{offline_count}**"
-        channel_count = f"#️⃣ Total: **{len(server.channels)}**\n✏️ Text: **{len(server.text_channels)}**\n🗯️ Forums: **{len(server.forum_channels)}**\n🔊 Voices: **{len(server.voice_channels)}**"
+        channel_count = f"🗂️ Total: **{len(server.channels)}**\n✏️ Text: **{len(server.text_channels)}**\n🗯️ Forums: **{len(server.forum_channels)}**\n🔊 Voices: **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title="📊 Server Information 📊", color=0x1E90FF)
+        embed = disnake.Embed(title="📊 Server Info 📊", color=0x1E90FF)
         if server_icon:
             embed.set_thumbnail(url=server_icon)
-        embed.add_field(name="Server Name:", value=server_name, inline=True)
-        embed.add_field(name="Server ID:", value=server_id, inline=True)
-        embed.add_field(name="Server Owner:", value=server_owner, inline=True)
+        embed.add_field(name="🗃️ Server Name:", value=server_name, inline=True)
+        embed.add_field(name="🆔 Server ID:", value=server_id, inline=True)
+        embed.add_field(name="👑 Server Owner:", value=server_owner, inline=True)
 
-        embed.add_field(name="Creation Date:", value=creation_date, inline=True)
-        embed.add_field(name="Verification level:", value=verific_count, inline=True)
-        embed.add_field(name="Role Count:", value=role_count, inline=True)
+        embed.add_field(name="📅 Creation Date:", value=creation_date, inline=True)
+        embed.add_field(name="✔️ Verification level:", value=verific_count, inline=True)
+        embed.add_field(name="🧟 Role Count:", value=role_count, inline=True)
 
-        embed.add_field(name="Member:", value=member_count, inline=True)
-        embed.add_field(name="By status:", value=status_count, inline=True)
-        embed.add_field(name="Channel:", value=channel_count, inline=True)
+        embed.add_field(name="👨‍👩‍👧‍👦 Member:", value=member_count, inline=True)
+        embed.add_field(name="💤 By status:", value=status_count, inline=True)
+        embed.add_field(name="#️⃣ Channel:", value=channel_count, inline=True)
 
         await ctx.send(embed=embed)
             
