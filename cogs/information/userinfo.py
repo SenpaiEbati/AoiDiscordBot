@@ -15,13 +15,13 @@ class Slash_Userinfo(commands.Cog):
             user_icon = disnake.DefaultAvatar.fuchsia
 
         if user.status == disnake.Status.online:
-            user_status = "🟢 online"
+            user_status = "🟢 Online"
         elif user.status == disnake.Status.idle:
             user_status = "🌙 Idle"
         elif user.status == disnake.Status.dnd:
             user_status = "⛔️ Do Not Disturb"
         else:
-            user_status = "💿 offline"
+            user_status = "💿 Offline"
 
         embed = disnake.Embed(color=0x1E90FF,
                               timestamp=datetime.datetime.now())
@@ -31,7 +31,7 @@ class Slash_Userinfo(commands.Cog):
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        value_embed = f"**Basic information**\n**Username:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Registration date:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
+        value_embed = f"**Basic information**\n**User name:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
         embed.add_field(name="", value=value_embed, inline=False)
         
         await ctx.send(embed=embed)
@@ -49,13 +49,13 @@ class NoSlash_Userinfo(commands.Cog):
             user_icon = disnake.DefaultAvatar.fuchsia
 
         if user.status == disnake.Status.online:
-            user_status = "🟢 online"
+            user_status = "🟢 Online"
         elif user.status == disnake.Status.idle:
             user_status = "🌙 Idle"
         elif user.status == disnake.Status.dnd:
             user_status = "⛔️ Do Not Disturb"
         else:
-            user_status = "💿 offline"
+            user_status = "💿 Offline"
 
         embed = disnake.Embed(color=0x1E90FF,
                               timestamp=datetime.datetime.now())
@@ -65,7 +65,7 @@ class NoSlash_Userinfo(commands.Cog):
         embed.set_footer(
             text=f"Information about {user.display_name}",
         )
-        value_embed = f"**Basic information**\n**Username:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Registration date:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
+        value_embed = f"**Basic information**\n**Username:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
         embed.add_field(name="", value=value_embed, inline=False)
         
         await ctx.send(embed=embed)

@@ -14,23 +14,23 @@ class Slash_Botinfo(commands.Cog):
             bot_icon = disnake.DefaultAvatar.fuchsia
 
         if self.bot.status == disnake.Status.online:
-            bot_status = "🟢 Онлайн"
+            bot_status = "🟢 Online"
         elif self.bot.status == disnake.Status.idle:
-            bot_status = "🌙 Неактивен"
+            bot_status = "🌙 Idle"
         elif self.bot.status == disnake.Status.dnd:
-            bot_status = "⛔️ Не беспокоить"
+            bot_status = "⛔️ Do Not Disturb"
         else:
-            bot_status = "💿 Не в сети"
+            bot_status = "💿 Offline"
 
         embed = disnake.Embed(color=0x1E90FF,
                               timestamp=datetime.datetime.now())
-        embed.set_author(name=f"Информация о {bot.display_name}",
+        embed.set_author(name=f"Info about {bot.display_name}",
                          icon_url=bot_icon)
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
-            text=f"Информацию запросил {ctx.author.display_name}"
+            text=f"Requested information {ctx.author.display_name}"
         )
-        value_embed = f"**Основная информация о боте**\n**Имя бота:** {bot.name}({bot.display_name})\n**ID бота:** {bot.id}\n**Статус:** {bot_status}\n**Создан:** `{bot.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Разработчик бота:** senpaiebati(SenpaiEbati)\nРазработан на **Python**(VS Code) с помощью **Disnake**\nОбслуживает **{len(self.bot.guilds)}** серверов"
+        value_embed = f"**Basic information about the bot**\n**Bot name:** {bot.name}({bot.display_name})\n**Bot ID:** {bot.id}\n**Status:** {bot_status}\n**Created:** `{bot.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Bot Developer:** senpaiebati(SenpaiEbati)\nDeveloped in **Python**(VS Code) with **Disnake**\nMaintains **{len(self.bot.guilds)}** Servers"
         embed.add_field(name="", value=value_embed, inline=False)
         
         await ctx.send(embed=embed)
@@ -47,23 +47,23 @@ class NoSlash_Botinfo(commands.Cog):
             bot_icon = disnake.DefaultAvatar.fuchsia
 
         if self.bot.status == disnake.Status.online:
-            bot_status = "🟢 Онлайн"
+            bot_status = "🟢 Online"
         elif self.bot.status == disnake.Status.idle:
-            bot_status = "🌙 Неактивен"
+            bot_status = "🌙 Idle"
         elif self.bot.status == disnake.Status.dnd:
-            bot_status = "⛔️ Не беспокоить"
+            bot_status = "⛔️ Do Not Disturb"
         else:
-            bot_status = "💿 Не в сети"
+            bot_status = "💿 Offline"
 
         embed = disnake.Embed(color=0x1E90FF,
                               timestamp=datetime.datetime.now())
-        embed.set_author(name=f"Информация о {bot.display_name}",
+        embed.set_author(name=f"Info about {bot.display_name}",
                          icon_url=bot_icon)
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
-            text=f"Информацию запросил {ctx.author.display_name}"
+            text=f"Requested information {ctx.author.display_name}"
         )
-        value_embed = f"**Основная информация о боте**\n**Имя бота:** {bot.name}({bot.display_name})\n**ID бота:** {bot.id}\n**Статус:** {bot_status}\n**Создан:** `{bot.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Разработчик бота:** senpaiebati(SenpaiEbati)\nРазработан на **Python**(VS Code) с помощью **Disnake**\nОбслуживает **{len(self.bot.guilds)}** серверов"
+        value_embed = f"**Basic information about the bot**\n**Bot name:** {bot.name}({bot.display_name})\n**Bot ID:** {bot.id}\n**Status:** {bot_status}\n**Created:** `{bot.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Bot Developer:** senpaiebati(SenpaiEbati)\nDeveloped in **Python**(VS Code) with **Disnake**\nMaintains **{len(self.bot.guilds)}** Servers"
         embed.add_field(name="", value=value_embed, inline=False)
         
         await ctx.send(embed=embed)
