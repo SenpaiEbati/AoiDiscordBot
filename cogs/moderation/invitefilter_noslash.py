@@ -10,7 +10,7 @@ class NoSlash_InviteFilter(commands.Cog):
     async def invitefilter(self,inter: disnake.ApplicationCommandInteraction):
         embed = disnake.Embed(title='✉️ Invite Filter ✉️',
                             description="The bot can automatically block messages that contain links to other Discord servers.\n This function ignores users with administrator permissions", 
-                            color=disnake.Color(0xffffff))
+                            color=disnake.Color(0x1E90FF))
         embed.add_field(name='Active', 
                         value=f"🔴 Off", 
                         inline=False)
@@ -35,7 +35,7 @@ class NoSlash_InviteFilter(commands.Cog):
 
             embed = disnake.Embed(title='✉️ Invite Filter ✉️',
                                 description="The bot can automatically block messages that contain links to other Discord servers.\n This function ignores users with administrator permissions", 
-                                color=disnake.Color(0xffffff))
+                                color=disnake.Color(0x1E90FF))
             
             embed.insert_field_at(0,name='Active', 
                         value=f"{n}", 
