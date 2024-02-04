@@ -17,7 +17,8 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or("M.","m."), intents
                    test_guilds = [1152151796870025228,977613521351225354])
 
 bot.load_extensions('cogs\moderation') 
-bot.load_extensions('cogs\information') 
+bot.load_extensions('cogs\information')
+bot.load_extensions('cogs\levelup') 
 
 @bot.event
 async def on_ready():
