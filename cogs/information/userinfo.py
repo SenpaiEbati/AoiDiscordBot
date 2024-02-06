@@ -68,7 +68,7 @@ class NoSlash_Userinfo(commands.Cog):
         value_embed = f"**Basic information**\n**Username:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
         embed.add_field(name="", value=value_embed, inline=False)
         
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Userinfo(bot))

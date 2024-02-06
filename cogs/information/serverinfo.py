@@ -96,7 +96,7 @@ class NoSlash_Serverinfo(commands.Cog):
         embed.add_field(name="By status:", value=status_count, inline=True)
         embed.add_field(name="Channel:", value=channel_count, inline=True)
 
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
             
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Serverinfo(bot))

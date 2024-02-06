@@ -67,7 +67,7 @@ class NoSlash_Clear(commands.Cog):
                 embed = disnake.Embed(title='❌ ERROR IN CLEARED ❌', color=disnake.Color(0xff0000))
                 val = "Failed to delete message. Please enter a number from 1 to 500"
                 embed.add_field(name="",value=val, inline=False)
-                await ctx.send(embed=embed)
+                await ctx.reply(embed=embed)
 
                 await sleep(5)
                 await ctx.channel.purge(limit=1)
@@ -85,7 +85,7 @@ class NoSlash_Clear(commands.Cog):
             embed = disnake.Embed(title='🗑 Clear 🗑', color=disnake.Color(0x1E90FF))
             val = f"{len(deleted)} messages have been deleted successfully!"
             embed.add_field(name="",value=val, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)
@@ -93,7 +93,7 @@ class NoSlash_Clear(commands.Cog):
             embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
             val = "You do not have permission to clear message."
             embed.add_field(name="",value=val, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)

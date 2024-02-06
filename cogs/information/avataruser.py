@@ -43,7 +43,7 @@ class NoSlash_Avatar(commands.Cog):
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Avatar(bot))

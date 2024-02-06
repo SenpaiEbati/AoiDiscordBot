@@ -38,14 +38,14 @@ class NoSlash_UnMute(commands.Cog):
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await member.edit(mute=False)
         else:
             embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
             val = "You do not have permission to unmute members."
             embed.add_field(name="",value=val, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)

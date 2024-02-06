@@ -72,7 +72,7 @@ class NoSlash_Channelinfo(commands.Cog):
         embed.add_field(name="NSFW Channel:", value=is_nsfw, inline=True)
         embed.add_field(name="Channel Type:", value=channel_type, inline=True)
 
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Channelinfo(bot))

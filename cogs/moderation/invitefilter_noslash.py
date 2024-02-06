@@ -14,7 +14,7 @@ class NoSlash_InviteFilter(commands.Cog):
         embed.add_field(name='Active', 
                         value=f"🔴 Off", 
                         inline=False)
-        await inter.send(embed=embed,
+        await inter.reply(embed=embed,
                         components=[
                             disnake.ui.Button(label="On/Off", style=disnake.ButtonStyle.primary, custom_id="On/Off"),]
                             )

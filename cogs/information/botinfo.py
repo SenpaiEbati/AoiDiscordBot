@@ -66,7 +66,7 @@ class NoSlash_Botinfo(commands.Cog):
         value_embed = f"**Basic information about the bot**\n**Bot name:** {bot.name}({bot.display_name})\n**Bot ID:** {bot.id}\n**Status:** {bot_status}\n**Created:** `{bot.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Bot Developer:** senpaiebati(SenpaiEbati)\nDeveloped in **Python**(VS Code) with **Disnake**\nMaintains **{len(self.bot.guilds)}** Servers"
         embed.add_field(name="", value=value_embed, inline=False)
         
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Botinfo(bot))

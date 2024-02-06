@@ -22,7 +22,7 @@ class NoSlash_Add(commands.Cog):
         embed = disnake.Embed(title="🔗 Add Aoi青",
                               color=0x1E90FF)
         embed.add_field(name="",value="Thanks for your interest! 💋")
-        await ctx.send(embed=embed,
+        await ctx.reply(embed=embed,
                         components=[
                             disnake.ui.Button(label="Add Aoi青 to Your Server ",url="https://discord.com/api/oauth2/authorize?client_id=1152289596969861203&permissions=8&scope=bot"),]
                             )

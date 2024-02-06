@@ -50,7 +50,7 @@ class NoSlash_Kick(commands.Cog):
             embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
             val = "You do not have permission to kick yourself."
             embed.add_field(name="",value=val, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)
@@ -59,7 +59,7 @@ class NoSlash_Kick(commands.Cog):
             embed.add_field(name='Member', value=member.mention, inline=False)
             embed.add_field(name='Reason', value=reason, inline=False)
             embed.add_field(name='From', value=ctx.author.mention, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
             
             dm_embed = disnake.Embed(title='🚪 Kick 🚪', color=disnake.Color(0xff0000))
             dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
@@ -72,7 +72,7 @@ class NoSlash_Kick(commands.Cog):
             embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
             val = "You do not have permission to kick members."
             embed.add_field(name="",value=val, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)

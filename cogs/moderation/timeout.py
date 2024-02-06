@@ -77,7 +77,7 @@ class NoSlash_Timeout(commands.Cog):
                     embed.add_field(name='How much', value=f"{days}d {hours}h {minutes}m {seconds}s", inline=False)
                     embed.add_field(name='Reason', value=reason, inline=False)
                     embed.add_field(name='From', value=ctx.author.mention, inline=False)
-                    await ctx.send(embed=embed)
+                    await ctx.reply(embed=embed)
                     
                     dm_embed = disnake.Embed(title='🔒 Timeout 🔒', color=disnake.Color(0xff0000))
                     dm_embed.add_field(name='Server', value=ctx.guild.name, inline=False)
@@ -91,7 +91,7 @@ class NoSlash_Timeout(commands.Cog):
                     embed = disnake.Embed(title='❌ ERROR IN TIMEOUT ❌', color=disnake.Color(0xff0000))
                     val = "The time you enter must be in the form of numbers, not letters or symbols."
                     embed.add_field(name="",value=val, inline=False)
-                    await ctx.send(embed=embed)
+                    await ctx.reply(embed=embed)
 
                     await sleep(5)
                     await ctx.channel.purge(limit=1)
@@ -99,7 +99,7 @@ class NoSlash_Timeout(commands.Cog):
                 embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
                 val = "You do not have permission to timeout members with a higher role."
                 embed.add_field(name="",value=val, inline=False)
-                await ctx.send(embed=embed)
+                await ctx.reply(embed=embed)
 
                 await sleep(5)
                 await ctx.channel.purge(limit=1)
@@ -107,7 +107,7 @@ class NoSlash_Timeout(commands.Cog):
             embed = disnake.Embed(title='❌ NO RIGHTS ❌', color=disnake.Color(0xff0000))
             val = "You do not have permission to timeout members."
             embed.add_field(name="",value=val, inline=False)
-            await ctx.send(embed=embed)
+            await ctx.reply(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)
