@@ -3,10 +3,9 @@ from disnake.ext import commands
 import datetime
 from cogs.levelup.Levelupsystem import LevelUpSystem
 
-class Slash_LevelUserInfo(commands.Cog):
+class Slash_LevelUser(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
     @commands.slash_command()
     async def leveluser(self, ctx, user: disnake.Member = None):
         if not user:
@@ -16,8 +15,8 @@ class Slash_LevelUserInfo(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        exp = LevelUpSystem.get_exp(LevelUpSystem,user)
-        level = LevelUpSystem.get_level(LevelUpSystem,user)
+        exp = LevelUpSystem.get_exp(LevelUpSystem,ctx,user)
+        level = LevelUpSystem.get_level(LevelUpSystem,ctx,user)
         nowlinelevel = (50 * level * level) // 2
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 
@@ -37,14 +36,13 @@ class Slash_LevelUserInfo(commands.Cog):
         progress = percentage // 10
 
         # Добавляем прогресс-бар во встраиваемое сообщение
-        embed.add_field(name="", value=f"**User name:** {user.name}({user.display_name})\n**Level:** {level}\n**Experience:** {exp}\n**Next level exp:** {nowlinelevel}\n\n**Level progress**\n[{bar * progress}{empty_bar * (total - progress)}] {percentage}%\n{level} lvl⠀⠀⠀⠀⠀⠀⠀⠀{exp} exp")
+        embed.add_field(name="", value=f"**User name:** {user.name}({user.display_name})\n**Level:** {level}\n**Experience:** {exp}\n**Next level exp:** {nowlinelevel}\n\n**Level progress**\n{bar * progress}{empty_bar * (total - progress)} {percentage}%\n{level} lvl⠀⠀⠀⠀{exp}/{nowlinelevel} exp")
         # Отправляем встраиваемое сообщение
         await ctx.send(embed=embed)
 
-class NoSlash_LevelUserInfo(commands.Cog):
+class NoSlash_LevelUser(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
     @commands.command()
     async def leveluser(self, ctx, user: disnake.Member = None):
         if not user:
@@ -54,8 +52,8 @@ class NoSlash_LevelUserInfo(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        exp = LevelUpSystem.get_exp(LevelUpSystem,user)
-        level = LevelUpSystem.get_level(LevelUpSystem,user)
+        exp = LevelUpSystem.get_exp(LevelUpSystem,ctx,user)
+        level = LevelUpSystem.get_level(LevelUpSystem,ctx,user)
         nowlinelevel = (50 * level * level) // 2
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 
@@ -75,11 +73,11 @@ class NoSlash_LevelUserInfo(commands.Cog):
         progress = percentage // 10
 
         # Добавляем прогресс-бар во встраиваемое сообщение
-        embed.add_field(name="", value=f"**User name:** {user.name}({user.display_name})\n**Level:** {level}\n**Experience:** {exp}\n**Next level exp:** {nowlinelevel}\n\n**Level progress**\n[{bar * progress}{empty_bar * (total - progress)}] {percentage}%\n{level} lvl⠀⠀⠀⠀⠀⠀⠀⠀{exp} exp")
+        embed.add_field(name="", value=f"**User name:** {user.name}({user.display_name})\n**Level:** {level}\n**Experience:** {exp}\n**Next level exp:** {nowlinelevel}\n\n**Level progress**\n{bar * progress}{empty_bar * (total - progress)} {percentage}%\n{level} lvl⠀⠀⠀⠀{exp}/{nowlinelevel} exp")
         # Отправляем встраиваемое сообщение
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
 
 
 def setup(bot: commands.Bot):
-    bot.add_cog(Slash_LevelUserInfo(bot))
-    bot.add_cog(NoSlash_LevelUserInfo(bot))
+    bot.add_cog(Slash_LevelUser(bot))
+    bot.add_cog(NoSlash_LevelUser(bot))

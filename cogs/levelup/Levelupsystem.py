@@ -1,3 +1,4 @@
+import datetime
 import disnake
 from disnake.ext import commands
 import sqlite3
@@ -5,41 +6,57 @@ import sqlite3
 class LevelUpSystem(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
+        
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.bot:
             return
         # Начисление опыта за отправку сообщений
         exp = 1
-        self.add_exp(message.author, exp)
+        self.add_exp(message, message.author, exp)
 
     @commands.Cog.listener()
-    async def on_voice_state_update(self, member: disnake.Member):
+    async def on_voice_state_update(self, ctx, member: disnake.Member, before, after):
         if member.bot:
             return
         # Начисление опыта за активность в голосовых каналах
         exp = 1
-        self.add_exp(member, exp)
+        self.add_exp(ctx, member, exp)
     
-    def add_exp(self, member, exp):
-        current_exp = self.get_exp(member)
+    def add_exp(self, ctx, member, exp):
+        current_exp = self.get_exp(ctx, member)
         current_exp += exp
-        self.set_exp(member, current_exp)
+        self.set_exp(ctx, member, current_exp)
 
         # Проверяем, достиг ли участник нового уровня
-        if self.level_up_check(member, current_exp):
-            self.level_up(member)
+        if self.level_up_check(ctx, member, current_exp):
+            self.level_up(ctx, member)
 
-    def get_exp(self, member):
+    def get_exp(self, ctx, member):
         # Получение опыта участника
         conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM users WHERE userid = ?', (member.id,))
+        cursor.execute('SELECT * FROM users WHERE guildid = ? AND userid = ?', (ctx.guild.id, member.id))
         user = cursor.fetchone()
 
         if user is None:
-            cursor.execute('INSERT INTO users (username, userid, level, exp) VALUES (?, ?, ?, ?)', (member.name, member.id, 1, 0))
+            cursor.execute('INSERT INTO users (guildid, username, userid, level, exp) VALUES (?, ?, ?, ?, ?)', (ctx.guild.id, member.name, member.id, 1, 0))
+            conn.commit()
+            conn.close()
+            return 0
+
+        conn.close()
+        return user[5]
+
+    def get_level(self, ctx, member):
+        # Получение уровня участника
+        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM users WHERE guildid = ? AND userid = ?', (ctx.guild.id, member.id))
+        user = cursor.fetchone()
+
+        if user is None:
+            cursor.execute('INSERT INTO users (guildid, username, userid, level, exp) VALUES (?, ?, ?, ?, ?)', (ctx.guild.id, member.name, member.id, 1, 0))
             conn.commit()
             conn.close()
             return 0
@@ -47,50 +64,34 @@ class LevelUpSystem(commands.Cog):
         conn.close()
         return user[4]
 
-    def get_level(self, member):
-        # Получение уровня участника
-        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM users WHERE userid = ?', (member.id,))
-        user = cursor.fetchone()
-
-        if user is None:
-            cursor.execute('INSERT INTO users (username, userid, level, exp) VALUES (?, ?, ?, ?)', (member.name, member.id, 1, 0))
-            conn.commit()
-            conn.close()
-            return 0
-
-        conn.close()
-        return user[3]
-
-    def set_exp(self, member, exp):
+    def set_exp(self, ctx, member, exp):
         # Сохранения опыта участника
         conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
         cursor = conn.cursor()
-        cursor.execute('UPDATE users SET exp = ? WHERE userid = ?', (exp, member.id))
+        cursor.execute('UPDATE users SET exp = ? WHERE guildid = ? AND userid = ?', (exp, ctx.guild.id, member.id))
         conn.commit()
         conn.close()
         pass
     
-    def set_level(self, member, level):
+    def set_level(self, ctx, member, level):
         # Сохранения уровня участника
         conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
         cursor = conn.cursor()
-        cursor.execute('UPDATE users SET level = ? WHERE userid = ?', (level, member.id))
+        cursor.execute('UPDATE users SET level = ? WHERE guildid = ? AND userid = ?', (level, ctx.guild.id, member.id))
         conn.commit()
         conn.close()
         pass
 
-    def level_up_check(self, member, exp):
+    def level_up_check(self, ctx, member, exp):
         # Проверяем, достиг ли участник нового уровня
-        level = self.get_level(member)
+        level = self.get_level(ctx, member)
         level_line = (50 * level * level) // 2
-        return exp >= level_line  
+        return exp > level_line  
 
-    def level_up(self, member):
+    def level_up(self, ctx, member):
         # Выполняем действия по повышению уровня участника
-        newlevel = self.get_level(member) + 1
-        self.set_level(member, newlevel)
-
+        newlevel = self.get_level(ctx, member) + 1
+        self.set_level(ctx, member, newlevel)
+        
 def setup(bot):
     bot.add_cog(LevelUpSystem(bot))
