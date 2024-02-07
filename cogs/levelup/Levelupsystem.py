@@ -1,4 +1,3 @@
-import datetime
 import disnake
 from disnake.ext import commands
 import sqlite3
@@ -92,6 +91,19 @@ class LevelUpSystem(commands.Cog):
         # Выполняем действия по повышению уровня участника
         newlevel = self.get_level(ctx, member) + 1
         self.set_level(ctx, member, newlevel)
-        
+    
+    def get_rank(self, ctx, member):
+        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        cursor = conn.cursor()
+        cursor.execute('''
+            SELECT (SELECT COUNT(*) FROM users AS u WHERE u.guildid = users.guildid AND u.exp > users.exp) + 1 AS user_rank
+            FROM users
+            WHERE guildid = ? AND userid = ?
+        ''', (ctx.guild.id, member.id))
+
+        result = cursor.fetchone()  # Получаем первую строку результата
+        conn.close()
+        return result[0]
+
 def setup(bot):
     bot.add_cog(LevelUpSystem(bot))
