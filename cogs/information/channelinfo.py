@@ -13,7 +13,6 @@ class Slash_Channelinfo(commands.Cog):
         server = ctx.guild
         server_icon = server.icon.url if server.icon else None
 
-       
         channel_name = channel.name
         channel_id = channel.id
         creation_date = channel.created_at.strftime('%Y.%m.%d %H:%M')
@@ -28,14 +27,8 @@ class Slash_Channelinfo(commands.Cog):
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        embed.add_field(name="Channel Name:", value=channel_name, inline=True)
-        embed.add_field(name="Channel ID:", value=channel_id, inline=True)
-        embed.add_field(name="Creation Date:", value=creation_date, inline=True)
-
-        embed.add_field(name="Channel Category:", value=channel_category, inline=True)
-        embed.add_field(name="NSFW Channel:", value=is_nsfw, inline=True)
-        embed.add_field(name="Channel Type:", value=channel_type, inline=True)
-
+        embed.add_field(name=f"Channel Name: {channel_name}", 
+                        value=f"**Channel ID:** {channel_id}\n**Creation Date:** `{creation_date}`\n**Channel Category:** {channel_category}\n**NSFW Channel:** {is_nsfw}\n**Channel Type:** {channel_type}", inline=False)
         await ctx.send(embed=embed)
 
 class NoSlash_Channelinfo(commands.Cog):
@@ -49,10 +42,9 @@ class NoSlash_Channelinfo(commands.Cog):
         server = ctx.guild
         server_icon = server.icon.url if server.icon else None
 
-       
         channel_name = channel.name
         channel_id = channel.id
-        creation_date = channel.created_at.strftime('%Y-%m-%d %H:%M')
+        creation_date = channel.created_at.strftime('%Y.%m.%d %H:%M')
         
         channel_category = channel.category.name if channel.category else "None"
         is_nsfw = "Yes" if channel.is_nsfw() else "No"
@@ -64,14 +56,8 @@ class NoSlash_Channelinfo(commands.Cog):
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        embed.add_field(name="Channel Name:", value=channel_name, inline=True)
-        embed.add_field(name="Channel ID:", value=channel_id, inline=True)
-        embed.add_field(name="Creation Date:", value=creation_date, inline=True)
-
-        embed.add_field(name="Channel Category:", value=channel_category, inline=True)
-        embed.add_field(name="NSFW Channel:", value=is_nsfw, inline=True)
-        embed.add_field(name="Channel Type:", value=channel_type, inline=True)
-
+        embed.add_field(name=f"Channel Name: {channel_name}", 
+                        value=f"**Channel ID:** {channel_id}\n**Creation Date:** `{creation_date}`\n**Channel Category:** {channel_category}\n**NSFW Channel:** {is_nsfw}\n**Channel Type:** {channel_type}", inline=False)
         await ctx.reply(embed=embed)
 
 def setup(bot: commands.Bot):

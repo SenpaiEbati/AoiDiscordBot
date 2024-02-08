@@ -36,7 +36,7 @@ class Slash_Ping(commands.Cog):
         command_ping = round(self.bot.latency * 1000, 2)
 
         embed = disnake.Embed(color=0x1E90FF,
-                              title="🏓 Ping 🏓",
+                              title="🏓 Pong 🏓",
                               description=f"Internal calculations for this command: **{command_ping}ms**\nDiscord API Gateway: **{gateway_ping}ms**\nDiscord API REST: **{rest_ping}ms**",
                               timestamp=datetime.datetime.now())
         embed.set_footer(
@@ -74,7 +74,7 @@ class NoSlash_Ping(commands.Cog):
         command_ping = round(self.bot.latency * 1000, 2)
 
         embed = disnake.Embed(color=0x1E90FF,
-                              title="🏓 Ping 🏓",
+                              title="🏓 Pong 🏓",
                               description=f"Internal calculations for this command: **{command_ping}ms**\nDiscord API Gateway: **{gateway_ping}ms**\nDiscord API REST: **{rest_ping}ms**",
                               timestamp=datetime.datetime.now())
         embed.set_footer(

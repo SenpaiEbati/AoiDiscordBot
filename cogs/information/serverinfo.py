@@ -15,7 +15,7 @@ class Slash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        creation_date = server.created_at.strftime('%Y-%m-%d %H:%M')
+        creation_date = server.created_at.strftime('%Y.%m.%d %H:%M')
         verific_count = server.verification_level
         role_count = len(server.roles)
 
@@ -36,13 +36,8 @@ class Slash_Serverinfo(commands.Cog):
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        embed.add_field(name="Server Name:", value=server_name, inline=True)
-        embed.add_field(name="Server ID:", value=server_id, inline=True)
-        embed.add_field(name="Server Owner:", value=server_owner, inline=True)
-
-        embed.add_field(name="Creation Date:", value=creation_date, inline=True)
-        embed.add_field(name="Verification level:", value=verific_count, inline=True)
-        embed.add_field(name="Role Count:", value=role_count, inline=True)
+        embed.add_field(name=f"Server Name: {server_name}", 
+                        value=f"**Server ID:** {server_id}\n**Server Owner:** {server_owner}\n**Creation Date:** `{creation_date}`\n**Verification level:** {verific_count}\n**Role Count:** {role_count}", inline=False)
 
         embed.add_field(name="Member:", value=member_count, inline=True)
         embed.add_field(name="By status:", value=status_count, inline=True)
@@ -84,13 +79,8 @@ class NoSlash_Serverinfo(commands.Cog):
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        embed.add_field(name="Server Name:", value=server_name, inline=True)
-        embed.add_field(name="Server ID:", value=server_id, inline=True)
-        embed.add_field(name="Server Owner:", value=server_owner, inline=True)
-
-        embed.add_field(name="Creation Date:", value=creation_date, inline=True)
-        embed.add_field(name="Verification level:", value=verific_count, inline=True)
-        embed.add_field(name="Role Count:", value=role_count, inline=True)
+        embed.add_field(name=f"Server Name: {server_name}", 
+                        value=f"**Server ID:** {server_id}\n**Server Owner:** {server_owner}\n**Creation Date:** `{creation_date}`\n**Verification level:** {verific_count}\n**Role Count:** {role_count}", inline=False)
 
         embed.add_field(name="Member:", value=member_count, inline=True)
         embed.add_field(name="By status:", value=status_count, inline=True)

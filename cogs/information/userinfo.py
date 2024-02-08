@@ -23,16 +23,16 @@ class Slash_Userinfo(commands.Cog):
         else:
             user_status = "💿 Offline"
 
-        embed = disnake.Embed(color=0x1E90FF,
+        embed = disnake.Embed(title=f"🪪 Info about the {user.display_name} 🪪",
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
-        embed.set_author(name=f"Info about {user.display_name}",
-                         icon_url=user_icon)
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
             text=f"Requested information {ctx.author.display_name}"
         )
-        value_embed = f"**Basic information**\n**User name:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
-        embed.add_field(name="", value=value_embed, inline=False)
+        value_embed = f"**User ID:** {user.id}\n**Status:** {user_status}\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
+        embed.add_field(name=f"**User name:** {user.name}({user.display_name})", 
+                        value=value_embed, inline=False)
         
         await ctx.send(embed=embed)
 
@@ -57,16 +57,16 @@ class NoSlash_Userinfo(commands.Cog):
         else:
             user_status = "💿 Offline"
 
-        embed = disnake.Embed(color=0x1E90FF,
+        embed = disnake.Embed(title=f"🪪 Info about the {user.display_name} 🪪",
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
-        embed.set_author(name=f"Info about {user.display_name}",
-                         icon_url=user_icon)
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
-            text=f"Information about {user.display_name}",
+            text=f"Requested information {ctx.author.display_name}"
         )
-        value_embed = f"**Basic information**\n**Username:** {user.name}({user.display_name})\n**User ID:** {user.id}\n**Status:** {user_status}\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
-        embed.add_field(name="", value=value_embed, inline=False)
+        value_embed = f"**User ID:** {user.id}\n**Status:** {user_status}\n**Created:** `{user.created_at.strftime('%Y.%m.%d %H:%M')}`\n**Joined:** `{user.joined_at.strftime('%Y.%m.%d %H:%M')}`\n**Activity:** {user.activity}"
+        embed.add_field(name=f"**User name:** {user.name}({user.display_name})", 
+                        value=value_embed, inline=False)
         
         await ctx.reply(embed=embed)
 
