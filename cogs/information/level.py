@@ -1,7 +1,7 @@
 import disnake
 from disnake.ext import commands
 import datetime
-from cogs.levelup.Levelupsystem import LevelUpSystem
+from cogs.information.Levelupsystem import LevelUpSystem
 
 class Slash_Level(commands.Cog):
     def __init__(self, bot):

@@ -11,6 +11,7 @@ intents.message_content = True
 intents.voice_states = True
 intents.members = True
 intents.presences = True
+intents.guild_messages = True
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or("M.","m."), intents=intents,
                    sync_commands_debug=True,
@@ -18,7 +19,7 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or("M.","m."), intents
 
 bot.load_extensions('cogs\moderation') 
 bot.load_extensions('cogs\information')
-bot.load_extensions('cogs\levelup') 
+bot.load_extensions('cogs\configuration')
 
 @bot.event
 async def on_ready():

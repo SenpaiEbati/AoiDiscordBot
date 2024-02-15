@@ -1,0 +1,19 @@
+{
+    "en": {
+        "add_1": "🔗 Add Aoi青",
+        "add_2": "Thanks for your interest! 💋",
+        "add_3": "Add Aoi青 to Your Server",
+        "add_4": "https://discord.com/api/oauth2/authorize?client_id=1152289596969861203&permissions=8&scope=bot",
+
+        "no rights": "❌ NO RIGHTS ❌",
+        "lang_1": "You do not have server administrator rights to change the bot language.",
+        "no change conf": " didn't change the configuration",
+        
+        "lang_3": "👅 Language 👅",
+        "lang_4": "Select which language will be installed for the bot in the selection menu below",
+        "changed conf": " changed the configuration",
+        "lang_5": "Language has been switched to ",
+        "english": "English",
+        "russian": "Russian"
+    }
+}
