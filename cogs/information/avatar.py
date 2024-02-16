@@ -1,12 +1,16 @@
 import datetime
 import disnake
 from disnake.ext import commands
+from cogs.configuration.language import LanguageCog
 
 class Slash_Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def avatar(self, ctx, user: disnake.Member = None):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+
         if not user:
             user = ctx.author
 
@@ -15,19 +19,23 @@ class Slash_Avatar(commands.Cog):
             user_icon = disnake.DefaultAvatar.fuchsia
 
         embed = disnake.Embed(color=0x1E90FF,
-                              title="🖼️ Avatar 🖼️",
-                              description=f"Avatar of {user.display_name}",
+                              title=strings["avatar_1"],
+                              description=strings["avatar_2"] + user.display_name,
                               timestamp=datetime.datetime.now())
         embed.set_image(url=user_icon)
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
         await ctx.send(embed=embed)
+
 class NoSlash_Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.command()
     async def avatar(self, ctx, user: disnake.Member = None):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+
         if not user:
             user = ctx.author
 
@@ -36,12 +44,12 @@ class NoSlash_Avatar(commands.Cog):
             user_icon = disnake.DefaultAvatar.fuchsia
 
         embed = disnake.Embed(color=0x1E90FF,
-                              title="🖼️ Avatar 🖼️",
-                              description=f"Avatar of {user.display_name}",
+                              title=strings["avatar_1"],
+                              description=strings["avatar_2"] + user.display_name,
                               timestamp=datetime.datetime.now())
         embed.set_image(url=user_icon)
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
         await ctx.reply(embed=embed)
 

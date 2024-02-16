@@ -1,12 +1,16 @@
 import datetime
 import disnake
 from disnake.ext import commands
+from cogs.configuration.language import LanguageCog
 
 class Slash_Serverinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def serverinfo(self, ctx):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        
         server = ctx.guild
 
         server_icon = server.icon.url if server.icon else None
@@ -15,7 +19,11 @@ class Slash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        creation_date = server.created_at.strftime('%Y.%m.%d %H:%M')
+        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+            dateUTC = '%m.%d.%Y %I:%M %p'
+        else:
+            dateUTC = '%d.%m.%Y %H:%M'
+        creation_date = server.created_at.strftime(dateUTC)
         verific_count = server.verification_level
         role_count = len(server.roles)
 
@@ -26,22 +34,26 @@ class Slash_Serverinfo(commands.Cog):
         dnd_count = sum(member.status == disnake.Status.dnd for member in server.members)
         offline_count = sum(member.status == disnake.Status.offline for member in server.members)
 
-        member_count = f"● 👥 Total: **{server.member_count}**\n● 👤 Human: **{server.member_count - bot_count}**\n● 🤖 Bot: **{bot_count}**"
-        status_count = f"● 🟢 Online: **{online_count}**\n● 🌙 Idle: **{idle_count}**\n● ⛔️ DoNotDisturb: **{dnd_count}**\n● 💿 Offline: **{offline_count}**"
-        channel_count = f"● 🗂️ Total: **{len(server.channels)}**\n● ✏️ Text: **{len(server.text_channels)}**\n● 🗯️ Forums: **{len(server.forum_channels)}**\n● 🔊 Voices: **{len(server.voice_channels)}**"
+        member_count = f"● "+ strings["servertotal"] + f": **{server.member_count}**\n● "+strings["serverhumans"] + f": **{server.member_count - bot_count}**\n● "+ strings["serverbots"] +f": **{bot_count}**"
+        status_count = f"● "+strings["online"]+f": **{online_count}**\n● "+strings["idle"]+f": **{idle_count}**\n● "+strings["dnd"]+f": **{dnd_count}**\n● "+strings["offline"]+f": **{offline_count}**"
+        channel_count = f"● "+strings["serverchanneltotal"]+f": **{len(server.channels)}**\n● "+strings["serverchantexts"]+f": **{len(server.text_channels)}**\n● "+strings["serverchanforums"]+f": **{len(server.forum_channels)}**\n● "+strings["serverchanvoices"]+f": **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title="📊 Server Info 📊", color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["serverinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
-        embed.add_field(name=f"Server Name: {server_name}", 
-                        value=f"**Server ID:** {server_id}\n**Server Owner:** {server_owner}\n**Creation Date:** `{creation_date}`\n**Verification level:** {verific_count}\n**Role Count:** {role_count}", inline=False)
+        embed.add_field(name=strings["servername"]+f"{server_name}", 
+                        value=strings["serverid"]+f"{server_id}\n" + 
+                        strings["serverowner"] + f"{server_owner}\n" +
+                        strings["serverdate"] + f"`{creation_date}`\n" + 
+                        strings["serververif"] + f"{verific_count}\n" + 
+                        strings["serverrolecount"] + f"{role_count}", inline=False)
 
-        embed.add_field(name="Member:", value=member_count, inline=True)
-        embed.add_field(name="By status:", value=status_count, inline=True)
-        embed.add_field(name="Channel:", value=channel_count, inline=True)
+        embed.add_field(name=strings["servermember"], value=member_count, inline=True)
+        embed.add_field(name=strings["serverstatus"], value=status_count, inline=True)
+        embed.add_field(name=strings["serverchannels"], value=channel_count, inline=True)
 
         await ctx.send(embed=embed)
 
@@ -50,6 +62,9 @@ class NoSlash_Serverinfo(commands.Cog):
         self.bot = bot
     @commands.command(description="With this command you can clear message.")
     async def serverinfo(self, ctx):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        
         server = ctx.guild
 
         server_icon = server.icon.url if server.icon else None
@@ -58,7 +73,11 @@ class NoSlash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        creation_date = server.created_at.strftime('%Y.%m.%d %H:%M')
+        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+            dateUTC = '%m.%d.%Y %I:%M %p'
+        else:
+            dateUTC = '%d.%m.%Y %H:%M'
+        creation_date = server.created_at.strftime(dateUTC)
         verific_count = server.verification_level
         role_count = len(server.roles)
 
@@ -69,25 +88,29 @@ class NoSlash_Serverinfo(commands.Cog):
         dnd_count = sum(member.status == disnake.Status.dnd for member in server.members)
         offline_count = sum(member.status == disnake.Status.offline for member in server.members)
 
-        member_count = f"● 👥 Total: **{server.member_count}**\n● 👤 Human: **{server.member_count - bot_count}**\n● 🤖 Bot: **{bot_count}**"
-        status_count = f"● 🟢 Online: **{online_count}**\n● 🌙 Idle: **{idle_count}**\n● ⛔️ DoNotDisturb: **{dnd_count}**\n● 💿 Offline: **{offline_count}**"
-        channel_count = f"● 🗂️ Total: **{len(server.channels)}**\n● ✏️ Text: **{len(server.text_channels)}**\n● 🗯️ Forums: **{len(server.forum_channels)}**\n● 🔊 Voices: **{len(server.voice_channels)}**"
+        member_count = f"● "+ strings["servertotal"] + f": **{server.member_count}**\n● "+strings["serverhumans"] + f": **{server.member_count - bot_count}**\n● "+ strings["serverbots"] +f": **{bot_count}**"
+        status_count = f"● "+strings["online"]+f": **{online_count}**\n● "+strings["idle"]+f": **{idle_count}**\n● "+strings["dnd"]+f": **{dnd_count}**\n● "+strings["offline"]+f": **{offline_count}**"
+        channel_count = f"● "+strings["serverchanneltotal"]+f": **{len(server.channels)}**\n● "+strings["serverchantexts"]+f": **{len(server.text_channels)}**\n● "+strings["serverchanforums"]+f": **{len(server.forum_channels)}**\n● "+strings["serverchanvoices"]+f": **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title="📊 Server Info 📊", color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["serverinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
-        embed.add_field(name=f"Server Name: {server_name}", 
-                        value=f"**Server ID:** {server_id}\n**Server Owner:** {server_owner}\n**Creation Date:** `{creation_date}`\n**Verification level:** {verific_count}\n**Role Count:** {role_count}", inline=False)
+        embed.add_field(name=strings["servername"]+f"{server_name}", 
+                        value=strings["serverid"]+f"{server_id}\n" + 
+                        strings["serverowner"] + f"{server_owner}\n" +
+                        strings["serverdate"] + f"`{creation_date}`\n" + 
+                        strings["serververif"] + f"{verific_count}\n" + 
+                        strings["serverrolecount"] + f"{role_count}", inline=False)
 
-        embed.add_field(name="Member:", value=member_count, inline=True)
-        embed.add_field(name="By status:", value=status_count, inline=True)
-        embed.add_field(name="Channel:", value=channel_count, inline=True)
+        embed.add_field(name=strings["servermember"], value=member_count, inline=True)
+        embed.add_field(name=strings["serverstatus"], value=status_count, inline=True)
+        embed.add_field(name=strings["serverchannels"], value=channel_count, inline=True)
 
         await ctx.reply(embed=embed)
-            
+
 def setup(bot: commands.Bot):
     bot.add_cog(Slash_Serverinfo(bot))
     bot.add_cog(NoSlash_Serverinfo(bot))

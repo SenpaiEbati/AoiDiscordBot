@@ -2,6 +2,7 @@ import datetime
 import time
 import disnake
 from disnake.ext import commands
+from cogs.configuration.language import LanguageCog
 
 class Slash_Ping(commands.Cog):
     def __init__(self, bot):
@@ -26,6 +27,8 @@ class Slash_Ping(commands.Cog):
     # Команда для расчета задержки (ping)
     @commands.slash_command()
     async def ping(self, ctx):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
         # Задержка (ping) Discord API Gateway
         gateway_ping = await self.get_gateway_ping()
 
@@ -36,11 +39,13 @@ class Slash_Ping(commands.Cog):
         command_ping = round(self.bot.latency * 1000, 2)
 
         embed = disnake.Embed(color=0x1E90FF,
-                              title="🏓 Pong 🏓",
-                              description=f"Internal calculations for this command: **{command_ping}ms**\nDiscord API Gateway: **{gateway_ping}ms**\nDiscord API REST: **{rest_ping}ms**",
+                              title=strings["ping_1"],
+                              description=strings["ping_2"] + f"{command_ping}" + strings["pingms"] + "\n" + 
+                              strings["ping_3"] + f"{gateway_ping}" + strings["pingms"] + "\n" + 
+                              strings["ping_4"] + f"{rest_ping}" + strings["pingms"],
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
         await ctx.send(embed=embed)
 class NoSlash_Ping(commands.Cog):
@@ -64,6 +69,8 @@ class NoSlash_Ping(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
         # Задержка (ping) Discord API Gateway
         gateway_ping = await self.get_gateway_ping()
 
@@ -74,11 +81,13 @@ class NoSlash_Ping(commands.Cog):
         command_ping = round(self.bot.latency * 1000, 2)
 
         embed = disnake.Embed(color=0x1E90FF,
-                              title="🏓 Pong 🏓",
-                              description=f"Internal calculations for this command: **{command_ping}ms**\nDiscord API Gateway: **{gateway_ping}ms**\nDiscord API REST: **{rest_ping}ms**",
+                              title=strings["ping_1"],
+                              description=strings["ping_2"] + f"{command_ping}" + strings["pingms"] + "\n" + 
+                              strings["ping_3"] + f"{gateway_ping}" + strings["pingms"] + "\n" + 
+                              strings["ping_4"] + f"{rest_ping}" + strings["pingms"],
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
         await ctx.reply(embed=embed)
 

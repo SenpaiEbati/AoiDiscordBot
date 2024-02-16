@@ -1,3 +1,4 @@
+import datetime
 import disnake
 from disnake.ext import commands
 from cogs.configuration.language import LanguageCog
@@ -13,7 +14,11 @@ class Slash_Add(commands.Cog):
 
         embed = disnake.Embed(title=strings["add_1"],
                               description=strings["add_2"],
-                              color=0x1E90FF)
+                              color=0x1E90FF,
+                              timestamp=datetime.datetime.now())
+        embed.set_footer(
+            text=ctx.author.display_name + strings["req info"]
+        )
         await ctx.response.send_message(embed=embed,
                         components=[
                             disnake.ui.Button(label=strings["add_3"],url=strings["add_4"]),]
@@ -29,7 +34,11 @@ class NoSlash_Add(commands.Cog):
 
         embed = disnake.Embed(title=strings["add_1"], 
                               description=strings["add_2"],
-                              color=0x1E90FF)
+                              color=0x1E90FF,
+                              timestamp=datetime.datetime.now())
+        embed.set_footer(
+            text=ctx.author.display_name + strings["req info"]
+        )
         await ctx.reply(embed=embed,
                         components=[
                             disnake.ui.Button(label=strings["add_3"],url=strings["add_4"]),]

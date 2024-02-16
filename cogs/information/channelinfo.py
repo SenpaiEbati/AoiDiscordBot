@@ -1,12 +1,16 @@
 import datetime
 import disnake
 from disnake.ext import commands
+from cogs.configuration.language import LanguageCog
 
 class Slash_Channelinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+
         if not channel:
             channel = ctx.channel
 
@@ -15,20 +19,28 @@ class Slash_Channelinfo(commands.Cog):
 
         channel_name = channel.name
         channel_id = channel.id
-        creation_date = channel.created_at.strftime('%Y.%m.%d %H:%M')
+        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+            dateUTC = '%m.%d.%Y %I:%M %p'
+        else:
+            dateUTC = '%d.%m.%Y %H:%M'
+        creation_date = channel.created_at.strftime(dateUTC)
         
-        channel_category = channel.category.name if channel.category else "None"
-        is_nsfw = "Yes" if channel.is_nsfw() else "No"
+        channel_category = channel.category.name if channel.category else strings["none"]
+        is_nsfw = strings["yes"] if channel.is_nsfw() else strings["no"]
         channel_type = str(channel.type)
 
-        embed = disnake.Embed(title="📝 Channel Info 📝", color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["channelinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
-        embed.add_field(name=f"Channel Name: {channel_name}", 
-                        value=f"**Channel ID:** {channel_id}\n**Creation Date:** `{creation_date}`\n**Channel Category:** {channel_category}\n**NSFW Channel:** {is_nsfw}\n**Channel Type:** {channel_type}", inline=False)
+        embed.add_field(name=strings["channelname"] + f"{channel_name}", 
+                        value=strings["channelid"] + f"{channel_id}\n" + 
+                        strings["channeldate"] + f"`{creation_date}`\n" + 
+                        strings["channelcateg"] + f"{channel_category}\n" + 
+                        strings["channelnsfw"] + f"{is_nsfw}\n" + 
+                        strings["channeltype"] + f"{channel_type}", inline=False)
         await ctx.send(embed=embed)
 
 class NoSlash_Channelinfo(commands.Cog):
@@ -36,6 +48,9 @@ class NoSlash_Channelinfo(commands.Cog):
         self.bot = bot
     @commands.command()
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
+        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
+        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+
         if not channel:
             channel = ctx.channel
 
@@ -44,20 +59,28 @@ class NoSlash_Channelinfo(commands.Cog):
 
         channel_name = channel.name
         channel_id = channel.id
-        creation_date = channel.created_at.strftime('%Y.%m.%d %H:%M')
+        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+            dateUTC = '%m.%d.%Y %I:%M %p'
+        else:
+            dateUTC = '%d.%m.%Y %H:%M'
+        creation_date = channel.created_at.strftime(dateUTC)
         
-        channel_category = channel.category.name if channel.category else "None"
-        is_nsfw = "Yes" if channel.is_nsfw() else "No"
+        channel_category = channel.category.name if channel.category else strings["none"]
+        is_nsfw = strings["yes"] if channel.is_nsfw() else strings["no"]
         channel_type = str(channel.type)
 
-        embed = disnake.Embed(title="📝 Channel Info 📝", color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["channelinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=f"Requested information {ctx.author.display_name}"
+            text=ctx.author.display_name + strings["req info"]
         )
-        embed.add_field(name=f"Channel Name: {channel_name}", 
-                        value=f"**Channel ID:** {channel_id}\n**Creation Date:** `{creation_date}`\n**Channel Category:** {channel_category}\n**NSFW Channel:** {is_nsfw}\n**Channel Type:** {channel_type}", inline=False)
+        embed.add_field(name=strings["channelname"] + f"{channel_name}", 
+                        value=strings["channelid"] + f"{channel_id}\n" + 
+                        strings["channeldate"] + f"`{creation_date}`\n" + 
+                        strings["channelcateg"] + f"{channel_category}\n" + 
+                        strings["channelnsfw"] + f"{is_nsfw}\n" + 
+                        strings["channeltype"] + f"{channel_type}", inline=False)
         await ctx.reply(embed=embed)
 
 def setup(bot: commands.Bot):

@@ -108,10 +108,6 @@ class LanguageCog(commands.Cog):
             conn.close()
 
         return conf[2]
-    
-    def loadjson(self, file_path):
-        with open(file_path, "r", encoding="utf-8") as file:
-            self.getsetjson = json.load(file)
             
     def loadjson2(self, ctx, path):
         if os.path.isfile(path):
