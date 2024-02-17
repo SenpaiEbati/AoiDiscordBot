@@ -1,15 +1,14 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from cogs.configuration.language import LanguageCog
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Botinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def botinfo(self, ctx):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         bot = self.bot.user
 
@@ -34,7 +33,7 @@ class Slash_Botinfo(commands.Cog):
             text=ctx.author.display_name + strings["req info"]
         )
         
-        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -53,8 +52,7 @@ class NoSlash_Botinfo(commands.Cog):
         self.bot = bot
     @commands.command()
     async def botinfo(self, ctx):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         bot = self.bot.user
 
@@ -79,7 +77,7 @@ class NoSlash_Botinfo(commands.Cog):
             text=ctx.author.display_name + strings["req info"]
         )
         
-        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'

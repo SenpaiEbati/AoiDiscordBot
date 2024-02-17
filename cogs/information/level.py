@@ -1,16 +1,15 @@
 import disnake
 from disnake.ext import commands
 import datetime
-from cogs.information.Levelupsystem import LevelUpSystem
-from cogs.configuration.language import LanguageCog
+from cogs._class.LevelupClass import LevelUpClass
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Level(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def level(self, ctx, user: disnake.Member = None):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         if not user:
             user = ctx.author
@@ -19,9 +18,9 @@ class Slash_Level(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        exp = LevelUpSystem.get_exp(LevelUpSystem,ctx,user)
-        level = LevelUpSystem.get_level(LevelUpSystem,ctx,user)
-        rank = LevelUpSystem.get_rank(LevelUpSystem,ctx,user)
+        exp = LevelUpClass.get_exp(LevelUpClass,ctx,user)
+        level = LevelUpClass.get_level(LevelUpClass,ctx,user)
+        rank = LevelUpClass.get_rank(LevelUpClass,ctx,user)
         nowlinelevel = (50 * level * level) // 2
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 
@@ -55,8 +54,7 @@ class NoSlash_Level(commands.Cog):
         self.bot = bot
     @commands.command()
     async def level(self, ctx, user: disnake.Member = None):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         if not user:
             user = ctx.author
@@ -65,9 +63,9 @@ class NoSlash_Level(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        exp = LevelUpSystem.get_exp(LevelUpSystem,ctx,user)
-        level = LevelUpSystem.get_level(LevelUpSystem,ctx,user)
-        rank = LevelUpSystem.get_rank(LevelUpSystem,ctx,user)
+        exp = LevelUpClass.get_exp(LevelUpClass,ctx,user)
+        level = LevelUpClass.get_level(LevelUpClass,ctx,user)
+        rank = LevelUpClass.get_rank(LevelUpClass,ctx,user)
         nowlinelevel = (50 * level * level) // 2
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 

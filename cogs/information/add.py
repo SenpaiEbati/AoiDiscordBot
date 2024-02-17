@@ -1,7 +1,7 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from cogs.configuration.language import LanguageCog
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Add(commands.Cog):
     def __init__(self, bot):
@@ -9,9 +9,7 @@ class Slash_Add(commands.Cog):
 
     @commands.slash_command()
     async def add(self,ctx: disnake.ApplicationCommandInteraction):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
-
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         embed = disnake.Embed(title=strings["add_1"],
                               description=strings["add_2"],
                               color=0x1E90FF,
@@ -29,8 +27,7 @@ class NoSlash_Add(commands.Cog):
         self.bot = bot
     @commands.command()
     async def add(self,ctx: disnake.ApplicationCommandInteraction):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         embed = disnake.Embed(title=strings["add_1"], 
                               description=strings["add_2"],

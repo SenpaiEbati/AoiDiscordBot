@@ -1,15 +1,14 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from cogs.configuration.language import LanguageCog
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Channelinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         if not channel:
             channel = ctx.channel
@@ -19,7 +18,7 @@ class Slash_Channelinfo(commands.Cog):
 
         channel_name = channel.name
         channel_id = channel.id
-        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -48,8 +47,7 @@ class NoSlash_Channelinfo(commands.Cog):
         self.bot = bot
     @commands.command()
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         if not channel:
             channel = ctx.channel
@@ -59,7 +57,7 @@ class NoSlash_Channelinfo(commands.Cog):
 
         channel_name = channel.name
         channel_id = channel.id
-        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'

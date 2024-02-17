@@ -1,6 +1,6 @@
 import disnake
 from disnake.ext import commands
-
+from cogs._class.LanguageClass import LanguageClass
 import os
 from dotenv import load_dotenv
 
@@ -20,9 +20,11 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or("M.","m."), intents
 bot.load_extensions('cogs\moderation') 
 bot.load_extensions('cogs\information')
 bot.load_extensions('cogs\configuration')
+bot.load_extensions('cogs\_class')
 
 @bot.event
 async def on_ready():
+    LanguageClass.loadjsonmain(LanguageClass, "..\MyDiscordBot\localizations")
     print("====The bot is ready!====")
 
 YOUR_BOT_TOKEN = os.environ["YOUR_BOT_TOKEN"]

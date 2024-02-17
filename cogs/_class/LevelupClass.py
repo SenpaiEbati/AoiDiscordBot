@@ -2,7 +2,7 @@ import disnake
 from disnake.ext import commands
 import sqlite3
 
-class LevelUpSystem(commands.Cog):
+class LevelUpClass(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
@@ -13,6 +13,7 @@ class LevelUpSystem(commands.Cog):
         # Начисление опыта за отправку сообщений
         exp = 1
         self.add_exp(message, message.author, exp)
+        
 
     @commands.Cog.listener()
     async def on_voice_state_update(self, ctx, member: disnake.Member, before, after):
@@ -106,4 +107,4 @@ class LevelUpSystem(commands.Cog):
         return result[0]
 
 def setup(bot):
-    bot.add_cog(LevelUpSystem(bot))
+    bot.add_cog(LevelUpClass(bot))

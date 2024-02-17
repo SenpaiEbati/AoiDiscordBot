@@ -1,15 +1,14 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from cogs.configuration.language import LanguageCog
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def avatar(self, ctx, user: disnake.Member = None):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         if not user:
             user = ctx.author
@@ -33,8 +32,7 @@ class NoSlash_Avatar(commands.Cog):
         self.bot = bot
     @commands.command()
     async def avatar(self, ctx, user: disnake.Member = None):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
         if not user:
             user = ctx.author

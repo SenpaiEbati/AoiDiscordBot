@@ -2,7 +2,7 @@ import datetime
 import time
 import disnake
 from disnake.ext import commands
-from cogs.configuration.language import LanguageCog
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Ping(commands.Cog):
     def __init__(self, bot):
@@ -27,8 +27,7 @@ class Slash_Ping(commands.Cog):
     # Команда для расчета задержки (ping)
     @commands.slash_command()
     async def ping(self, ctx):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         # Задержка (ping) Discord API Gateway
         gateway_ping = await self.get_gateway_ping()
 
@@ -69,8 +68,7 @@ class NoSlash_Ping(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         # Задержка (ping) Discord API Gateway
         gateway_ping = await self.get_gateway_ping()
 

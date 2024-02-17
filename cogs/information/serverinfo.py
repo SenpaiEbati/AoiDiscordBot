@@ -1,15 +1,14 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from cogs.configuration.language import LanguageCog
+from cogs._class.LanguageClass import LanguageClass
 
 class Slash_Serverinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.slash_command()
     async def serverinfo(self, ctx):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         
         server = ctx.guild
 
@@ -19,7 +18,7 @@ class Slash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -62,8 +61,7 @@ class NoSlash_Serverinfo(commands.Cog):
         self.bot = bot
     @commands.command(description="With this command you can clear message.")
     async def serverinfo(self, ctx):
-        LanguageCog.loadjson2(LanguageCog,ctx,"..\MyDiscordBot\localizations")
-        strings = LanguageCog.get_strings(LanguageCog,LanguageCog.get_lang(LanguageCog,ctx))
+        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         
         server = ctx.guild
 
@@ -73,7 +71,7 @@ class NoSlash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        if (LanguageCog.get_lang(LanguageCog,ctx) == "en"):
+        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
