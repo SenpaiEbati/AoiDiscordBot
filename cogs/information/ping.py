@@ -44,7 +44,7 @@ class Slash_Ping(commands.Cog):
                               strings["ping_4"] + f"{rest_ping}" + strings["pingms"],
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         await ctx.send(embed=embed)
 class NoSlash_Ping(commands.Cog):
@@ -85,7 +85,7 @@ class NoSlash_Ping(commands.Cog):
                               strings["ping_4"] + f"{rest_ping}" + strings["pingms"],
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         await ctx.reply(embed=embed)
 

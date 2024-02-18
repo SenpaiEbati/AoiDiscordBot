@@ -4,15 +4,24 @@
         "add_2": "Thanks for your interest! 💋",
         "add_3": "Add Aoi青 to Your Server",
         "add_4": "https://discord.com/api/oauth2/authorize?client_id=1152289596969861203&permissions=8&scope=bot",
-        "req info": " requested information",
+        "req_info": " requested information",
 
-        "no rights": "❌ NO RIGHTS ❌",
+        "no_rights": "❌ NO RIGHTS ❌",
         "lang_1": "You do not have server administrator rights to change the bot language.",
-        "no change conf": " didn't change the configuration",
+        "no_change_conf": " didn't change the configuration",
         
+        "ban_1": "You do not have permission to ban yourself.",
+        "ban_title": "⛔️ Ban ⛔️",
+        "ban_member": "Member",
+        "ban_reason": "Reason",
+        "ban_from": "From",
+        "ban_server": "Server",
+        "ban_2": "You do not have permission to ban members.",
+        "mod_serv": " moderated the server",
+
         "lang_3": "👅 Language 👅",
         "lang_4": "Select which language will be installed for the bot in the selection menu below",
-        "changed conf": " changed the configuration",
+        "changed_conf": " changed the configuration",
         "lang_5": "Language has been switched to ",
         "english": "English",
         "russian": "Russian",
@@ -87,6 +96,53 @@
         "usercreated": "**Created:** ",
         "userjoined": "**Joined:** ",
         "useractiviti": "**Activity:** ",
-        "username": "**User name:** "
+        "username": "**User name:** ",
+
+        "clear_error": "❌ ERROR WHEN CLEANING ❌",
+        "clear_errordescrip": "Failed to delete messages. Please enter a number from 1 to 500",
+        "clear_title": "🗑 Clear 🗑",
+        "clear_discrip": " messages have been deleted successfully!",
+        "clear_rights": "You do not have permission to clear message.",
+
+        "deafen_title": "🎧 Deafen 🎧",
+        "deafen_rightsdef": "You do not have permission to deafen members.",
+
+        "invitefilter_title": "✉️ Invite Filter ✉️",
+        "invitefilter_discrip": "The bot can automatically block messages that contain links to other Discord servers.\n This function ignores users with administrator permissions",
+        "invitefilter_active": "Active",
+        "off": "🔴 Off",
+        "on": "🟢 On",
+        "on/off": "On/Off",
+
+        "no_rights_kick1": "You do not have permission to kick yourself.",
+        "no_rights_kick2": "You do not have permission to kick members.",
+        "kick_title": "🚪 Kick 🚪",
+
+        "mute_title": "🎙 Mute 🎙",
+        "no_rights_mute": "You do not have permission to mute members.",
+
+        "timeout_title": "🔒 Timeout 🔒",
+        "how_much": "How much",
+        "error_timeout": "❌ ERROR IN TIMEOUT ❌",
+        "error_timeout_discrip": "The time you enter must be in the form of numbers, not letters or symbols.",
+        "timeout_rights_1": "You do not have permission to timeout members with a higher role.",
+        "timeout_rights_2": "You do not have permission to timeout members.",
+
+        "unban_title": "❇️ Unban ❇️",
+        "unban_rights": "You do not have permission to unban members.",
+
+        "undeafen_title": "🎧 Undeafen 🎧",
+        "undeafen_rights": "You do not have permission to undeafen members.",
+
+        "unmute_title": "🎙 Unmute 🎙",
+        "unmute_rights": "You do not have permission to unmute members.",
+
+        "untimeout_title": "🔓 Timeout 🔓\n⠀⠀removed",
+        "error_untimeout": "❌ ERROR IN UNTIMEOUT ❌",
+        "error_untimeout_discrip": "You do not have permission to remove timeout members with a higher role.",
+        "untimeout_rights_discrip": "You do not have permission to remove timeout members.",
+
+        "warn_title": "⚠️ Warning ⚠️",
+        "warn_rights": "You do not have permission to issue alerts."
     }
 }

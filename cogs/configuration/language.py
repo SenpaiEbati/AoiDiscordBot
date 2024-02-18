@@ -14,12 +14,12 @@ class Slash_LanguageCog(commands.Cog):
         user = inter.author
 
         if not inter.author.guild_permissions.administrator:
-            embed = disnake.Embed(title=strings["no rights"], 
+            embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
-                text=user.display_name + strings["no changed conf"]
+                text=user.display_name + strings["no_changed_conf"]
             )
             await inter.response.send_message(embed=embed)
             return
@@ -29,7 +29,7 @@ class Slash_LanguageCog(commands.Cog):
                               color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=user.display_name + strings["changed conf"]
+            text=user.display_name + strings["changed_conf"]
         )
 
         await inter.response.send_message(
@@ -54,12 +54,12 @@ class Slash_LanguageCog(commands.Cog):
         if inter.component.custom_id != "fav_language":
             return
         if not inter.author.guild_permissions.administrator:
-            embed = disnake.Embed(title=strings["no rights"], 
+            embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
-                text=user.display_name + strings["no changed conf"]
+                text=user.display_name + strings["no_changed_conf"]
             )
             await inter.response.send_message(embed=embed)
             return
@@ -72,7 +72,7 @@ class Slash_LanguageCog(commands.Cog):
                               color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=user.display_name + strings["changed conf"]
+            text=user.display_name + strings["changed_conf"]
         )
         await inter.response.edit_message(embed=embed,
                                           components=None)
@@ -86,7 +86,7 @@ class NoSlash_LanguageCog(commands.Cog):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
         user = inter.author
         if not inter.author.guild_permissions.administrator:
-            embed = disnake.Embed(title=strings["no rights"], 
+            embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
@@ -101,7 +101,7 @@ class NoSlash_LanguageCog(commands.Cog):
                               color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=user.display_name + strings["changed conf"]
+            text=user.display_name + strings["changed_conf"]
         )
 
         await inter.reply(
@@ -124,12 +124,12 @@ class NoSlash_LanguageCog(commands.Cog):
         if inter.component.custom_id != "gav_language":
             return
         if not inter.author.guild_permissions.administrator:
-            embed = disnake.Embed(title=strings["no rights"], 
+            embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
-                text=user.display_name + strings["no changed conf"]
+                text=user.display_name + strings["no_changed_conf"]
             )
             await inter.reply(embed=embed)
             return
@@ -142,7 +142,7 @@ class NoSlash_LanguageCog(commands.Cog):
                               color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=user.display_name + strings["changed conf"]
+            text=user.display_name + strings["changed_conf"]
         )
         await inter.response.edit_message(embed=embed,
                                           components=None)

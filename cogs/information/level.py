@@ -29,7 +29,7 @@ class Slash_Level(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         # Создаем прогресс-бар
         bar = "█"
@@ -74,7 +74,7 @@ class NoSlash_Level(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         # Создаем прогресс-бар
         bar = "█"

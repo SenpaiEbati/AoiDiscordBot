@@ -23,7 +23,7 @@ class Slash_Avatar(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_image(url=user_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         await ctx.send(embed=embed)
 
@@ -47,7 +47,7 @@ class NoSlash_Avatar(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_image(url=user_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         await ctx.reply(embed=embed)
 

@@ -41,7 +41,7 @@ class Slash_Serverinfo(commands.Cog):
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         embed.add_field(name=strings["servername"]+f"{server_name}", 
                         value=strings["serverid"]+f"{server_id}\n" + 
@@ -59,7 +59,7 @@ class Slash_Serverinfo(commands.Cog):
 class NoSlash_Serverinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command(description="With this command you can clear message.")
+    @commands.command()
     async def serverinfo(self, ctx):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         
@@ -94,7 +94,7 @@ class NoSlash_Serverinfo(commands.Cog):
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         embed.add_field(name=strings["servername"]+f"{server_name}", 
                         value=strings["serverid"]+f"{server_id}\n" + 

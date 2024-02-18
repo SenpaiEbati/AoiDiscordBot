@@ -15,7 +15,7 @@ class Slash_Add(commands.Cog):
                               color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         await ctx.response.send_message(embed=embed,
                         components=[
@@ -34,7 +34,7 @@ class NoSlash_Add(commands.Cog):
                               color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         await ctx.reply(embed=embed,
                         components=[

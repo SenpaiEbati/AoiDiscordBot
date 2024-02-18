@@ -32,7 +32,7 @@ class Slash_Channelinfo(commands.Cog):
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         embed.add_field(name=strings["channelname"] + f"{channel_name}", 
                         value=strings["channelid"] + f"{channel_id}\n" + 
@@ -71,7 +71,7 @@ class NoSlash_Channelinfo(commands.Cog):
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         embed.add_field(name=strings["channelname"] + f"{channel_name}", 
                         value=strings["channelid"] + f"{channel_id}\n" + 

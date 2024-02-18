@@ -36,7 +36,7 @@ class Slash_Userinfo(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         value_embed = strings["userid"] + f"{user.id}\n" + strings["userstatus"] + f"{user_status}\n" + strings["usercreated"] + f"`{user.created_at.strftime(dateUTC)}`\n" + strings["userjoined"] + f"`{user.joined_at.strftime(dateUTC)}`\n" + strings["useractiviti"] + f"{user.activity}"
         embed.add_field(name=strings["username"] + f"{user.name}({user.display_name})", 
@@ -77,7 +77,7 @@ class NoSlash_Userinfo(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         value_embed = strings["userid"] + f"{user.id}\n" + strings["userstatus"] + f"{user_status}\n" + strings["usercreated"] + f"`{user.created_at.strftime(dateUTC)}`\n" + strings["userjoined"] + f"`{user.joined_at.strftime(dateUTC)}`\n" + strings["useractiviti"] + f"{user.activity}"
         embed.add_field(name=strings["username"] + f"{user.name}({user.display_name})", 

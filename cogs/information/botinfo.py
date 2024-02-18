@@ -30,7 +30,7 @@ class Slash_Botinfo(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         
         if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
@@ -74,7 +74,7 @@ class NoSlash_Botinfo(commands.Cog):
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
-            text=ctx.author.display_name + strings["req info"]
+            text=ctx.author.display_name + strings["req_info"]
         )
         
         if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
