@@ -7,7 +7,8 @@ class Slash_Add(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="add",
+                            description="Add Aoi青 to Your Server/Добавь Aoi青 на свой сервер")
     async def add(self,ctx: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         embed = disnake.Embed(title=strings["add_1"],
@@ -25,7 +26,7 @@ class Slash_Add(commands.Cog):
 class NoSlash_Add(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="add")
     async def add(self,ctx: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 

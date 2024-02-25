@@ -8,7 +8,9 @@ class Slash_Kick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="kick",
+                            description="Kick out a server member/Выгнать участника сервера",
+                            default_member_permissions=disnake.Permissions(kick_members=True))
     async def kick(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author == member:
@@ -59,7 +61,8 @@ class NoSlash_Kick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="kick",
+                            default_member_permissions=disnake.Permissions(kick_members=True))
     async def kick(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author == member:

@@ -25,7 +25,8 @@ class Slash_Ping(commands.Cog):
         return ping
 
     # Команда для расчета задержки (ping)
-    @commands.slash_command()
+    @commands.slash_command(name="ping",
+                            description="Discord API Gateway/REST ping and commands/Пинг Discord API Gateway/REST и команды")
     async def ping(self, ctx):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         # Задержка (ping) Discord API Gateway
@@ -35,7 +36,7 @@ class Slash_Ping(commands.Cog):
         rest_ping = await self.get_rest_ping()
 
         # Внутренние расчеты задержки для команды ping
-        command_ping = round(self.bot.latency * 1000, 2)
+        command_ping = round(self.bot.latency * 10, 2)
 
         embed = disnake.Embed(color=0x1E90FF,
                               title=strings["ping_1"],
@@ -66,7 +67,7 @@ class NoSlash_Ping(commands.Cog):
         ping = round((end_time - start_time) * 1000, 2)
         return ping
 
-    @commands.command()
+    @commands.command(name="ping")
     async def ping(self, ctx):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         # Задержка (ping) Discord API Gateway
@@ -76,7 +77,7 @@ class NoSlash_Ping(commands.Cog):
         rest_ping = await self.get_rest_ping()
 
         # Внутренние расчеты задержки для команды ping
-        command_ping = round(self.bot.latency * 1000, 2)
+        command_ping = round(self.bot.latency * 10, 2)
 
         embed = disnake.Embed(color=0x1E90FF,
                               title=strings["ping_1"],

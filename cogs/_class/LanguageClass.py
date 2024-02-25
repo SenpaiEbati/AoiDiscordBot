@@ -11,7 +11,7 @@ class LanguageClass(commands.Cog):
         self.get_strings_ru = {}
     
     def set_lang(self, ctx, lang):
-        conn = sqlite3.connect('..\MyDiscordBot\dataconfbot.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataconfbot.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM confbot WHERE guildid = ?', (ctx.guild.id,))
         conf = cursor.fetchone()
@@ -27,7 +27,7 @@ class LanguageClass(commands.Cog):
         pass
 
     def get_lang(self, ctx):
-        conn = sqlite3.connect('..\MyDiscordBot\dataconfbot.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataconfbot.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM confbot WHERE guildid = ?', (ctx.guild.id,))
         conf = cursor.fetchone()

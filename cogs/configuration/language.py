@@ -6,11 +6,11 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_LanguageCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-
-    @commands.slash_command()
+        
+    @commands.slash_command(name="language",
+                            description="Command to change the language from Eng to Rus/Команда для смены языка с английского на русский")
     async def language(self, inter: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
-
         user = inter.author
 
         if not inter.author.guild_permissions.administrator:
@@ -19,7 +19,7 @@ class Slash_LanguageCog(commands.Cog):
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
-                text=user.display_name + strings["no_changed_conf"]
+                text=user.display_name + strings["no_change_conf"]
             )
             await inter.response.send_message(embed=embed)
             return
@@ -66,6 +66,7 @@ class Slash_LanguageCog(commands.Cog):
 
         LanguageClass.set_lang(LanguageClass,inter, inter.values[0])
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass, inter))
+        
 
         embed = disnake.Embed(title=strings["lang_3"], 
                               description= strings["lang_5"] + strings["english"] if inter.values[0] == "en" else strings["lang_5"] + strings["russian"],
@@ -76,12 +77,12 @@ class Slash_LanguageCog(commands.Cog):
         )
         await inter.response.edit_message(embed=embed,
                                           components=None)
-
+            
 class NoSlash_LanguageCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(name="language")
     async def language(self, inter: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
         user = inter.author
@@ -91,7 +92,7 @@ class NoSlash_LanguageCog(commands.Cog):
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
-                text=user.display_name + strings["no changed conf"]
+                text=user.display_name + strings["no_change_conf"]
             )
             await inter.reply(embed=embed)
             return
@@ -129,7 +130,7 @@ class NoSlash_LanguageCog(commands.Cog):
                                   color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
-                text=user.display_name + strings["no_changed_conf"]
+                text=user.display_name + strings["no_change_conf"]
             )
             await inter.reply(embed=embed)
             return

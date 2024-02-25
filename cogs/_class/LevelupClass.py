@@ -34,7 +34,7 @@ class LevelUpClass(commands.Cog):
 
     def get_exp(self, ctx, member):
         # Получение опыта участника
-        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM users WHERE guildid = ? AND userid = ?', (ctx.guild.id, member.id))
         user = cursor.fetchone()
@@ -50,7 +50,7 @@ class LevelUpClass(commands.Cog):
 
     def get_level(self, ctx, member):
         # Получение уровня участника
-        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM users WHERE guildid = ? AND userid = ?', (ctx.guild.id, member.id))
         user = cursor.fetchone()
@@ -66,7 +66,7 @@ class LevelUpClass(commands.Cog):
 
     def set_exp(self, ctx, member, exp):
         # Сохранения опыта участника
-        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
         cursor.execute('UPDATE users SET exp = ? WHERE guildid = ? AND userid = ?', (exp, ctx.guild.id, member.id))
         conn.commit()
@@ -75,7 +75,7 @@ class LevelUpClass(commands.Cog):
     
     def set_level(self, ctx, member, level):
         # Сохранения уровня участника
-        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
         cursor.execute('UPDATE users SET level = ? WHERE guildid = ? AND userid = ?', (level, ctx.guild.id, member.id))
         conn.commit()
@@ -94,7 +94,7 @@ class LevelUpClass(commands.Cog):
         self.set_level(ctx, member, newlevel)
     
     def get_rank(self, ctx, member):
-        conn = sqlite3.connect('..\MyDiscordBot\dataexp.db')
+        conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
         cursor.execute('''
             SELECT (SELECT COUNT(*) FROM users AS u WHERE u.guildid = users.guildid AND u.exp > users.exp) + 1 AS user_rank

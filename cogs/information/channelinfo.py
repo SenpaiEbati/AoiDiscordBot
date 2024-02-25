@@ -6,7 +6,8 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_Channelinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.slash_command()
+    @commands.slash_command(name="channelinfo",
+                            description="Basic information about the channel/Основная информация о канале")
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
@@ -45,7 +46,7 @@ class Slash_Channelinfo(commands.Cog):
 class NoSlash_Channelinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="channelinfo")
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 

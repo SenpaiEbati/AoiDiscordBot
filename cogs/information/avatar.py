@@ -6,7 +6,8 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.slash_command()
+    @commands.slash_command(name="avatar",
+                            description="Look at your avatar!/Посмотри на свою аватарку!")
     async def avatar(self, ctx, user: disnake.Member = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
@@ -30,7 +31,7 @@ class Slash_Avatar(commands.Cog):
 class NoSlash_Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="avatar")
     async def avatar(self, ctx, user: disnake.Member = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 

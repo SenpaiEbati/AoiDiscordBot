@@ -143,6 +143,8 @@
         "untimeout_rights_discrip": "You do not have permission to remove timeout members.",
 
         "warn_title": "⚠️ Warning ⚠️",
-        "warn_rights": "You do not have permission to issue alerts."
+        "warn_rights": "You do not have permission to issue alerts.",
+
+        "description_language": "English description"
     }
 }

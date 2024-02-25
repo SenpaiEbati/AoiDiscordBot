@@ -8,7 +8,9 @@ class Slash_Mute(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="mute",
+                            description="Mute the user's microphone/Отключить микрофон пользователя",
+                            default_member_permissions=disnake.Permissions(mute_members=True))
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.mute_members:
@@ -38,7 +40,8 @@ class NoSlash_Mute(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="mute",
+                            default_member_permissions=disnake.Permissions(mute_members=True))
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.mute_members:

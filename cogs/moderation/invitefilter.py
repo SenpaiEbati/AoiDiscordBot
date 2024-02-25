@@ -8,7 +8,9 @@ class Slash_InviteFilter(commands.Cog):
         self.bot = bot
         self.buttom_onoff_click = 0
         self.link_cleanup = self.bot.get_cog('LinkCleanup').link_cleanup
-    @commands.slash_command()
+    @commands.slash_command(name="invitefilter",
+                            description="BETA;Removes all discord invitation links/Удаляет все discord ссылки приглашения",
+                            default_member_permissions=disnake.Permissions(manage_messages=True))
     async def invitefilter(self,inter: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
         embed = disnake.Embed(title=strings["invitefilter_title"],
@@ -59,7 +61,8 @@ class NoSlash_InviteFilter(commands.Cog):
         self.bot = bot
         self.buttom_onoff_click = 0
         self.link_cleanup = self.bot.get_cog('LinkCleanup').link_cleanup
-    @commands.command()
+    @commands.command(name="invitefilter",
+                            default_member_permissions=disnake.Permissions(manage_messages=True))
     async def invitefilter(self,inter: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
         embed = disnake.Embed(title=strings["invitefilter_title"],

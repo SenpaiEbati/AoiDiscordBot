@@ -8,7 +8,9 @@ class Slash_Timeout(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="timeout",
+                            description="Encourages user to reflect on their behavior/Побуждает пользователя задуматься о своем поведении",
+                            default_member_permissions=disnake.Permissions(moderate_members=True))
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.moderate_members:
@@ -76,7 +78,8 @@ class NoSlash_Timeout(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="timeout",
+                            default_member_permissions=disnake.Permissions(moderate_members=True))
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.moderate_members:

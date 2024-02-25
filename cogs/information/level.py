@@ -7,7 +7,8 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_Level(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.slash_command()
+    @commands.slash_command(name="level",
+                            description="Info about level, exp and rank on the server/Информация об уровне, опыте и ранге на сервере")
     async def level(self, ctx, user: disnake.Member = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
@@ -52,7 +53,7 @@ class Slash_Level(commands.Cog):
 class NoSlash_Level(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="level")
     async def level(self, ctx, user: disnake.Member = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 

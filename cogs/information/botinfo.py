@@ -6,7 +6,8 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_Botinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.slash_command()
+    @commands.slash_command(name="botinfo",
+                            description="Info about bot Aoi青/Информация о боте Aoi青")
     async def botinfo(self, ctx):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
@@ -50,7 +51,7 @@ class Slash_Botinfo(commands.Cog):
 class NoSlash_Botinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="botinfo")
     async def botinfo(self, ctx):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 

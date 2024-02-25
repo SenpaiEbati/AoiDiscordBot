@@ -6,7 +6,8 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_Userinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.slash_command()
+    @commands.slash_command(name="userinfo",
+                            description="Basic user information/Основная информация о пользователе")
     async def userinfo(self, ctx, user: disnake.Member = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         
@@ -47,7 +48,7 @@ class Slash_Userinfo(commands.Cog):
 class NoSlash_Userinfo(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="userinfo")
     async def userinfo(self, ctx, user: disnake.Member = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         

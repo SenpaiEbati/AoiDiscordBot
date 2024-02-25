@@ -8,7 +8,9 @@ class Slash_Ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="ban",
+                            description="Command to ban a user permanently/Команда изгнания участника с сервера навечно без права вернуться",
+                            default_member_permissions=disnake.Permissions(ban_members=True))
     async def ban(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 
@@ -57,7 +59,8 @@ class NoSlash_Ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="ban",
+                      default_member_permissions=disnake.Permissions(ban_members=True))
     async def ban(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
 

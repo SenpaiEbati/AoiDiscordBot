@@ -8,7 +8,9 @@ class Slash_UnTimeout(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="untimeout",
+                            description="Takes the user out of timeout/Снимает с пользователя тайм-аут",
+                            default_member_permissions=disnake.Permissions(moderate_members=True))
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.moderate_members:
@@ -55,7 +57,8 @@ class NoSlash_UnTimeout(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="untimeout",
+                            default_member_permissions=disnake.Permissions(moderate_members=True))
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.moderate_members:

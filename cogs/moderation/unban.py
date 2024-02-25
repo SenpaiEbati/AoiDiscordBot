@@ -8,7 +8,9 @@ class Slash_UnBan(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="unban",
+                            description="Command to unban a user/Команда, снимающая запрет нахождения на сервере с пользователя",
+                            default_member_permissions=disnake.Permissions(ban_members=True))
     async def unban(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.ban_members:
@@ -42,7 +44,8 @@ class NoSlash_UnBan(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="unban",
+                            default_member_permissions=disnake.Permissions(ban_members=True))
     async def unban(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.ban_members:

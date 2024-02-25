@@ -8,7 +8,9 @@ class Slash_Warn(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="warn",
+                            description="Charges the participant with a warning/Начисляет участнику предупреждение",
+                            default_member_permissions=disnake.Permissions(moderate_members=True))
     async def warn(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.moderate_members:
@@ -40,7 +42,8 @@ class NoSlash_Warn(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="warn",
+                            default_member_permissions=disnake.Permissions(moderate_members=True))
     async def warn(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.moderate_members:

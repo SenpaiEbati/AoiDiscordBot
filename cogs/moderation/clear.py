@@ -7,7 +7,9 @@ from cogs._class.LanguageClass import LanguageClass
 class Slash_Clear(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.slash_command()
+    @commands.slash_command(name="clear",
+                            description="Deleting messages by num, by location and by user/Удаление сообщений по кол., по каналам и по юзеру",
+                            default_member_permissions=disnake.Permissions(manage_messages=True))
     async def clear(self, ctx, amount: int, channel: disnake.TextChannel = None, user: disnake.User = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.manage_messages:
@@ -68,7 +70,8 @@ class Slash_Clear(commands.Cog):
 class NoSlash_Clear(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command()
+    @commands.command(name="clear",
+                      default_member_permissions=disnake.Permissions(manage_messages=True))
     async def clear(self, ctx, amount: int, channel: disnake.TextChannel = None, user: disnake.User = None):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.manage_messages:

@@ -13,9 +13,11 @@ intents.members = True
 intents.presences = True
 intents.guild_messages = True
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or("M.","m."), intents=intents,
-                   sync_commands_debug=True,
-                   test_guilds = [1152151796870025228,977613521351225354])
+
+bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or("M.","m."), 
+                              intents=intents, 
+                              command_sync_flags=commands.CommandSyncFlags(sync_commands_debug=True),
+                              test_guilds = [1152151796870025228,977613521351225354])
 
 bot.load_extensions('cogs\moderation') 
 bot.load_extensions('cogs\information')

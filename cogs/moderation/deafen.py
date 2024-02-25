@@ -8,7 +8,9 @@ class Slash_Deafen(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.slash_command()
+    @commands.slash_command(name="deafen",
+                            description="Deafen the user in the voice channel/Отключает звук пользователю в голосовом канале",
+                            default_member_permissions=disnake.Permissions(deafen_members=True))
     async def deafen(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.deafen_members:
@@ -36,7 +38,8 @@ class NoSlash_Deafen(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
-    @commands.command()
+    @commands.command(name="deafen",
+                    default_member_permissions=disnake.Permissions(deafen_members=True))
     async def deafen(self, ctx, member: disnake.Member, *, reason="-"):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
         if ctx.author.guild_permissions.deafen_members:
