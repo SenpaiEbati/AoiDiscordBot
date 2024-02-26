@@ -8,12 +8,13 @@ class Slash_LanguageCog(commands.Cog):
         self.bot = bot
         
     @commands.slash_command(name="language",
-                            description="Command to change the language from Eng to Rus/Команда для смены языка с английского на русский")
+                            description="Command to change the language from Eng to Rus/Команда для смены языка с английского на русский",
+                            default_member_permissions=disnake.Permissions(manage_guild=True))
     async def language(self, inter: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
         user = inter.author
 
-        if not inter.author.guild_permissions.administrator:
+        if not inter.author.guild_permissions.manage_guild:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
                                   color=disnake.Color(0xff0000),
@@ -82,11 +83,12 @@ class NoSlash_LanguageCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="language")
+    @commands.command(name="language",
+                      default_member_permissions=disnake.Permissions(manage_guild=True))
     async def language(self, inter: disnake.ApplicationCommandInteraction):
         strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
         user = inter.author
-        if not inter.author.guild_permissions.administrator:
+        if not inter.author.guild_permissions.manage_guild:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
                                   color=disnake.Color(0xff0000),
