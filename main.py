@@ -12,6 +12,7 @@ intents.voice_states = True
 intents.members = True
 intents.presences = True
 intents.guild_messages = True
+intents.reactions = True
 
 
 bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or("M.","m."), 
@@ -22,6 +23,7 @@ bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or("M.","m.
 bot.load_extensions('cogs\moderation') 
 bot.load_extensions('cogs\information')
 bot.load_extensions('cogs\configuration')
+bot.load_extensions('cogs\_utility')
 bot.load_extensions('cogs\_class')
 
 @bot.event
