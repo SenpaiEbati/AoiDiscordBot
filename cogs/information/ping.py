@@ -28,7 +28,8 @@ class Slash_Ping(commands.Cog):
     @commands.slash_command(name="ping",
                             description="Discord API Gateway/REST ping and commands/Пинг Discord API Gateway/REST и команды")
     async def ping(self, ctx):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         # Задержка (ping) Discord API Gateway
         gateway_ping = await self.get_gateway_ping()
 
@@ -69,7 +70,8 @@ class NoSlash_Ping(commands.Cog):
 
     @commands.command(name="ping")
     async def ping(self, ctx):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         # Задержка (ping) Discord API Gateway
         gateway_ping = await self.get_gateway_ping()
 

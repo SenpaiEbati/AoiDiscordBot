@@ -12,7 +12,9 @@ class Slash_Timeout(commands.Cog):
                             description="Encourages user to reflect on their behavior/Побуждает пользователя задуматься о своем поведении",
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 if isinstance(days,int) and isinstance(hours,int) and isinstance(minutes,int) and isinstance(seconds,int):
@@ -81,7 +83,9 @@ class NoSlash_Timeout(commands.Cog):
     @commands.command(name="timeout",
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 if isinstance(days,int) and isinstance(hours,int) and isinstance(minutes,int) and isinstance(seconds,int):

@@ -9,7 +9,8 @@ class Slash_Serverinfo(commands.Cog):
     @commands.slash_command(name="serverinfo",
                             description="Basic information about the server/Основная информация о сервере")
     async def serverinfo(self, ctx):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         
         server = ctx.guild
 
@@ -19,7 +20,7 @@ class Slash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -62,7 +63,8 @@ class NoSlash_Serverinfo(commands.Cog):
         self.bot = bot
     @commands.command(name="serverinfo")
     async def serverinfo(self, ctx):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         
         server = ctx.guild
 
@@ -72,7 +74,7 @@ class NoSlash_Serverinfo(commands.Cog):
         server_id = server.id
         server_owner = server.owner 
 
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'

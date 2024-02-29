@@ -11,7 +11,8 @@ class Slash_LanguageCog(commands.Cog):
                             description="Command to change the language from Eng to Rus/Команда для смены языка с английского на русский",
                             default_member_permissions=disnake.Permissions(manage_guild=True))
     async def language(self, inter: disnake.ApplicationCommandInteraction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         user = inter.author
 
         if not inter.author.guild_permissions.manage_guild:
@@ -48,7 +49,8 @@ class Slash_LanguageCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_dropdown(self, inter: disnake.MessageInteraction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass, inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         user = inter.author
 
@@ -65,8 +67,9 @@ class Slash_LanguageCog(commands.Cog):
             await inter.response.send_message(embed=embed)
             return
 
-        LanguageClass.set_lang(LanguageClass,inter, inter.values[0])
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass, inter))
+        await LanguageClass.set_lang(LanguageClass,inter, inter.values[0])
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         
 
         embed = disnake.Embed(title=strings["lang_3"], 
@@ -86,7 +89,8 @@ class NoSlash_LanguageCog(commands.Cog):
     @commands.command(name="language",
                       default_member_permissions=disnake.Permissions(manage_guild=True))
     async def language(self, inter: disnake.ApplicationCommandInteraction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         user = inter.author
         if not inter.author.guild_permissions.manage_guild:
             embed = disnake.Embed(title=strings["no_rights"], 
@@ -122,7 +126,8 @@ class NoSlash_LanguageCog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_dropdown(self, inter: disnake.MessageInteraction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         user = inter.author
         if inter.component.custom_id != "gav_language":
             return
@@ -138,8 +143,9 @@ class NoSlash_LanguageCog(commands.Cog):
             return
 
         
-        LanguageClass.set_lang(LanguageClass,inter, inter.values[0])
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        await LanguageClass.set_lang(LanguageClass,inter, inter.values[0])
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         embed = disnake.Embed(title=strings["lang_3"], 
                               description= strings["lang_5"] + strings["english"] if inter.values[0] == "en" else strings["lang_5"] + strings["russian"],
                               color=0x1E90FF,

@@ -10,7 +10,7 @@ class LanguageClass(commands.Cog):
         self.get_strings_en = {}
         self.get_strings_ru = {}
     
-    def set_lang(self, ctx, lang):
+    async def set_lang(self, ctx, lang):
         conn = sqlite3.connect('..\MyDiscordBot\data\dataconfbot.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM confbot WHERE guildid = ?', (ctx.guild.id,))
@@ -26,7 +26,7 @@ class LanguageClass(commands.Cog):
 
         pass
 
-    def get_lang(self, ctx):
+    async def get_lang(self, ctx):
         conn = sqlite3.connect('..\MyDiscordBot\data\dataconfbot.db')
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM confbot WHERE guildid = ?', (ctx.guild.id,))
@@ -44,7 +44,7 @@ class LanguageClass(commands.Cog):
 
         return conf[2]
     
-    def loadjsonmain(self, path):
+    async def loadjsonmain(self, path):
         if os.path.isfile(path):
             with open(path, "r", encoding="utf-8") as file:
                 self.getsetjson = json.load(file)
@@ -62,7 +62,7 @@ class LanguageClass(commands.Cog):
         else:
             raise RuntimeError("Invalid path: {}".format(path))
 
-    def get_strings(self, lang):
+    async def get_strings(self, lang):
         if (lang == "en"):
             return self.get_strings_en.get(lang)
         elif (lang == "ru"):

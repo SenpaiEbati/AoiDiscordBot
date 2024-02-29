@@ -12,7 +12,9 @@ class Slash_Kick(commands.Cog):
                             description="Kick out a server member/Выгнать участника сервера",
                             default_member_permissions=disnake.Permissions(kick_members=True))
     async def kick(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["no_rights_kick1"],
@@ -64,7 +66,9 @@ class NoSlash_Kick(commands.Cog):
     @commands.command(name="kick",
                             default_member_permissions=disnake.Permissions(kick_members=True))
     async def kick(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["no_rights_kick1"],

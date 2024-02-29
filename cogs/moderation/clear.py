@@ -11,7 +11,8 @@ class Slash_Clear(commands.Cog):
                             description="Deleting messages by num, by location and by user/Удаление сообщений по кол., по каналам и по юзеру",
                             default_member_permissions=disnake.Permissions(manage_messages=True))
     async def clear(self, ctx, amount: int, channel: disnake.TextChannel = None, user: disnake.User = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         if ctx.author.guild_permissions.manage_messages:
             def is_target_message(message):
                 if channel and message.channel != channel:
@@ -73,7 +74,8 @@ class NoSlash_Clear(commands.Cog):
     @commands.command(name="clear",
                       default_member_permissions=disnake.Permissions(manage_messages=True))
     async def clear(self, ctx, amount: int, channel: disnake.TextChannel = None, user: disnake.User = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         if ctx.author.guild_permissions.manage_messages:
             def is_target_message(message):
                 if channel and message.channel != channel:

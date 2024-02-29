@@ -9,7 +9,8 @@ class Slash_Channelinfo(commands.Cog):
     @commands.slash_command(name="channelinfo",
                             description="Basic information about the channel/Основная информация о канале")
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         if not channel:
             channel = ctx.channel
@@ -19,7 +20,7 @@ class Slash_Channelinfo(commands.Cog):
 
         channel_name = channel.name
         channel_id = channel.id
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -48,7 +49,8 @@ class NoSlash_Channelinfo(commands.Cog):
         self.bot = bot
     @commands.command(name="channelinfo")
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         if not channel:
             channel = ctx.channel
@@ -58,7 +60,7 @@ class NoSlash_Channelinfo(commands.Cog):
 
         channel_name = channel.name
         channel_id = channel.id
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'

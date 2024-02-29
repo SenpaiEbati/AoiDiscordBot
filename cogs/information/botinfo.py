@@ -9,7 +9,8 @@ class Slash_Botinfo(commands.Cog):
     @commands.slash_command(name="botinfo",
                             description="Info about bot Aoi青/Информация о боте Aoi青")
     async def botinfo(self, ctx):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         bot = self.bot.user
 
@@ -34,7 +35,7 @@ class Slash_Botinfo(commands.Cog):
             text=ctx.author.display_name + strings["req_info"]
         )
         
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -53,7 +54,8 @@ class NoSlash_Botinfo(commands.Cog):
         self.bot = bot
     @commands.command(name="botinfo")
     async def botinfo(self, ctx):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         bot = self.bot.user
 
@@ -78,7 +80,7 @@ class NoSlash_Botinfo(commands.Cog):
             text=ctx.author.display_name + strings["req_info"]
         )
         
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'

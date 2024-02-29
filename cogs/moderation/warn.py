@@ -12,7 +12,9 @@ class Slash_Warn(commands.Cog):
                             description="Charges the participant with a warning/Начисляет участнику предупреждение",
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def warn(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.moderate_members:
             embed = disnake.Embed(title=strings["warn_title"], color=disnake.Color(0xFFFF33),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
@@ -45,7 +47,9 @@ class NoSlash_Warn(commands.Cog):
     @commands.command(name="warn",
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def warn(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.moderate_members:
             embed = disnake.Embed(title=strings["warn_title"], color=disnake.Color(0xFFFF33),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)

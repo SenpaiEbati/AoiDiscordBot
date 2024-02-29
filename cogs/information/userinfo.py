@@ -9,7 +9,8 @@ class Slash_Userinfo(commands.Cog):
     @commands.slash_command(name="userinfo",
                             description="Basic user information/Основная информация о пользователе")
     async def userinfo(self, ctx, user: disnake.Member = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         
         if not user:
             user = ctx.author
@@ -27,7 +28,7 @@ class Slash_Userinfo(commands.Cog):
         else:
             user_status = strings["offline"]
 
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'
@@ -50,7 +51,8 @@ class NoSlash_Userinfo(commands.Cog):
         self.bot = bot
     @commands.command(name="userinfo")
     async def userinfo(self, ctx, user: disnake.Member = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
         
         if not user:
             user = ctx.author
@@ -68,7 +70,7 @@ class NoSlash_Userinfo(commands.Cog):
         else:
             user_status = strings["offline"]
 
-        if (LanguageClass.get_lang(LanguageClass,ctx) == "en"):
+        if (await LanguageClass.get_lang(LanguageClass,ctx) == "en"):
             dateUTC = '%m.%d.%Y %I:%M %p'
         else:
             dateUTC = '%d.%m.%Y %H:%M'

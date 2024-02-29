@@ -12,7 +12,8 @@ class Slash_Ban(commands.Cog):
                             description="Command to ban a user permanently/Команда изгнания участника с сервера навечно без права вернуться",
                             default_member_permissions=disnake.Permissions(ban_members=True))
     async def ban(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"],
@@ -62,7 +63,8 @@ class NoSlash_Ban(commands.Cog):
     @commands.command(name="ban",
                       default_member_permissions=disnake.Permissions(ban_members=True))
     async def ban(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"],

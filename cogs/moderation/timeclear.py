@@ -12,7 +12,9 @@ class Slash_TimeClear(commands.Cog):
                             description="Same as Clear, but with a time stamp/Тоже самое что и \"Clear\" только с указанием времени",
                             default_member_permissions=disnake.Permissions(manage_messages=True))
     async def timecleaning(self, ctx, amount: int, hours: int = 0, channel: disnake.TextChannel = None, user: disnake.User = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.manage_messages:
             def is_target_message(message):
                 if channel and message.channel != channel:
@@ -93,7 +95,9 @@ class NoSlash_TimeClear(commands.Cog):
                         description="Same as Clear, but with a time stamp/Тоже самое что и \"Clear\" только с указанием времени",
                         default_member_permissions=disnake.Permissions(manage_messages=True))
     async def timecleaning(self, ctx, amount: int, hours: int = 0, channel: disnake.TextChannel = None, user: disnake.User = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.manage_messages:
             def is_target_message(message):
                 if channel and message.channel != channel:

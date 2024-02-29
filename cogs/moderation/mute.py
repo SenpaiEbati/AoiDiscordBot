@@ -12,7 +12,9 @@ class Slash_Mute(commands.Cog):
                             description="Mute the user's microphone/Отключить микрофон пользователя",
                             default_member_permissions=disnake.Permissions(mute_members=True))
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.mute_members:
             embed = disnake.Embed(title=strings["mute_title"], 
                                   color=disnake.Color(0xFFFF33),
@@ -43,7 +45,9 @@ class NoSlash_Mute(commands.Cog):
     @commands.command(name="mute",
                             default_member_permissions=disnake.Permissions(mute_members=True))
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.mute_members:
             embed = disnake.Embed(title=strings["mute_title"], 
                                   color=disnake.Color(0xFFFF33),

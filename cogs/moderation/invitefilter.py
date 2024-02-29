@@ -12,7 +12,9 @@ class Slash_InviteFilter(commands.Cog):
                             description="BETA;Removes all discord invitation links/Удаляет все discord ссылки приглашения",
                             default_member_permissions=disnake.Permissions(manage_messages=True))
     async def invitefilter(self,inter: disnake.ApplicationCommandInteraction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         embed = disnake.Embed(title=strings["invitefilter_title"],
                             description=strings["invitefilter_discrip"], 
                             color=disnake.Color(0x1E90FF),
@@ -30,7 +32,9 @@ class Slash_InviteFilter(commands.Cog):
     
     @commands.Cog.listener()
     async def on_button_click(self,inter: disnake.Interaction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if inter.component.custom_id == "On/Off1":
             onoff = [strings["on"],strings["off"]]
             n = onoff[0]
@@ -64,7 +68,9 @@ class NoSlash_InviteFilter(commands.Cog):
     @commands.command(name="invitefilter",
                             default_member_permissions=disnake.Permissions(manage_messages=True))
     async def invitefilter(self,inter: disnake.ApplicationCommandInteraction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         embed = disnake.Embed(title=strings["invitefilter_title"],
                             description=strings["invitefilter_discrip"], 
                             color=disnake.Color(0x1E90FF),
@@ -82,7 +88,9 @@ class NoSlash_InviteFilter(commands.Cog):
     
     @commands.Cog.listener()
     async def on_button_click(self,inter: disnake.Interaction):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,inter))
+        lang = await LanguageClass.get_lang(LanguageClass,inter)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if inter.component.custom_id == "On/Off2":
             onoff = [strings["on"],strings["off"]]
             n = onoff[0]

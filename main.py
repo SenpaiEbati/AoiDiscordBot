@@ -28,7 +28,7 @@ bot.load_extensions('cogs\_class')
 
 @bot.event
 async def on_ready():
-    LanguageClass.loadjsonmain(LanguageClass, "..\MyDiscordBot\localizations")
+    await LanguageClass.loadjsonmain(LanguageClass, "..\MyDiscordBot\localizations")
     print("====The bot is ready!====")
 
 YOUR_BOT_TOKEN = os.environ["YOUR_BOT_TOKEN"]

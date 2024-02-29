@@ -10,7 +10,8 @@ class Slash_Level(commands.Cog):
     @commands.slash_command(name="level",
                             description="Info about level, exp and rank on the server/Информация об уровне, опыте и ранге на сервере")
     async def level(self, ctx, user: disnake.Member = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         if not user:
             user = ctx.author
@@ -19,9 +20,9 @@ class Slash_Level(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        exp = LevelUpClass.get_exp(LevelUpClass,ctx,user)
-        level = LevelUpClass.get_level(LevelUpClass,ctx,user)
-        rank = LevelUpClass.get_rank(LevelUpClass,ctx,user)
+        exp = await LevelUpClass.get_exp(LevelUpClass,ctx,user)
+        level = await LevelUpClass.get_level(LevelUpClass,ctx,user)
+        rank = await LevelUpClass.get_rank(LevelUpClass,ctx,user)
         nowlinelevel = (50 * level * level) // 2
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 
@@ -55,7 +56,8 @@ class NoSlash_Level(commands.Cog):
         self.bot = bot
     @commands.command(name="level")
     async def level(self, ctx, user: disnake.Member = None):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
 
         if not user:
             user = ctx.author
@@ -64,9 +66,9 @@ class NoSlash_Level(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        exp = LevelUpClass.get_exp(LevelUpClass,ctx,user)
-        level = LevelUpClass.get_level(LevelUpClass,ctx,user)
-        rank = LevelUpClass.get_rank(LevelUpClass,ctx,user)
+        exp = await LevelUpClass.get_exp(LevelUpClass,ctx,user)
+        level = await LevelUpClass.get_level(LevelUpClass,ctx,user)
+        rank = await LevelUpClass.get_rank(LevelUpClass,ctx,user)
         nowlinelevel = (50 * level * level) // 2
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 

@@ -12,7 +12,9 @@ class Slash_UnTimeout(commands.Cog):
                             description="Takes the user out of timeout/Снимает с пользователя тайм-аут",
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 embed = disnake.Embed(title=strings["untimeout_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
@@ -60,7 +62,9 @@ class NoSlash_UnTimeout(commands.Cog):
     @commands.command(name="untimeout",
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.moderate_members:
             if max(ctx.author.roles) > max(member.roles):
                 embed = disnake.Embed(title=strings["untimeout_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())

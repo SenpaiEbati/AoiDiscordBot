@@ -12,7 +12,9 @@ class Slash_UnDeafen(commands.Cog):
                             description="Undeafen the user in the voice channel/Включает звук пользователю в голосовом канале",
                             default_member_permissions=disnake.Permissions(deafen_members=True))
     async def undeafen(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.deafen_members:
             embed = disnake.Embed(title=strings["undeafen_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
@@ -41,7 +43,9 @@ class NoSlash_UnDeafen(commands.Cog):
     @commands.command(name="undeafen",
                             default_member_permissions=disnake.Permissions(deafen_members=True))
     async def undeafen(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.deafen_members:
             embed = disnake.Embed(title=strings["undeafen_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)

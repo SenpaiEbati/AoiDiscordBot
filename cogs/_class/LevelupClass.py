@@ -12,7 +12,7 @@ class LevelUpClass(commands.Cog):
             return
         # Начисление опыта за отправку сообщений
         exp = 1
-        self.add_exp(message, message.author, exp)
+        await self.add_exp(message, message.author, exp)
         
 
     @commands.Cog.listener()
@@ -21,18 +21,18 @@ class LevelUpClass(commands.Cog):
             return
         # Начисление опыта за активность в голосовых каналах
         exp = 1
-        self.add_exp(ctx, member, exp)
+        await self.add_exp(ctx, member, exp)
     
-    def add_exp(self, ctx, member, exp):
-        current_exp = self.get_exp(ctx, member)
+    async def add_exp(self, ctx, member, exp):
+        current_exp = await self.get_exp(ctx, member)
         current_exp += exp
-        self.set_exp(ctx, member, current_exp)
+        await self.set_exp(ctx, member, current_exp)
 
         # Проверяем, достиг ли участник нового уровня
-        if self.level_up_check(ctx, member, current_exp):
-            self.level_up(ctx, member)
+        if await self.level_up_check(ctx, member, current_exp):
+            await self.level_up(ctx, member)
 
-    def get_exp(self, ctx, member):
+    async def get_exp(self, ctx, member):
         # Получение опыта участника
         conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
@@ -48,7 +48,7 @@ class LevelUpClass(commands.Cog):
         conn.close()
         return user[5]
 
-    def get_level(self, ctx, member):
+    async def get_level(self, ctx, member):
         # Получение уровня участника
         conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
@@ -64,7 +64,7 @@ class LevelUpClass(commands.Cog):
         conn.close()
         return user[4]
 
-    def set_exp(self, ctx, member, exp):
+    async def set_exp(self, ctx, member, exp):
         # Сохранения опыта участника
         conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
@@ -73,7 +73,7 @@ class LevelUpClass(commands.Cog):
         conn.close()
         pass
     
-    def set_level(self, ctx, member, level):
+    async def set_level(self, ctx, member, level):
         # Сохранения уровня участника
         conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
@@ -82,18 +82,18 @@ class LevelUpClass(commands.Cog):
         conn.close()
         pass
 
-    def level_up_check(self, ctx, member, exp):
+    async def level_up_check(self, ctx, member, exp):
         # Проверяем, достиг ли участник нового уровня
-        level = self.get_level(ctx, member)
+        level = await self.get_level(ctx, member)
         level_line = (50 * level * level) // 2
         return exp > level_line  
 
-    def level_up(self, ctx, member):
+    async def level_up(self, ctx, member):
         # Выполняем действия по повышению уровня участника
-        newlevel = self.get_level(ctx, member) + 1
+        newlevel = await self.get_level(ctx, member) + 1
         self.set_level(ctx, member, newlevel)
     
-    def get_rank(self, ctx, member):
+    async def get_rank(self, ctx, member):
         conn = sqlite3.connect('..\MyDiscordBot\data\dataexp.db')
         cursor = conn.cursor()
         cursor.execute('''

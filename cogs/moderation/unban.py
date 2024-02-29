@@ -12,7 +12,9 @@ class Slash_UnBan(commands.Cog):
                             description="Command to unban a user/Команда, снимающая запрет нахождения на сервере с пользователя",
                             default_member_permissions=disnake.Permissions(ban_members=True))
     async def unban(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.ban_members:
             embed = disnake.Embed(title=strings["unban_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
@@ -47,7 +49,9 @@ class NoSlash_UnBan(commands.Cog):
     @commands.command(name="unban",
                             default_member_permissions=disnake.Permissions(ban_members=True))
     async def unban(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.ban_members:
             embed = disnake.Embed(title=strings["unban_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)

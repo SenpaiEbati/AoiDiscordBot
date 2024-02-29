@@ -12,7 +12,9 @@ class Slash_UnMute(commands.Cog):
                             description="Unmute the user's microphone/Включить микрофон пользователя",
                             default_member_permissions=disnake.Permissions(mute_members=True))
     async def unmute(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+
         if ctx.author.guild_permissions.mute_members:
             embed = disnake.Embed(title=strings["unmute_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
@@ -41,7 +43,9 @@ class NoSlash_UnMute(commands.Cog):
     @commands.command(name="unmute",
                             default_member_permissions=disnake.Permissions(mute_members=True))
     async def unmute(self, ctx, member: disnake.Member, *, reason="-"):
-        strings = LanguageClass.get_strings(LanguageClass,LanguageClass.get_lang(LanguageClass,ctx))
+        lang = await LanguageClass.get_lang(LanguageClass,ctx)
+        strings = await LanguageClass.get_strings(LanguageClass,lang)
+        
         if ctx.author.guild_permissions.mute_members:
             embed = disnake.Embed(title=strings["unmute_title"], color=disnake.Color(0x32CD32),timestamp=datetime.datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
