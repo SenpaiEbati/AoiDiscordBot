@@ -148,8 +148,8 @@
         "description_language": "English description",
         
         "use_utility": " used the utility",
-        "incorrect_argument": "❌ INCORRECT COMMAND ARGUMENT ENTERED ❌",
-        "incorrect_argument_emojireactor": "Change the `livetime` argument so that what you enter is a number, meaning the time after which the interaction with `/emojireactor` will be closed.",
+        "incorrect_argument": "⚠️ Incorrect command argument ⚠️",
+        "incorrect_argument_emojireactor": "Change the `livetime` argument so that what you enter is a number, meaning the time after which the interaction with `/emojireactor` will be closed. Maximum allowable time of no more than 2 days",
 
         "error_20_emoji": "⚠️ Excessive emoji ⚠️",
         "error_20_emoji_des": "The maximum number of emoji that can be in the table is 19. Exceeding this number will not output the reactions of the next emoji.",
@@ -157,8 +157,38 @@
         "placeholde": "🦆- I choose to be a quack.",
         "crea_em_reac": "Create emoji reactor",
 
-        "an_error": "❌ An error occurred! ❌",
-        "close_elem": "⚠️ This item has been closed"
+        "an_error": "❌ AN ERROR OCCURRED!❌",
+        "close_elem": "⚠️ This item has been closed",
 
+        "next_level": "🎉 You've reached a new level 🎉",
+        "next_level_desc1": "Now your level: ",
+        "next_level_desc2": "Your rank: #",
+        "next_level_desc3": "Your exp: ",
+        "next_level_desc4": "Exp to the next level: ",
+        "next_leve_footer": " taken it to a new level",
+
+        "on_timeout_modal": "⚠️ The waiting time for the modal window has expired ⚠️",
+        "on_timeout_modal_desc": "Please repeat the command and try to complete your tasks in a shorter period of time",
+
+        "role_selec": "🗳️ Emoji Slot List 🗳️",
+
+        "missingperm": "You do not have permissions to do that!",
+        "badargument1": "```yaml\nParameter '",
+        "badargument2": "' must be type ",
+        "badargument3": "!```",
+        "missreqarg1": "⚠️ <",
+        "missreqarg2": "> is missing: ⚠️",
+        "needed": "<> = needed | [] = not needed.",
+        "isnotcomm": " is not a command!",
+        "didyoumean": "Did you mean:",
+        "page1": "Page 1",
+        "page2": "Page 2",
+        "Goodbye": "Goodbye",
+        "timeoutsession": "Session timed out",
+        "membernotfound": "They are not a **member!**",
+        "rolenotfound": "That is not a **role!**",
+        "commandcooldown1": "This command is on cooldown for **",
+        "commandcooldown2": "** seconds",
+        "norighsbot": "You unfortunately did not invite my bot with enough permissions for me to complete this action!"
     }
 }
