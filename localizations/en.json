@@ -170,7 +170,7 @@
         "on_timeout_modal": "⚠️ The waiting time for the modal window has expired ⚠️",
         "on_timeout_modal_desc": "Please repeat the command and try to complete your tasks in a shorter period of time",
 
-        "role_selec": "🗳️ Emoji Slot List 🗳️",
+        "role_selec": "<:Emojicheck:1220650471275106334> Emoji Checklist <:Emojicheck:1220650471275106334>",
 
         "missingperm": "You do not have permissions to do that!",
         "badargument1": "```yaml\nParameter '",
@@ -189,6 +189,31 @@
         "rolenotfound": "That is not a **role!**",
         "commandcooldown1": "This command is on cooldown for **",
         "commandcooldown2": "** seconds",
-        "norighsbot": "You unfortunately did not invite my bot with enough permissions for me to complete this action!"
+        "norighsbot": "You unfortunately did not invite my bot with enough permissions for me to complete this action!",
+
+        "main_help_embed_desc": "\n```\nPlease use the Select Menu below to explore \nthe corresponding category``````Use the prefix a.<command> in chat if you are\ncomfortable with it```",
+        "main_help_embed_title": "**All Commands**",
+        "main_help_embed_categ": "**Categories:**" ,
+        "main_help_embed_links": "**Links:**",
+        "main_help_embed_official": "Official server",
+        "main_help_embed_botinvite": "Bot invite",
+
+        "help": "Help",
+        "specific_command_name": " ❯❯ Name",
+        "specific_command_alias": " ❯❯ Alias",
+        "specific_command_usage": " ❯❯ Usage",
+        "specific_command_desc": " ❯❯ Description",
+        "specific_command_else": "Currently no help(",
+
+        "specific_cog_desc": "```Use the prefix a.<command> in chat if you are\ncomfortable with it```\n",
+        "not_command!": " is not a command!",
+
+        "Moderation": "Commands used to penalize, restrict, and control the server",
+        "Level": "A simple command showing the level, rank compared to other server participants and experience gained for activity",
+        "Language": "A command that changes the bot’s configuration on the server, namely its language",
+        "Information": "Commands used to obtain information about the server, bot or server participants",
+        "Help": "Basic command showing information about names and aliases, as well as the correct use of all commands",
+        "Games": "Fun commands which have no purpose nor goal other than to be fun! You can even hack your friends!",
+        "EmojiChecklist": "The command is used as an extended verified list, where, opposite the emoticon written by the author, the nickname of the person who made the reaction with a similar emoticon is written down."
     }
 }

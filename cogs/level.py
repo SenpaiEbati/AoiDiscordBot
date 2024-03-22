@@ -4,7 +4,7 @@ from core.bot import AoiBot
 import datetime
 from core.utils import LanguageClass, LevelUpClass
 
-class Slash_Level(commands.Cog):
+class Level(commands.Cog):
     def __init__(self, bot):
         self.bot: AoiBot = bot
 
@@ -108,5 +108,5 @@ class NoSlash_Level(commands.Cog):
 
 
 def setup(bot: commands.Bot):
-    bot.add_cog(Slash_Level(bot))
+    bot.add_cog(Level(bot))
     bot.add_cog(NoSlash_Level(bot))

@@ -1,14 +1,15 @@
 import datetime
+from io import TextIOWrapper
 import json
 
 import disnake
 
 
-def update_json(_file, _data: str) -> None:
+def update_json(_file: TextIOWrapper, _data: dict) -> None:
     """Update file to match data"""
 
-    _file.truncate(0)
     _file.seek(0)
+    _file.truncate()
     _file.write(json.dumps(_data, indent=4))
 
 

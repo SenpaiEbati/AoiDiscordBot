@@ -22,19 +22,21 @@ from core.utils import LanguageClass, get_colour, send_embed, update_json
 
 async def unexpected(ctx, error):
     bot = ctx.bot
-    k = open("./dicts/Errors.json", "r+")
-    data = json.load(k)
-    num = str(len(data))
+    with open("./dicts/Errors.json", "r+") as k:
+        data = json.load(k)
+        num = str(len(data))
 
-    data[num] = {
-        "author": ctx.author.name,
-        "id": ctx.author.id,
-        "error": str(error),
-        "error_dir": str(dir(error)),
-        "command": ctx.command.name,
-    }
-    update_json(k, data)
+        data[num] = {
+            "author": ctx.author.name,
+            "id": ctx.author.id,
+            "error": str(error),
+            "error_dir": str(dir(error)),
+            "command": ctx.command.name,
+        }
+        update_json(k, data)
+    http = f"https://discord.com/channels/{ctx.guild.id}/{ctx.channel.id}/{ctx.message.id}"
     await send_embed(bot.chan, f"{ctx.guild}; {ctx.author}; {ctx.command.name}", error)
+    await bot.chan.send(http)
     e = "".join(traceback.format_exception(error, error, error.__traceback__))
     y = Paginator(ctx)
     strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,ctx))
@@ -42,9 +44,8 @@ async def unexpected(ctx, error):
 
 
 async def error_handler(ctx, error) -> None:
-
+    strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,ctx))
     if isinstance(error, MissingPermissions):
-        strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,ctx))
         await send_embed(
             ctx, strings["no_rights"], strings["missingperm"], get_colour("red")
         )
@@ -100,10 +101,8 @@ async def error_handler(ctx, error) -> None:
             my_string = ""
             for string in y:
                 my_string += f" \n - {str(string)}"
-
             num = 1
             my_string = my_string.split("---")
-
             failed_cmd = ctx.message.content.split(" ")
             failed_cmd = failed_cmd[0]
             embed = disnake.Embed(title=strings["an_error"],description=f"{failed_cmd}" + strings["isnotcomm"], colour=get_colour())

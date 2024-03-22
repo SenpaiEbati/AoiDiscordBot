@@ -4,7 +4,7 @@ import disnake
 from disnake.ext import commands
 from core.utils import LanguageClass
 
-class Slash_Moderation(commands.Cog):
+class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -542,7 +542,7 @@ class Slash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
 
-class No_Slash_Moderation(commands.Cog):
+class NoSlash_Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot    
 
@@ -1073,5 +1073,5 @@ class No_Slash_Moderation(commands.Cog):
             await ctx.channel.purge(limit=1)
 
 def setup(bot: commands.Bot):
-    bot.add_cog(Slash_Moderation(bot))
-    bot.add_cog(No_Slash_Moderation(bot))
+    bot.add_cog(Moderation(bot))
+    bot.add_cog(NoSlash_Moderation(bot))

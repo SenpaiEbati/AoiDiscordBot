@@ -1,6 +1,6 @@
 {
     "add": {
-        "score": 15
+        "score": 16
     },
     "avatar": {
         "score": 9
@@ -24,9 +24,15 @@
         "score": 1
     },
     "level": {
-        "score": 2
+        "score": 3
     },
     "russian_roulette": {
         "score": 10
+    },
+    "help": {
+        "score": 47
+    },
+    "emojireactor": {
+        "score": 1
     }
 }

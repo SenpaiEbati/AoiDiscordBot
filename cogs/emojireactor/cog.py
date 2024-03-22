@@ -8,7 +8,7 @@ import re
 import emoji
 from core.utils import LanguageClass, send_embed, get_colour
 
-class EmojiReactor(commands.Cog):
+class EmojiChecklist(commands.Cog):
     def __init__(self, bot: AoiBot):
         self.bot = bot
         self.lock = False
@@ -40,9 +40,9 @@ class EmojiReactor(commands.Cog):
         except Exception as e:
             await send_embed(reaction.message.channel,title=strings["an_error"],description=f"{e}", c = get_colour("red"), f = reaction.message.author.display_name + strings["use_utility"])
 
-    @commands.slash_command(name="emojireactor",
+    @commands.slash_command(name="emojichecklist",
                             description="Add reactions to messages with emojis/Добавьте реакции к сообщениям с эмоджи",)
-    async def emojireactor(self, inter: disnake.ApplicationCommandInteraction, field1, *, field2 = None, field3 =  None, field4 = None, field5 = None):
+    async def emojichecklist(self, inter: disnake.ApplicationCommandInteraction, field1, *, field2 = None, field3 =  None, field4 = None, field5 = None):
         try:
             result = [] 
             if field1 is not None:
@@ -187,4 +187,4 @@ class EmojiReactor(commands.Cog):
             await send_embed(reaction.message.channel,title=strings["an_error"],description=f"{e}", c = get_colour("red"), f = reaction.message.author.display_name + strings["use_utility"])
 
 def setup(bot): 
-    bot.add_cog(EmojiReactor(bot))
+    bot.add_cog(EmojiChecklist(bot))

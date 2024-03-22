@@ -3,7 +3,7 @@ import disnake
 from disnake.ext import commands
 from core.utils import LanguageClass
 
-class Slash_LanguageCog(commands.Cog):
+class Language(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
@@ -82,7 +82,7 @@ class Slash_LanguageCog(commands.Cog):
         await inter.response.edit_message(embed=embed,
                                           components=None)
             
-class NoSlash_LanguageCog(commands.Cog):
+class NoSlash_Language(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -157,5 +157,5 @@ class NoSlash_LanguageCog(commands.Cog):
                                           components=None)
 
 def setup(bot): 
-    bot.add_cog(Slash_LanguageCog(bot))
-    bot.add_cog(NoSlash_LanguageCog(bot))
+    bot.add_cog(Language(bot))
+    bot.add_cog(NoSlash_Language(bot))

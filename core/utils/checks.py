@@ -54,8 +54,8 @@ async def suggest(bot: Bot, message: Message) -> None:
 
 
 async def run_check(bot: Bot, ctx: Context) -> bool:
-    if bot.hiber and ctx.command.name not in ["hiber", "close"]:
-        return False
+    # if bot.hiber and ctx.command.name not in ["hiber", "close"]:
+    #     return False
 
     if not ctx.guild:
         await ctx.em(

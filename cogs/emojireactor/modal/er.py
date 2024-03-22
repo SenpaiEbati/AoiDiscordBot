@@ -13,31 +13,31 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[4],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦝- Я енотик полоскун...",
                     custom_id=result[4],
                     style=TextInputStyle.paragraph,
                 ),
@@ -46,25 +46,25 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                 ),
@@ -73,19 +73,19 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                 ),
@@ -94,13 +94,13 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                 ),
@@ -109,7 +109,7 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🦆- Я выбираю быть кря\n🦅- I'll be a McDonnell Douglas AH-64 Apache.",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                 ),

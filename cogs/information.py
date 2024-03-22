@@ -4,7 +4,7 @@ from disnake.ext import commands
 from core.utils import LanguageClass
 import time
 
-class Slash_Information(commands.Cog):
+class Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -261,7 +261,7 @@ class Slash_Information(commands.Cog):
         
         await ctx.send(embed=embed)
 
-class No_Slash_Information(commands.Cog):
+class NoSlash_Information(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.command(name="add")
@@ -511,5 +511,5 @@ class No_Slash_Information(commands.Cog):
         await ctx.reply(embed=embed)
     
 def setup(bot: commands.Bot):
-    bot.add_cog(Slash_Information(bot))
-    bot.add_cog(No_Slash_Information(bot))
+    bot.add_cog(Information(bot))
+    bot.add_cog(NoSlash_Information(bot))
