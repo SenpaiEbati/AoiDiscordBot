@@ -3,6 +3,7 @@ from datetime import datetime, timedelta, timezone
 import disnake
 from disnake.ext import commands
 from core.utils import LanguageClass
+from core.context import Context
 
 class Moderation(commands.Cog):
     def __init__(self, bot):
@@ -85,12 +86,16 @@ class Moderation(commands.Cog):
 
             if channel and not user:
                 deleted = await channel.purge(limit=amount, check=is_target_message)
+                await ctx.response.defer()
             elif not channel and user:
                 deleted = await ctx.channel.purge(limit=amount, check=is_target_message)
+                await ctx.response.defer()
             elif channel and user:
                 deleted = await channel.purge(limit=amount, check=is_target_message)
+                await ctx.response.defer()
             else:
                 deleted = await ctx.channel.purge(limit=amount)
+                await ctx.response.defer()
 
             embed = disnake.Embed(title=strings["clear_title"], 
                                   description=f"{len(deleted)}" + strings["clear_discrip"],
@@ -262,12 +267,16 @@ class Moderation(commands.Cog):
 
             if channel and not user:
                 deleted = await channel.purge(limit=amount, check=is_target_message)
+                await ctx.response.defer()
             elif not channel and user:
                 deleted = await ctx.channel.purge(limit=amount, check=is_target_message)
+                await ctx.response.defer()
             elif channel and user:
                 deleted = await channel.purge(limit=amount, check=is_target_message)
+                await ctx.response.defer()
             else:
                 deleted = await ctx.channel.purge(limit=amount,check=is_target_message)
+                await ctx.response.defer()
 
             if len(deleted) == 0:
                 embed = disnake.Embed(title=strings["clear_error"], 
@@ -594,7 +603,7 @@ class NoSlash_Moderation(commands.Cog):
     
     @commands.command(name="clear",
                       default_member_permissions=disnake.Permissions(manage_messages=True))
-    async def clear(self, ctx, amount: int, channel: disnake.TextChannel = None, user: disnake.User = None):
+    async def clear(self, ctx, amount: int, *,channel: disnake.TextChannel = None, user: disnake.User = None):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
         if ctx.author.guild_permissions.manage_messages:
@@ -604,7 +613,7 @@ class NoSlash_Moderation(commands.Cog):
                 if user and message.author != user:
                     return False
                 return True
-
+            amount += 1
             if amount <= 0 or amount > 500:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
@@ -613,12 +622,12 @@ class NoSlash_Moderation(commands.Cog):
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-                await ctx.reply(embed=embed)
+                await ctx.send(embed=embed)
 
                 await sleep(5)
                 await ctx.channel.purge(limit=1)
                 return
-
+            
             if channel and not user:
                 deleted = await channel.purge(limit=amount, check=is_target_message)
             elif not channel and user:
@@ -627,16 +636,15 @@ class NoSlash_Moderation(commands.Cog):
                 deleted = await channel.purge(limit=amount, check=is_target_message)
             else:
                 deleted = await ctx.channel.purge(limit=amount)
-
+            
             embed = disnake.Embed(title=strings["clear_title"], 
-                                  description=f"{len(deleted)}" + strings["clear_discrip"],
+                                  description=f"{len(deleted) - 1}" + strings["clear_discrip"],
                                   color=disnake.Color(0x1E90FF),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-            await ctx.reply(embed=embed)
-
+            await ctx.send(embed=embed)
             await sleep(5)
             await ctx.channel.purge(limit=1)
         else:
@@ -647,7 +655,7 @@ class NoSlash_Moderation(commands.Cog):
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-            await ctx.reply(embed=embed)
+            await ctx.send(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)
@@ -779,7 +787,8 @@ class NoSlash_Moderation(commands.Cog):
                     return message.created_at > time_limit
                 
                 return True
-
+            
+            amount += 1
             if amount <= 0 or amount > 500:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
@@ -788,7 +797,7 @@ class NoSlash_Moderation(commands.Cog):
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-                await ctx.reply(embed=embed)
+                await ctx.send(embed=embed)
 
                 await sleep(5)
                 await ctx.channel.purge(limit=1)
@@ -811,16 +820,16 @@ class NoSlash_Moderation(commands.Cog):
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-                await ctx.reply(embed=embed)
+                await ctx.send(embed=embed)
             else:
                 embed = disnake.Embed(title=strings["clear_title"],
-                                      description=f"{len(deleted)}" + strings["clear_discrip"],
+                                      description=f"{len(deleted) - 1}" + strings["clear_discrip"],
                                       color=disnake.Color(0x1E90FF),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-                await ctx.reply(embed=embed)
+                await ctx.send(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)
@@ -832,7 +841,7 @@ class NoSlash_Moderation(commands.Cog):
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
                 )
-            await ctx.reply(embed=embed)
+            await ctx.send(embed=embed)
 
             await sleep(5)
             await ctx.channel.purge(limit=1)

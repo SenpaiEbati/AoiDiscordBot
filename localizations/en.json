@@ -170,7 +170,7 @@
         "on_timeout_modal": "⚠️ The waiting time for the modal window has expired ⚠️",
         "on_timeout_modal_desc": "Please repeat the command and try to complete your tasks in a shorter period of time",
 
-        "role_selec": "<:Emojicheck:1220650471275106334> Emoji Checklist <:Emojicheck:1220650471275106334>",
+        "role_selec": "Emoji Checklist",
 
         "missingperm": "You do not have permissions to do that!",
         "badargument1": "```yaml\nParameter '",

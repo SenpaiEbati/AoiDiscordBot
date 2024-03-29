@@ -123,7 +123,7 @@ class EmojiReactorModal(disnake.ui.Modal):
     async def callback(self, inter: disnake.ModalInteraction):
         strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,inter))
 
-        embed = disnake.Embed(title=strings["role_selec"],color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(color=0x1E90FF,timestamp=datetime.datetime.now()).set_footer(text=strings["role_selec"], icon_url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blue_checkbox-checked.svg/2048px-Blue_checkbox-checked.svg.png")
 
         for key, value in inter.text_values.items():
             updated_value = value
@@ -140,9 +140,6 @@ class EmojiReactorModal(disnake.ui.Modal):
                 inline=False,
             )
         
-        embed.set_footer(
-                    text=inter.author.display_name + strings["use_utility"]
-            )
         await inter.response.defer(with_message=False)
         message = await inter.channel.send(embed=embed)
         self.message = message 

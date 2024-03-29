@@ -67,7 +67,7 @@ class EmojiChecklist(commands.Cog):
             strings_ru = await LanguageClass.get_strings(LanguageClass,"ru")
             strings_en = await LanguageClass.get_strings(LanguageClass,"en")
             
-            if reaction.message.embeds[0].title not in [strings_ru["role_selec"], strings_en["role_selec"]]:
+            if reaction.message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
                 return
             if reaction.message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
                 return
@@ -143,7 +143,7 @@ class EmojiChecklist(commands.Cog):
             
             strings_ru = await LanguageClass.get_strings(LanguageClass,"ru")
             strings_en = await LanguageClass.get_strings(LanguageClass,"en")
-            if reaction.message.embeds[0].title not in [strings_ru["role_selec"], strings_en["role_selec"]]:
+            if reaction.message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
                 return
             if reaction.message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
                 return

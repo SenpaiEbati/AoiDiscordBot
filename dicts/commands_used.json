@@ -34,5 +34,17 @@
     },
     "emojireactor": {
         "score": 1
+    },
+    "clear": {
+        "score": 22
+    },
+    "deafen": {
+        "score": 1
+    },
+    "undeafen": {
+        "score": 1
+    },
+    "timecleaning": {
+        "score": 1
     }
 }
