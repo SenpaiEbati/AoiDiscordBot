@@ -214,6 +214,13 @@
         "Information": "Commands used to obtain information about the server, bot or server participants",
         "Help": "Basic command showing information about names and aliases, as well as the correct use of all commands",
         "Games": "Fun commands which have no purpose nor goal other than to be fun! You can even hack your friends!",
-        "EmojiChecklist": "The command is used as an extended verified list, where, opposite the emoticon written by the author, the nickname of the person who made the reaction with a similar emoticon is written down."
+        "EmojiChecklist": "The command is used as an extended verified list, where, opposite the emoticon written by the author, the nickname of the person who made the reaction with a similar emoticon is written down.",
+
+        "texttoimage_title": "🎨 Text to image 🎨",
+        "texttoimage_footer": "Used by Stability AI",
+        "texttoimage_filter_name": "Your request activated the API's safety filters and could not be processed.",
+        "texttoimage_filter_value": "Please modify the prompt and try again.",
+        "texttoimage_error_title": "⚠️ Unable to use your prompt ⚠️",
+        "texttoimage_error_desc": "Change your prompt or wait and use the command after a while. Stability AI also uses the main language for prompt - English"
     }
 }

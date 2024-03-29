@@ -1,8 +1,12 @@
 from __future__ import annotations
 
+from stability_sdk import client
+import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
+
 import asyncio
 import datetime
 import os
+import io
 from typing import List
 
 import aiohttp
@@ -19,6 +23,7 @@ from disnake.ext.tasks import loop
 from core.utils import LanguageClass
 from .constants import (
     BOT_TOKEN,
+    STABILITY_KEY
 )
 from .context import Context
 from .database import Database
@@ -46,7 +51,7 @@ class AoiBot(AutoShardedBot):
         self.time_limit: int = 120
         self.discord_colour = 0x36393F
         self.data = {}
-
+        
         self.add_check(self.bot_check)
         self.after_invoke(self.after_command)
         self.loop.create_task(self.connect_database())
@@ -124,13 +129,13 @@ class AoiBot(AutoShardedBot):
     async def update_presence(self) -> None:
         await self.change_presence(
             activity=Activity(
-                type=ActivityType.listening, name="🟦 a.help | ping me for prefix"
+                type=ActivityType.playing, name="🟦 a.help | ping me for prefix"
             )
         )
         await asyncio.sleep(180)
         await self.change_presence(
             activity=Activity(
-                type=ActivityType.watching,
+                type=ActivityType.playing,
                 name=f"🩵 {len(self.users)} Members in {len(self.guilds)} Servers!",
             )
         )
@@ -166,6 +171,7 @@ class AoiBot(AutoShardedBot):
             print("-----------------------------------")
         self.update_presence.start()
         print("Client Ready!")
+        print("-----------------------------------")
         self.log_data.start()
         print("Guilds:")
         guild_ids = [guild.id for guild in self.guilds]
@@ -173,6 +179,15 @@ class AoiBot(AutoShardedBot):
         print("-----------------------------------")
         await LanguageClass.loadjsonmain(LanguageClass, '..\MyDiscordBot\localizations')
         print("Language pack loaded!")
+        print("-----------------------------------")
+        # Set up our connection to the API.
+        self.stability_api = client.StabilityInference(
+            key=STABILITY_KEY, # API Key reference.
+            verbose=True, # Print debug messages.
+            engine="stable-diffusion-xl-1024-v1-0", # Set the engine to use for generation.
+            # Check out the following link for a list of available engines: https://platform.stability.ai/docs/features/api-parameters#engine
+        )
+        print("Stability Ai Client Ready!")
         print("-----------------------------------")
         selected_channel = self.get_guild(1152151796870025228).get_channel(
             1156514138957283329
