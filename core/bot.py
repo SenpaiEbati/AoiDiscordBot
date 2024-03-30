@@ -190,7 +190,7 @@ class AoiBot(AutoShardedBot):
         print("Stability Ai Client Ready!")
         print("-----------------------------------")
         selected_channel = self.get_guild(1152151796870025228).get_channel(
-            1156514138957283329
+            1223514729532751882
         )
         self.chan = selected_channel
         self.dev = await self.fetch_user(397794392896700430)
@@ -229,7 +229,7 @@ class AoiBot(AutoShardedBot):
     
     async def on_guild_remove(self, guild) -> None:
         selected_channel1 = self.get_guild(1152151796870025228).get_channel(
-            1156514138957283329
+            1223514729532751882
         )
         await selected_channel1.send(f"I have left {guild.name}.")
     

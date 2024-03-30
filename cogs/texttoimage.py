@@ -2,8 +2,7 @@ import disnake
 from disnake.ext import commands
 from core.bot import AoiBot
 import datetime
-from core.utils import LanguageClass, LevelUpClass, get_colour, send_embed
-from PIL import Image
+from core.utils import LanguageClass, get_colour, send_embed
 import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
 import io
 from asyncio import sleep
@@ -12,7 +11,7 @@ class TextToImage(commands.Cog):
     def __init__(self, bot):
         self.bot: AoiBot = bot
 
-    @commands.slash_command(name="texttoimage")
+    @commands.slash_command(name="texttoimage", default_member_permissions=disnake.Permissions(administrator=True))
     async def texttoimage(self, ctx, prompt):
         await ctx.response.defer(with_message=False)
         # Set up our initial generation parameters.
