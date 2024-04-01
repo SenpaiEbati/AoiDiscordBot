@@ -33,9 +33,18 @@ from .utils.commands.eval import run_eval
 
 class AoiBot(AutoShardedBot):
     def __init__(self):
+
+        intents=Intents.default()
+        intents.message_content = True
+        intents.voice_states = True
+        intents.members = True
+        intents.presences = True
+        intents.guild_messages = True
+        intents.reactions = True
+
         super().__init__(
             command_prefix=self.get_prefix,
-            intents=Intents.all(),#=========================================================================Изменить при релизе
+            intents=intents,
             case_insensitive=True,
             strip_after_prefix=True,
             owner_ids=[397794392896700430],

@@ -601,7 +601,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="clear",
+    @commands.command(aliases=["clear","cl","delete","del","clean","cleaning"],
                       default_member_permissions=disnake.Permissions(manage_messages=True))
     async def clear(self, ctx, amount: int, *,channel: disnake.TextChannel = None, user: disnake.User = None):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -660,7 +660,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="deafen",
+    @commands.command(aliases=["deafen", "df", "stun"],
                     default_member_permissions=disnake.Permissions(deafen_members=True))
     async def deafen(self, ctx, member: disnake.Member, *, reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -686,7 +686,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="kick",
+    @commands.command(aliases=["kick", "expel", "kk"],
                             default_member_permissions=disnake.Permissions(kick_members=True))
     async def kick(self, ctx, member: disnake.Member, *, reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -737,7 +737,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="mute",
+    @commands.command(aliases=["mute", "silence"],
                             default_member_permissions=disnake.Permissions(mute_members=True))
     async def mute(self, ctx, member: disnake.Member, *, reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -766,7 +766,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="timecleaning",
+    @commands.command(aliases=["timeclear", "tcl", "tcn","timeclean", "cleanintime","clearintime"],
                         description="Same as Clear, but with a time stamp/Тоже самое что и \"Clear\" только с указанием времени",
                         default_member_permissions=disnake.Permissions(manage_messages=True))
     async def timecleaning(self, ctx, amount: int, hours: int = 0, channel: disnake.TextChannel = None, user: disnake.User = None):
@@ -846,7 +846,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="timeout",
+    @commands.command(aliases=["timeout", "tt"],
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def timeout(self, ctx, member: disnake.Member, *,days=0,hours=0,minutes=0,seconds=0,reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -948,7 +948,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="undeafen",
+    @commands.command(aliases=["undeafen", "undf"],
                             default_member_permissions=disnake.Permissions(deafen_members=True))
     async def undeafen(self, ctx, member: disnake.Member, *, reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -1002,7 +1002,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="untimeout",
+    @commands.command(aliases=["untimeout", "untt"],
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def untimeout(self, ctx, member: disnake.Member, *, reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
@@ -1049,7 +1049,7 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
     
-    @commands.command(name="warn",
+    @commands.command(aliases=["warn", "w"],
                             default_member_permissions=disnake.Permissions(moderate_members=True))
     async def warn(self, ctx, member: disnake.Member, *, reason="-"):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)

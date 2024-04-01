@@ -62,7 +62,7 @@ class Level(commands.Cog):
 class NoSlash_Level(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-    @commands.command(name="level")
+    @commands.command(aliases=["level", "lvl"])
     async def level(self, ctx, user: disnake.Member = None):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)

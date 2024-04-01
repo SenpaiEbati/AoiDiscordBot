@@ -281,7 +281,7 @@ class NoSlash_Information(commands.Cog):
                             disnake.ui.Button(label=strings["add_3"],url=strings["add_4"]),]
                             )
 
-    @commands.command(name="avatar")
+    @commands.command(aliases=["avatar", "ava","icon"])
     async def avatar(self, ctx, user: disnake.Member = None):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
@@ -303,7 +303,7 @@ class NoSlash_Information(commands.Cog):
         )
         await ctx.reply(embed=embed)
 
-    @commands.command(name="botinfo")
+    @commands.command(aliases=["botinfo", "infobot","bot", "aoi","Aoi","binfo"])
     async def botinfo(self, ctx):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
@@ -345,7 +345,7 @@ class NoSlash_Information(commands.Cog):
                         strings["botmaintains_1"] + f"{len(self.bot.guilds)}" + strings["botmaintains_2"], inline=False)
         await ctx.reply(embed=embed)
 
-    @commands.command(name="channelinfo")
+    @commands.command(aliases=["channelinfo", "channel","infochannel", "cinfo"])
     async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
@@ -420,7 +420,7 @@ class NoSlash_Information(commands.Cog):
         )
         await ctx.reply(embed=embed)
     
-    @commands.command(name="serverinfo")
+    @commands.command(aliases=["serverinfo", "server","infoserver", "sinfo"])
     async def serverinfo(self, ctx):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
@@ -471,7 +471,7 @@ class NoSlash_Information(commands.Cog):
 
         await ctx.reply(embed=embed)
     
-    @commands.command(name="userinfo")
+    @commands.command(aliases=["userinfo", "user", "member", "infouser","infomember","uinfo"])
     async def userinfo(self, ctx, user: disnake.Member = None):
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)

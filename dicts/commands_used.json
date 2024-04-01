@@ -1,50 +1,8 @@
 {
     "add": {
-        "score": 17
-    },
-    "avatar": {
-        "score": 9
-    },
-    "debug": {
-        "score": 1
-    },
-    "jishaku py": {
-        "score": 12
+        "score": 2
     },
     "language": {
-        "score": 2
-    },
-    "jishaku": {
-        "score": 2
-    },
-    "warn": {
-        "score": 1
-    },
-    "ping": {
-        "score": 1
-    },
-    "level": {
-        "score": 3
-    },
-    "russian_roulette": {
-        "score": 13
-    },
-    "help": {
-        "score": 49
-    },
-    "emojireactor": {
-        "score": 1
-    },
-    "clear": {
-        "score": 22
-    },
-    "deafen": {
-        "score": 1
-    },
-    "undeafen": {
-        "score": 1
-    },
-    "timecleaning": {
         "score": 1
     }
 }
