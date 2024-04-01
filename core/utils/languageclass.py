@@ -27,7 +27,7 @@ class LanguageClass():
                 conf = await cursor.fetchone()
 
                 if conf is None:
-                    await cursor.execute('INSERT INTO lang_guild (guildid, language) VALUES (?, ?)', (ctx.guild.id, "ru"))
+                    await cursor.execute('INSERT INTO lang_guild (guildid, language) VALUES (?, ?)', (ctx.guild.id, "en"))
                     await conn.commit()
 
                     await cursor.execute('SELECT * FROM lang_guild WHERE guildid = ?', (ctx.guild.id,))
