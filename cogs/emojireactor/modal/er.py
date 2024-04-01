@@ -121,28 +121,30 @@ class EmojiReactorModal(disnake.ui.Modal):
         await send_embed(inter.channel,title=strings["an_error"],description=f"{error}", c = get_colour("red"), f = inter.author.display_name + strings["use_utility"])
 
     async def callback(self, inter: disnake.ModalInteraction):
-        strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,inter))
+        strings = await LanguageClass.get_strings(LanguageClass, await LanguageClass.get_lang(LanguageClass, inter))
 
-        embed = disnake.Embed(color=0x1E90FF,timestamp=datetime.datetime.now()).set_footer(text=strings["role_selec"], icon_url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blue_checkbox-checked.svg/2048px-Blue_checkbox-checked.svg.png")
+        embed = disnake.Embed(color=0x1E90FF, timestamp=datetime.datetime.now()).set_footer(text=strings["role_selec"], icon_url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blue_checkbox-checked.svg/2048px-Blue_checkbox-checked.svg.png")
 
         for key, value in inter.text_values.items():
             updated_value = value
             server_emojis = re.findall(r':[a-zA-Z0-9_]+:', value)
-            if server_emojis is not None:
+            if server_emojis:
                 for emoji_text in server_emojis:
                     emoji_name = emoji_text.strip(':')
                     emoji_obj = disnake.utils.get(inter.guild.emojis, name=emoji_name)
-                    updated_value = re.sub(r':([a-zA-Z0-9_]+):', str(emoji_obj), value)
+                    if emoji_obj:
+                        updated_value = updated_value.replace(emoji_text, str(emoji_obj))
 
             embed.add_field(
                 name=f"{key.capitalize()}",
                 value=updated_value,
                 inline=False,
             )
-        
+
         await inter.response.defer(with_message=False)
         message = await inter.channel.send(embed=embed)
         self.message = message 
+
         for key, value in inter.text_values.items():
             emoji_pattern = emoji.emoji_list(value)
             emoji_list = [entry['emoji'] for entry in emoji_pattern]
@@ -154,10 +156,11 @@ class EmojiReactorModal(disnake.ui.Modal):
             for emoji_text in server_emojis:
                 emoji_name = emoji_text.strip(':')
                 emoji_obj = disnake.utils.get(inter.guild.emojis, name=emoji_name)
-                if emoji_obj is not None:
+                if emoji_obj:
                     await message.add_reaction(emoji_obj)
-        
+
         await message.add_reaction('❌')
         return message
+
 
     

@@ -14,22 +14,22 @@ class LevelUpClass():
         if await self.level_up_check(self, ctx, member, current_exp):
             await self.level_up(self, ctx, member)
 
-            lang = await LanguageClass.get_lang(LanguageClass,ctx)
-            strings = await LanguageClass.get_strings(LanguageClass,lang)
+            # lang = await LanguageClass.get_lang(LanguageClass,ctx)
+            # strings = await LanguageClass.get_strings(LanguageClass,lang)
 
-            level = await self.get_level(self,ctx,member)
-            rank = await self.get_rank(self,ctx,member)
-            nowlinelevel = (50 * level * level) // 2
+            # level = await self.get_level(self,ctx,member)
+            # rank = await self.get_rank(self,ctx,member)
+            # nowlinelevel = (50 * level * level) // 2
 
-            embed = disnake.Embed(title=strings["next_level"],
-                                    description=strings["next_level_desc1"]+f"{level}\n"+strings["next_level_desc2"]+f"{rank}\n"+strings["next_level_desc3"]+f"{current_exp}\n"+strings["next_level_desc4"]+f"{nowlinelevel}",
-                                    color=get_colour("blue"),
-                                    timestamp=datetime.datetime.now())
-            embed.set_thumbnail(url=member.display_avatar)
-            embed.set_footer(
-                text=ctx.author.display_name + strings["next_leve_footer"]
-            )
-            await ctx.channel.send(member.mention, embed=embed)
+            # embed = disnake.Embed(title=strings["next_level"],
+            #                         description=strings["next_level_desc1"]+f"{level}\n"+strings["next_level_desc2"]+f"{rank}\n"+strings["next_level_desc3"]+f"{current_exp}\n"+strings["next_level_desc4"]+f"{nowlinelevel}",
+            #                         color=get_colour("blue"),
+            #                         timestamp=datetime.datetime.now())
+            # embed.set_thumbnail(url=member.display_avatar)
+            # embed.set_footer(
+            #     text=ctx.author.display_name + strings["next_leve_footer"]
+            # )
+            # await ctx.channel.send(member.mention, embed=embed)
             
 
     async def get_exp(self, ctx, member):

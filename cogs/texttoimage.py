@@ -11,7 +11,7 @@ class TextToImage(commands.Cog):
     def __init__(self, bot):
         self.bot: AoiBot = bot
 
-    @commands.slash_command(name="texttoimage", default_member_permissions=disnake.Permissions(administrator=True))
+    @commands.slash_command(name="texttoimage", default_member_permissions=disnake.Permissions(administrator=False))
     async def texttoimage(self, ctx, prompt):
         await ctx.response.defer(with_message=False)
         # Set up our initial generation parameters.

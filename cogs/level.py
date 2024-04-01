@@ -13,8 +13,7 @@ class Level(commands.Cog):
         if message.author.bot:
             return
         # Начисление опыта за отправку сообщений
-        exp = 1
-        await LevelUpClass.add_exp(LevelUpClass, message, message.author, exp)
+        await LevelUpClass.add_exp(LevelUpClass, message, message.author, 1)
 
     @commands.slash_command(name="level",
                             description="Info about level, exp and rank on the server/Информация об уровне, опыте и ранге на сервере")

@@ -221,6 +221,10 @@
         "texttoimage_filter_name": "Your request activated the API's safety filters and could not be processed.",
         "texttoimage_filter_value": "Please modify the prompt and try again.",
         "texttoimage_error_title": "⚠️ Unable to use your prompt ⚠️",
-        "texttoimage_error_desc": "Change your prompt or wait and use the command after a while. Stability AI also uses the main language for prompt - English"
+        "texttoimage_error_desc": "Change your prompt or wait and use the command after a while. Stability AI also uses the main language for prompt - English",
+
+        "checks_1": "Commands don't work in DMs! My prefix is `a.`, or you can ping me in a guild!",
+        "checks_2": "You cannot run this command, it is a `hidden` command which only bot admins can run.",
+        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots"
     }
 }
