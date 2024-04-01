@@ -86,7 +86,7 @@ class NoSlash_Language(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases=["language", "lang","translation", "translate"],
+    @commands.command(aliases=["lang","translation", "translate"],
                       default_member_permissions=disnake.Permissions(manage_guild=True))
     async def language(self, inter: disnake.ApplicationCommandInteraction):
         lang = await LanguageClass.get_lang(LanguageClass,inter)
