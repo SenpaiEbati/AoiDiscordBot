@@ -64,7 +64,7 @@ class HelpUtils:
                 value="\n".join(cogs[i] for i in range(1, len(cogs), 2)),
             )
             .add_field(
-                name=f"{LINK} "+strings["main_help_embed_links"], value=f"**> ["+strings["main_help_embed_official"]+"](https://discord.gg/RAjhN7FqdR) │ ["+strings["main_help_embed_botinvite"]+"](-)**", inline=False
+                name=f"{LINK} "+strings["main_help_embed_links"], value=f"**> ["+strings["main_help_embed_official"]+"](https://discord.gg/RAjhN7FqdR) │ ["+strings["main_help_embed_botinvite"]+"](https://discord.com/oauth2/authorize?client_id=1152289596969861203)**", inline=False
             )
         )
 
