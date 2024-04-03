@@ -186,7 +186,7 @@ class AoiBot(AutoShardedBot):
         guild_ids = [guild.id for guild in self.guilds]
         print(guild_ids)
         print("-----------------------------------")
-        await LanguageClass.loadjsonmain(LanguageClass, r'..\aoibot\localizations')
+        await LanguageClass.loadjsonmain(LanguageClass, os.path.abspath(r'..\aoibot\localizations'))
         print("Language pack loaded!")
         print("-----------------------------------")
         # Set up our connection to the API.
