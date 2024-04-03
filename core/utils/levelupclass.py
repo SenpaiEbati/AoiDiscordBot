@@ -34,7 +34,7 @@ class LevelUpClass():
 
     async def get_exp(self, ctx, member):
         # Получение опыта участника
-        async with aiosqlite.connect('..\MyDiscordBot\db\database.db') as conn:
+        async with aiosqlite.connect('..\data\database.db') as conn:
             cursor = await conn.cursor()
             await cursor.execute('SELECT * FROM level WHERE guildid = ? AND userid = ?', (ctx.guild.id, member.id))
             user = await cursor.fetchone()
@@ -48,7 +48,7 @@ class LevelUpClass():
 
     async def get_level(self, ctx, member):
         # Получение уровня участника
-        async with aiosqlite.connect('..\MyDiscordBot\db\database.db') as conn:
+        async with aiosqlite.connect('..\data\database.db') as conn:
             cursor = await conn.cursor()
             await cursor.execute('SELECT * FROM level WHERE guildid = ? AND userid = ?', (ctx.guild.id, member.id))
             user = await cursor.fetchone()
@@ -62,14 +62,14 @@ class LevelUpClass():
 
     async def set_exp(self, ctx, member, exp):
         # Сохранение опыта участника
-        async with aiosqlite.connect('..\MyDiscordBot\db\database.db') as conn:
+        async with aiosqlite.connect('..\data\database.db') as conn:
             cursor = await conn.cursor()
             await cursor.execute('UPDATE level SET exp = ? WHERE guildid = ? AND userid = ?', (exp, ctx.guild.id, member.id))
             await conn.commit()
 
     async def set_level(self, ctx, member, level):
         # Сохранение уровня участника
-        async with aiosqlite.connect('..\MyDiscordBot\db\database.db') as conn:
+        async with aiosqlite.connect('..\data\database.db') as conn:
             cursor = await conn.cursor()
             await cursor.execute('UPDATE level SET level = ? WHERE guildid = ? AND userid = ?', (level, ctx.guild.id, member.id))
             await conn.commit()
@@ -86,7 +86,7 @@ class LevelUpClass():
         await self.set_level(self, ctx, member, newlevel)
     
     async def get_rank(self, ctx, member):
-        async with aiosqlite.connect('..\MyDiscordBot\db\database.db') as conn:
+        async with aiosqlite.connect('..\data\database.db') as conn:
             cursor = await conn.cursor()
             await cursor.execute('''
                 SELECT (SELECT COUNT(*) FROM level AS u WHERE u.guildid = level.guildid AND u.exp > level.exp) + 1 AS user_rank
