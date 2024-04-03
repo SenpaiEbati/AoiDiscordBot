@@ -1,12 +1,10 @@
 from __future__ import annotations
 
 from stability_sdk import client
-import stability_sdk.interfaces.gooseai.generation.generation_pb2 as generation
 
 import asyncio
 import datetime
 import os
-import io
 from typing import List
 
 import aiohttp
@@ -50,9 +48,7 @@ class AoiBot(AutoShardedBot):
             owner_ids=[397794392896700430],
             allowed_mentions=AllowedMentions.none(),
             help_command=None,
-            command_sync_flags=CommandSyncFlags(sync_commands=True),
-            test_guilds = [1152151796870025228,977613521351225354],#========================================Отключить при релизе
-            reload=True#====================================================================================Отключить при релизе
+            command_sync_flags=CommandSyncFlags(sync_commands=True)
         )
 
         self.launch_time = datetime.datetime.now()
