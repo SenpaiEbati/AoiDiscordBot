@@ -3,7 +3,6 @@ from datetime import datetime, timedelta, timezone
 import disnake
 from disnake.ext import commands
 from core.utils import LanguageClass
-from core.context import Context
 
 class Moderation(commands.Cog):
     def __init__(self, bot):
