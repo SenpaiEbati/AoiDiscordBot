@@ -125,7 +125,7 @@ async def run_executed(ctx: Bot) -> None:
         await bot.db.update(
             "INSERT INTO overall_score VALUES (?)",
             (
-                0,
+                1,
             ),
         )
 
