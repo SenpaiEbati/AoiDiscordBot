@@ -66,14 +66,19 @@ class EmojiChecklist(commands.Cog):
         try:
             strings_ru = await LanguageClass.get_strings(LanguageClass,"ru")
             strings_en = await LanguageClass.get_strings(LanguageClass,"en")
-            
-            if reaction.message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
-                return
-            if reaction.message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
-                return
 
             message = reaction.message
             if user.bot or message.author.id != self.bot.user.id:
+                return
+            try:
+                if type(message.embeds[0]) != disnake.embeds.Embed:
+                    return
+            except IndexError:
+                return
+            
+            if message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
+                return
+            if message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
                 return
             
             if (reaction.emoji == "❌"):
@@ -86,7 +91,7 @@ class EmojiChecklist(commands.Cog):
             # Проверяем, есть ли такой кортеж в словаре
             if reaction_key in self.checkuser:
                 self.lock = True
-                await reaction.message.remove_reaction(reaction, user)
+                await message.remove_reaction(reaction, user)
                 return
             
             # Добавляем кортеж в качестве ключа в словарь
@@ -102,7 +107,7 @@ class EmojiChecklist(commands.Cog):
                 for line in value_lines:
                     if f"{user.mention}" in line:
                             new_value_lines.append(line)
-                            await reaction.message.remove_reaction(reaction,user)
+                            await message.remove_reaction(reaction,user)
                             return
                     else: 
                         emoji_pattern = emoji.emoji_list(line)
@@ -131,8 +136,8 @@ class EmojiChecklist(commands.Cog):
             
             await message.edit(embed=dmembed)
         except Exception as e:
-            strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,reaction.message))
-            await send_embed(reaction.message.channel,title=strings["an_error"],description=f"{e}", c = get_colour("red"), f = reaction.message.author.display_name + strings["use_utility"])
+            strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,message))
+            await send_embed(message.channel,title=strings["an_error"],description=f"{e}", c = get_colour("red"), f = message.author.display_name + strings["use_utility"])
 
     @commands.Cog.listener()
     async def on_reaction_remove(self, reaction: disnake.Reaction, user: disnake.Member):
@@ -143,13 +148,20 @@ class EmojiChecklist(commands.Cog):
             
             strings_ru = await LanguageClass.get_strings(LanguageClass,"ru")
             strings_en = await LanguageClass.get_strings(LanguageClass,"en")
-            if reaction.message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
-                return
-            if reaction.message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
-                return
-            
+
             message = reaction.message
             if user.bot or message.author.id != self.bot.user.id:
+                return
+        
+            try:
+                if type(message.embeds[0]) != disnake.embeds.Embed:
+                    return
+            except IndexError:
+                return
+            
+            if message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
+                return
+            if message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
                 return
             
             reaction_key = (message.id, user.id)
@@ -183,8 +195,8 @@ class EmojiChecklist(commands.Cog):
                 dmembed.set_field_at(i, name=field.name, value=new_value, inline=False)
             await message.edit(embed=dmembed)
         except Exception as e:
-            strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,reaction.message))
-            await send_embed(reaction.message.channel,title=strings["an_error"],description=f"{e}", c = get_colour("red"), f = reaction.message.author.display_name + strings["use_utility"])
+            strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,message))
+            await send_embed(message.channel,title=strings["an_error"],description=f"{e}", c = get_colour("red"), f = message.author.display_name + strings["use_utility"])
 
 def setup(bot): 
     bot.add_cog(EmojiChecklist(bot))
