@@ -16,30 +16,35 @@ class EmojiReactorModal(disnake.ui.Modal):
                     placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
                     placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
                     placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
                     placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[4],
                     placeholder="🦝- Я енотик полоскун...",
                     custom_id=result[4],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
             ]
         elif (len(result) == 4):
@@ -49,24 +54,28 @@ class EmojiReactorModal(disnake.ui.Modal):
                     placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
                     placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
                     placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
                     placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
             ]
         elif (len(result) == 3):
@@ -76,18 +85,21 @@ class EmojiReactorModal(disnake.ui.Modal):
                     placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
                     placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
                     placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
             ]
         elif (len(result) == 2):
@@ -97,12 +109,14 @@ class EmojiReactorModal(disnake.ui.Modal):
                     placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
                     placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
             ]
         elif (len(result) == 1):
@@ -112,6 +126,7 @@ class EmojiReactorModal(disnake.ui.Modal):
                     placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
+                    max_length=1024,
                 ),
             ]
         super().__init__(title="Create Tag", custom_id=f"create_tag_low-{inter.id}", components=components)
