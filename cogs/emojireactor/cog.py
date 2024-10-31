@@ -66,7 +66,7 @@ class EmojiChecklist(commands.Cog):
         try:
             strings_ru = await LanguageClass.get_strings(LanguageClass,"ru")
             strings_en = await LanguageClass.get_strings(LanguageClass,"en")
-
+            
             message = reaction.message
             if user.bot or message.author.id != self.bot.user.id:
                 return
@@ -76,7 +76,7 @@ class EmojiChecklist(commands.Cog):
             except IndexError:
                 return
             
-            if message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
+            if message.embeds[0].footer.text not in [strings_ru["halloween"], strings_en["halloween"]]:
                 return
             if message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
                 return
@@ -100,7 +100,7 @@ class EmojiChecklist(commands.Cog):
             embed = message.embeds[0]
             embed_fields = embed.fields
             dmembed = embed.copy()
-
+            
             for i, field in enumerate(embed_fields):
                 value_lines = field.value.split('\n')
                 new_value_lines = []
@@ -159,7 +159,7 @@ class EmojiChecklist(commands.Cog):
             except IndexError:
                 return
             
-            if message.embeds[0].footer.text not in [strings_ru["role_selec"], strings_en["role_selec"]]:
+            if message.embeds[0].footer.text not in [strings_ru["halloween"], strings_en["halloween"]]:
                 return
             if message.embeds[0].footer.text in [strings_ru["close_elem"], strings_en["close_elem"]]:
                 return

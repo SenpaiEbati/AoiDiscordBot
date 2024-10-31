@@ -225,6 +225,8 @@
 
         "checks_1": "Commands don't work in DMs! My prefix is `a.`, or you can ping me in a guild!",
         "checks_2": "You cannot run this command, it is a `hidden` command which only bot admins can run.",
-        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots"
+        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots",
+
+        "halloween": "🎃 Trick or treat 🍬 Happy Halloween 👻"
     }
 }

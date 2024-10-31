@@ -25,7 +25,7 @@ class TextToImage(commands.Cog):
 
         embed = disnake.Embed(
             title=strings["texttoimage_title"],
-            color=get_colour("blue"),
+            color=get_colour("halloween"),
             timestamp=datetime.datetime.now()
         ).set_footer(
             text=strings["texttoimage_footer"]
