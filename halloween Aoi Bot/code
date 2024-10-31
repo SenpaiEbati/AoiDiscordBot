@@ -1,0 +1,7 @@
+tree cd5dcf8fd00dbbdf93b5fb2759be30916520c3fa
+parent acab54cbb271e12b19b9ddaff5c11b02b5931e8b
+author 12345 <123456789vovik4i@gmail.com> 1713014590 +0700
+committer 12345 <123456789vovik4i@gmail.com> 1713014590 +0700
+
+	modified:   cogs/emojireactor/cog.py
+	modified:   cogs/emojireactor/modal/er.py
