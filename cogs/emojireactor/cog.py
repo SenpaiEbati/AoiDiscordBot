@@ -105,7 +105,7 @@ class EmojiChecklist(commands.Cog):
                 value_lines = field.value.split('\n')
                 new_value_lines = []
                 for line in value_lines:
-                    if line.find(f"{user.mention}"):
+                    if f"{user.mention}" in line:
                             new_value_lines.append(line)
                             await message.remove_reaction(reaction,user)
                             return
@@ -122,14 +122,14 @@ class EmojiChecklist(commands.Cog):
                                         continue
                                     else:
                                         line += f" {user.mention}"
-                        if emoji_list:
-                            for emojigg in emoji_list:
-                                if reaction.emoji == emojigg:
-                                    if f"{user.mention}" in line:
-                                        continue
-                                    else:
-                                        line += f" {user.mention}"
-                        new_value_lines.append(line)
+                    if emoji_list:
+                        for emojigg in emoji_list:
+                            if reaction.emoji == emojigg:
+                                if f"{user.mention}" in line:
+                                    continue
+                                else:
+                                    line += f" {user.mention}"
+                    new_value_lines.append(line)
 
                 new_value = '\n'.join(new_value_lines)  
                 dmembed.set_field_at(i, name=field.name, value=new_value, inline=False)
