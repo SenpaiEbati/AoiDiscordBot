@@ -1,7 +1,7 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from core.utils import LanguageClass, get_colour
+from core.utils import LanguageClass
 import time
 
 class Information(commands.Cog):
@@ -15,7 +15,7 @@ class Information(commands.Cog):
         strings = await LanguageClass.get_strings(LanguageClass,lang)
         embed = disnake.Embed(title=strings["add_1"],
                               description=strings["add_2"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
@@ -38,7 +38,7 @@ class Information(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        embed = disnake.Embed(color=get_colour("halloween"),
+        embed = disnake.Embed(color=0x1E90FF,
                               title=strings["avatar_1"],
                               description=strings["avatar_2"] + user.display_name,
                               timestamp=datetime.datetime.now())
@@ -70,7 +70,7 @@ class Information(commands.Cog):
             bot_status = strings["offline"]
 
         embed = disnake.Embed(title=strings["botinfo_1"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
@@ -115,7 +115,7 @@ class Information(commands.Cog):
         is_nsfw = strings["yes"] if channel.is_nsfw() else strings["no"]
         channel_type = str(channel.type)
 
-        embed = disnake.Embed(title=strings["channelinfo_1"], color=get_colour("halloween"),timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["channelinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -158,7 +158,7 @@ class Information(commands.Cog):
         # Внутренние расчеты задержки для команды ping
         command_ping = round(self.bot.latency * 1000, 2)
 
-        embed = disnake.Embed(color=get_colour("halloween"),
+        embed = disnake.Embed(color=0x1E90FF,
                               title=strings["ping_1"],
                               description=strings["ping_2"] + f"{command_ping}" + strings["pingms"] + "\n" + 
                               strings["ping_3"] + f"{gateway_ping}" + strings["pingms"] + "\n" + 
@@ -202,7 +202,7 @@ class Information(commands.Cog):
         status_count = f"● "+strings["online"]+f": **{online_count}**\n● "+strings["idle"]+f": **{idle_count}**\n● "+strings["dnd"]+f": **{dnd_count}**\n● "+strings["offline"]+f": **{offline_count}**"
         channel_count = f"● "+strings["serverchanneltotal"]+f": **{len(server.channels)}**\n● "+strings["serverchantexts"]+f": **{len(server.text_channels)}**\n● "+strings["serverchanforums"]+f": **{len(server.forum_channels)}**\n● "+strings["serverchanvoices"]+f": **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title=strings["serverinfo_1"], color=get_colour("halloween"),timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["serverinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -249,7 +249,7 @@ class Information(commands.Cog):
             dateUTC = '%d.%m.%Y %H:%M'
 
         embed = disnake.Embed(title=strings["userinfo_1"] + f"{user.display_name}" + strings["userinfo_2"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
@@ -271,7 +271,7 @@ class NoSlash_Information(commands.Cog):
 
         embed = disnake.Embed(title=strings["add_1"], 
                               description=strings["add_2"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
@@ -293,7 +293,7 @@ class NoSlash_Information(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        embed = disnake.Embed(color=get_colour("halloween"),
+        embed = disnake.Embed(color=0x1E90FF,
                               title=strings["avatar_1"],
                               description=strings["avatar_2"] + user.display_name,
                               timestamp=datetime.datetime.now())
@@ -324,7 +324,7 @@ class NoSlash_Information(commands.Cog):
             bot_status = strings["offline"]
 
         embed = disnake.Embed(title=strings["botinfo_1"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
@@ -368,7 +368,7 @@ class NoSlash_Information(commands.Cog):
         is_nsfw = strings["yes"] if channel.is_nsfw() else strings["no"]
         channel_type = str(channel.type)
 
-        embed = disnake.Embed(title=strings["channelinfo_1"], color=get_colour("halloween"),timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["channelinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -409,7 +409,7 @@ class NoSlash_Information(commands.Cog):
         # Внутренние расчеты задержки для команды ping
         command_ping = round(self.bot.latency * 1000, 2)
 
-        embed = disnake.Embed(color=get_colour("halloween"),
+        embed = disnake.Embed(color=0x1E90FF,
                               title=strings["ping_1"],
                               description=strings["ping_2"] + f"{command_ping}" + strings["pingms"] + "\n" + 
                               strings["ping_3"] + f"{gateway_ping}" + strings["pingms"] + "\n" + 
@@ -452,7 +452,7 @@ class NoSlash_Information(commands.Cog):
         status_count = f"● "+strings["online"]+f": **{online_count}**\n● "+strings["idle"]+f": **{idle_count}**\n● "+strings["dnd"]+f": **{dnd_count}**\n● "+strings["offline"]+f": **{offline_count}**"
         channel_count = f"● "+strings["serverchanneltotal"]+f": **{len(server.channels)}**\n● "+strings["serverchantexts"]+f": **{len(server.text_channels)}**\n● "+strings["serverchanforums"]+f": **{len(server.forum_channels)}**\n● "+strings["serverchanvoices"]+f": **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title=strings["serverinfo_1"], color=get_colour("halloween"),timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["serverinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -498,7 +498,7 @@ class NoSlash_Information(commands.Cog):
             dateUTC = '%d.%m.%Y %H:%M'
 
         embed = disnake.Embed(title=strings["userinfo_1"] + f"{user.display_name}" + strings["userinfo_2"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(

@@ -1,7 +1,7 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from core.utils import LanguageClass, get_colour
+from core.utils import LanguageClass
 
 class Language(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +18,7 @@ class Language(commands.Cog):
         if not inter.author.guild_permissions.manage_guild:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
                 text=user.display_name + strings["no_change_conf"]
@@ -59,7 +59,7 @@ class Language(commands.Cog):
         if not inter.author.guild_permissions.administrator:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
                 text=user.display_name + strings["no_changed_conf"]
@@ -95,7 +95,7 @@ class NoSlash_Language(commands.Cog):
         if not inter.author.guild_permissions.manage_guild:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
                 text=user.display_name + strings["no_change_conf"]
@@ -134,7 +134,7 @@ class NoSlash_Language(commands.Cog):
         if not inter.author.guild_permissions.administrator:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["lang_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.datetime.now())
             embed.set_footer(
                 text=user.display_name + strings["no_change_conf"]

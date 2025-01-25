@@ -2,7 +2,7 @@ import disnake
 from disnake.ext import commands
 from core.bot import AoiBot
 import datetime
-from core.utils import LanguageClass, LevelUpClass, get_colour
+from core.utils import LanguageClass, LevelUpClass
 
 class Level(commands.Cog):
     def __init__(self, bot):
@@ -35,7 +35,7 @@ class Level(commands.Cog):
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 
         embed = disnake.Embed(title=strings["levelinfo_1"] + f"{user.display_name}" + strings["levelinfo_2"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
@@ -81,7 +81,7 @@ class NoSlash_Level(commands.Cog):
         pastlinelevel = (50 * (level-1) * (level-1)) // 2
 
         embed = disnake.Embed(title=strings["levelinfo_1"] + f"{user.display_name}" + strings["levelinfo_2"],
-                              color=get_colour("halloween"),
+                              color=0x1E90FF,
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(

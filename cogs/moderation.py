@@ -2,7 +2,7 @@ from asyncio import sleep
 from datetime import datetime, timedelta, timezone
 import disnake
 from disnake.ext import commands
-from core.utils import LanguageClass, get_colour
+from core.utils import LanguageClass
 
 class Moderation(commands.Cog):
     def __init__(self, bot):
@@ -18,7 +18,7 @@ class Moderation(commands.Cog):
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["ban_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                 text=ctx.author.display_name + strings["mod_serv"]
@@ -28,14 +28,14 @@ class Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
         elif ctx.author.guild_permissions.ban_members:
-            embed = disnake.Embed(title=strings["ban_title"], color=get_colour("halloween"),timestamp=datetime.now())
+            embed = disnake.Embed(title=strings["ban_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
             embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
             embed.add_field(name=strings["ban_from"], value=ctx.author.mention, inline=False)
             await ctx.send(embed=embed)
 
             if member.id != self.bot.user.id:
-                dm_embed = disnake.Embed(title=strings["ban_title"], color=get_colour("halloween"),timestamp=datetime.now())
+                dm_embed = disnake.Embed(title=strings["ban_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
                 dm_embed.add_field(name=strings["ban_server"], value=ctx.guild.name, inline=False)
                 dm_embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
                 dm_embed.add_field(name=strings["ban_from"], value=ctx.author.mention, inline=False)
@@ -45,7 +45,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["ban_2"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                 text=ctx.author.display_name + strings["mod_serv"]
@@ -72,7 +72,7 @@ class Moderation(commands.Cog):
             if amount <= 0 or amount > 500:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -110,7 +110,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["clear_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -137,7 +137,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["deafen_rightsdef"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -157,7 +157,7 @@ class Moderation(commands.Cog):
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["no_rights_kick1"],
-                                  color=get_colour("halloween"), 
+                                  color=disnake.Color(0xff0000), 
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -169,7 +169,7 @@ class Moderation(commands.Cog):
 
         elif ctx.author.guild_permissions.kick_members:
             embed = disnake.Embed(title=strings["kick_title"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
             embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -177,7 +177,7 @@ class Moderation(commands.Cog):
             await ctx.send(embed=embed)
             if member.id != self.bot.user.id:
                 dm_embed = disnake.Embed(title=strings["kick_title"], 
-                                        color=get_colour("halloween"),
+                                        color=disnake.Color(0xff0000),
                                         timestamp=datetime.now())
                 dm_embed.add_field(name=strings["ban_server"], value=ctx.guild.name, inline=False)
                 dm_embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -188,7 +188,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["no_rights_kick2"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -218,7 +218,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["no_rights_mute"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -253,7 +253,7 @@ class Moderation(commands.Cog):
             if amount <= 0 or amount > 500:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -280,7 +280,7 @@ class Moderation(commands.Cog):
             if len(deleted) == 0:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -301,7 +301,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["clear_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -327,14 +327,14 @@ class Moderation(commands.Cog):
                     else:
                         time = int(seconds) + int(minutes) * 60 + int(hours) * 60 * 60 + int(days) * 24 * 60 * 60
                 
-                    embed = disnake.Embed(title=strings["timeout_title"], color=get_colour("halloween"),timestamp=datetime.now())
+                    embed = disnake.Embed(title=strings["timeout_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
                     embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
                     embed.add_field(name=strings["how_much"], value=f"{days}d {hours}h {minutes}m {seconds}s", inline=False)
                     embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
                     embed.add_field(name=strings["ban_from"], value=ctx.author.mention, inline=False)
                     await ctx.send(embed=embed)
                     if member.id != self.bot.user.id:
-                        dm_embed = disnake.Embed(title=strings["timeout_title"], color=get_colour("halloween"),timestamp=datetime.now())
+                        dm_embed = disnake.Embed(title=strings["timeout_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
                         dm_embed.add_field(name=strings["ban_server"], value=ctx.guild.name, inline=False)
                         dm_embed.add_field(name=strings["how_much"], value=f"{days}d {hours}h {minutes}m {seconds}s", inline=False)
                         dm_embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -345,7 +345,7 @@ class Moderation(commands.Cog):
                 else:
                     embed = disnake.Embed(title=strings["error_timeout"], 
                                           description=strings["error_timeout_discrip"],
-                                          color=get_colour("halloween"),
+                                          color=disnake.Color(0xff0000),
                                           timestamp=datetime.now())
                     embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -357,7 +357,7 @@ class Moderation(commands.Cog):
             else:
                 embed = disnake.Embed(title=strings["no_rights"], 
                                       description=strings["timeout_rights_1"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -369,7 +369,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["timeout_rights_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -403,7 +403,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["unban_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -431,7 +431,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["undeafen_rights"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -459,7 +459,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["unmute_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -495,7 +495,7 @@ class Moderation(commands.Cog):
             else:
                 embed = disnake.Embed(title=strings["error_untimeout"],
                                       description=strings["error_untimeout_discrip"], 
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -507,7 +507,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["untimeout_rights_discrip"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -540,7 +540,7 @@ class Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["warn_rights"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -563,7 +563,7 @@ class NoSlash_Moderation(commands.Cog):
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["ban_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                 text=ctx.author.display_name + strings["mod_serv"]
@@ -573,14 +573,14 @@ class NoSlash_Moderation(commands.Cog):
             await sleep(5)
             await ctx.channel.purge(limit=1)
         elif ctx.author.guild_permissions.ban_members:
-            embed = disnake.Embed(title=strings["ban_title"], color=get_colour("halloween"),timestamp=datetime.now())
+            embed = disnake.Embed(title=strings["ban_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
             embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
             embed.add_field(name=strings["ban_from"], value=ctx.author.mention, inline=False)
             await ctx.reply(embed=embed)
             
             if member.id != self.bot.user.id:
-                dm_embed = disnake.Embed(title=strings["ban_title"], color=get_colour("halloween"),timestamp=datetime.now())
+                dm_embed = disnake.Embed(title=strings["ban_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
                 dm_embed.add_field(name=strings["ban_server"], value=ctx.guild.name, inline=False)
                 dm_embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
                 dm_embed.add_field(name=strings["ban_from"], value=ctx.author.mention, inline=False)
@@ -590,7 +590,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["ban_2"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                 text=ctx.author.display_name + strings["mod_serv"]
@@ -616,7 +616,7 @@ class NoSlash_Moderation(commands.Cog):
             if amount <= 0 or amount > 500:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -649,7 +649,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["clear_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -675,7 +675,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["deafen_rightsdef"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -694,7 +694,7 @@ class NoSlash_Moderation(commands.Cog):
         if ctx.author == member:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["no_rights_kick1"],
-                                  color=get_colour("halloween"), 
+                                  color=disnake.Color(0xff0000), 
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -706,7 +706,7 @@ class NoSlash_Moderation(commands.Cog):
 
         elif ctx.author.guild_permissions.kick_members:
             embed = disnake.Embed(title=strings["kick_title"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
             embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -715,7 +715,7 @@ class NoSlash_Moderation(commands.Cog):
 
             if member.id != self.bot.user.id:
                 dm_embed = disnake.Embed(title=strings["kick_title"], 
-                                        color=get_colour("halloween"),
+                                        color=disnake.Color(0xff0000),
                                         timestamp=datetime.now())
                 dm_embed.add_field(name=strings["ban_server"], value=ctx.guild.name, inline=False)
                 dm_embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -726,7 +726,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["no_rights_kick2"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -755,7 +755,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["no_rights_mute"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -791,7 +791,7 @@ class NoSlash_Moderation(commands.Cog):
             if amount <= 0 or amount > 500:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -814,7 +814,7 @@ class NoSlash_Moderation(commands.Cog):
             if len(deleted) == 0:
                 embed = disnake.Embed(title=strings["clear_error"], 
                                       description=strings["clear_errordescrip"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -835,7 +835,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["clear_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -860,7 +860,7 @@ class NoSlash_Moderation(commands.Cog):
                     else:
                         time = int(seconds) + int(minutes) * 60 + int(hours) * 60 * 60 + int(days) * 24 * 60 * 60
                 
-                    embed = disnake.Embed(title=strings["timeout_title"], color=get_colour("halloween"),timestamp=datetime.now())
+                    embed = disnake.Embed(title=strings["timeout_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
                     embed.add_field(name=strings["ban_member"], value=member.mention, inline=False)
                     embed.add_field(name=strings["how_much"], value=f"{days}d {hours}h {minutes}m {seconds}s", inline=False)
                     embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -868,7 +868,7 @@ class NoSlash_Moderation(commands.Cog):
                     await ctx.reply(embed=embed)
 
                     if member.id != self.bot.user.id:
-                        dm_embed = disnake.Embed(title=strings["timeout_title"], color=get_colour("halloween"),timestamp=datetime.now())
+                        dm_embed = disnake.Embed(title=strings["timeout_title"], color=disnake.Color(0xff0000),timestamp=datetime.now())
                         dm_embed.add_field(name=strings["ban_server"], value=ctx.guild.name, inline=False)
                         dm_embed.add_field(name=strings["how_much"], value=f"{days}d {hours}h {minutes}m {seconds}s", inline=False)
                         dm_embed.add_field(name=strings["ban_reason"], value=reason, inline=False)
@@ -879,7 +879,7 @@ class NoSlash_Moderation(commands.Cog):
                 else:
                     embed = disnake.Embed(title=strings["error_timeout"], 
                                           description=strings["error_timeout_discrip"],
-                                          color=get_colour("halloween"),
+                                          color=disnake.Color(0xff0000),
                                           timestamp=datetime.now())
                     embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -891,7 +891,7 @@ class NoSlash_Moderation(commands.Cog):
             else:
                 embed = disnake.Embed(title=strings["no_rights"], 
                                       description=strings["timeout_rights_1"],
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -903,7 +903,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["timeout_rights_1"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -937,7 +937,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"], 
                                   description=strings["unban_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -964,7 +964,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["undeafen_rights"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -991,7 +991,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["unmute_rights"],
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -1026,7 +1026,7 @@ class NoSlash_Moderation(commands.Cog):
             else:
                 embed = disnake.Embed(title=strings["error_untimeout"],
                                       description=strings["error_untimeout_discrip"], 
-                                      color=get_colour("halloween"),
+                                      color=disnake.Color(0xff0000),
                                       timestamp=datetime.now())
                 embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -1038,7 +1038,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["untimeout_rights_discrip"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]
@@ -1070,7 +1070,7 @@ class NoSlash_Moderation(commands.Cog):
         else:
             embed = disnake.Embed(title=strings["no_rights"],
                                   description=strings["warn_rights"], 
-                                  color=get_colour("halloween"),
+                                  color=disnake.Color(0xff0000),
                                   timestamp=datetime.now())
             embed.set_footer(
                         text=ctx.author.display_name + strings["mod_serv"]

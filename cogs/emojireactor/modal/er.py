@@ -13,35 +13,35 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 Хо-хо-хо с наступающим!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 Вы приготовили подарки ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="❄️ Снега очень много !!!",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="🎄 Елочка гори !!!",
+                    placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[4],
-                    placeholder="☃️ Похож на Водичку?)",
+                    placeholder="🦝- Я енотик полоскун...",
                     custom_id=result[4],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -51,28 +51,28 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 Хо-хо-хо с наступающим!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 Вы приготовили подарки ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="❄️ Снега очень много !!!",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="🎄 Елочка гори !!!",
+                    placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -82,21 +82,21 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 Хо-хо-хо с наступающим!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 Вы приготовили подарки ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="❄️ Снега очень много !!!",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -106,14 +106,14 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 Хо-хо-хо с наступающим!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 Вы приготовили подарки ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -123,7 +123,7 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 Хо-хо-хо с наступающим!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -138,7 +138,7 @@ class EmojiReactorModal(disnake.ui.Modal):
     async def callback(self, inter: disnake.ModalInteraction):
         strings = await LanguageClass.get_strings(LanguageClass, await LanguageClass.get_lang(LanguageClass, inter))
 
-        embed = disnake.Embed(color=get_colour("halloween"), timestamp=datetime.datetime.now()).set_footer(text=strings["halloween"], icon_url="https://symbl-world.akamaized.net/i/webp/77/8aef198cc252895ca0d488b035fc4a.webp")
+        embed = disnake.Embed(color=0x1E90FF, timestamp=datetime.datetime.now()).set_footer(text=strings["role_selec"], icon_url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blue_checkbox-checked.svg/2048px-Blue_checkbox-checked.svg.png")
 
         for key, value in inter.text_values.items():
             updated_value = value
