@@ -93,7 +93,7 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
 async def run_precheck(bot: Bot, message: Message) -> None:
     await bot.wait_until_ready()
 
-    with open("./aoibot/dicts/Suggest.json") as k:
+    with open("./dicts/Suggest.json") as k:
         data = json.load(k)
 
         if str(message.channel.id) in data:
