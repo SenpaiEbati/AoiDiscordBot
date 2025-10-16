@@ -14,7 +14,7 @@ class Database:
         self = cls()
         self.db = await aiosqlite.connect("../data/database.db")
 
-        with open("../schema.sql") as file:
+        with open("./schema.sql") as file:
             await self.db.executescript(file.read())
         return self
 

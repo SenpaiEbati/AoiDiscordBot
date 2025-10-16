@@ -8,7 +8,7 @@ class LanguageClass():
         self.get_strings_ru = {}
     
     async def set_lang(self, ctx, lang):
-        async with aiosqlite.connect('./data/database.db') as conn:
+        async with aiosqlite.connect('../data/database.db') as conn:
             async with conn.cursor() as cursor:
                 await cursor.execute('SELECT * FROM lang_guild WHERE guildid = ?', (ctx.guild.id,))
                 conf = await cursor.fetchone()
@@ -21,7 +21,7 @@ class LanguageClass():
             await conn.commit()
 
     async def get_lang(self, ctx):
-        async with aiosqlite.connect('./data/database.db') as conn:
+        async with aiosqlite.connect('../data/database.db') as conn:
             async with conn.cursor() as cursor:
                 await cursor.execute('SELECT * FROM lang_guild WHERE guildid = ?', (ctx.guild.id,))
                 conf = await cursor.fetchone()
