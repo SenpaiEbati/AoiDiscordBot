@@ -61,7 +61,7 @@ class AoiBot(AutoShardedBot):
         self.after_invoke(self.after_command)
         self.loop.create_task(self.connect_database())
 
-        for file in os.listdir("./aoibot/cogs/"):
+        for file in os.listdir("./cogs/"):
             if not file.startswith("_"):
                 self.COGS.append(f"cogs.{file}")
         
