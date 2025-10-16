@@ -12,9 +12,9 @@ class Database:
     @classmethod
     async def create(cls: t.Type[Database]) -> Database:
         self = cls()
-        self.db = await aiosqlite.connect("/app/data/database.db")
+        self.db = await aiosqlite.connect("./data/database.db")
 
-        with open("/app/schema.sql") as file:
+        with open("./schema.sql") as file:
             await self.db.executescript(file.read())
         return self
 
