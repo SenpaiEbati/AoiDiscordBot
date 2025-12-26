@@ -22,7 +22,7 @@ from core.utils import LanguageClass, get_colour, send_embed, update_json
 
 async def unexpected(ctx, error):
     bot = ctx.bot
-    with open("./dicts/Errors.json", "r+") as k:
+    with open("../data/dicts/Errors.json", "r+") as k:
         data = json.load(k)
         num = str(len(data))
 
@@ -80,7 +80,7 @@ async def error_handler(ctx, error) -> None:
         )
 
     elif isinstance(error, CommandNotFound):
-        with open("./dicts/Suggest.json") as l:
+        with open("../data/dicts/Suggest.json") as l:
             data = json.load(l)
             if str(ctx.channel.id) in data and data[str(ctx.channel.id)]["Yes"]:
                 return
