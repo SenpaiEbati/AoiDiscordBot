@@ -3,4 +3,3 @@ disnake
 python-dotenv
 disnake_paginator
 emoji
-stability-sdk
