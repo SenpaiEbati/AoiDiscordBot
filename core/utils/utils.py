@@ -14,7 +14,7 @@ def update_json(_file: TextIOWrapper, _data: dict) -> None:
 
 
 def get_colour(colour=None) -> int:
-    with open("./dicts/Colour.json") as fp:
+    with open(r"../data/dicts/Colour.json") as fp:
         data = json.load(fp)
     if isinstance(colour, str):
         color = data[colour]

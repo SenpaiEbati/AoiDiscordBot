@@ -71,7 +71,7 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
             return False
         return True
 
-    with open("../data/dicts/Check.json") as k:
+    with open(r"../data/dicts/Check.json") as k:
         data = json.load(k)
 
         if str(ctx.author.id) in data:
@@ -81,7 +81,7 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
                 )
                 return False
 
-    with open("../data/dicts/Suggest.json") as k:
+    with open(r"../data/dicts/Suggest.json") as k:
         data = json.load(k)
 
         if str(ctx.channel.id) in data:
@@ -93,7 +93,7 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
 async def run_precheck(bot: Bot, message: Message) -> None:
     await bot.wait_until_ready()
 
-    with open("../data/dicts/Suggest.json") as k:
+    with open(r"../data/dicts/Suggest.json") as k:
         data = json.load(k)
 
         if str(message.channel.id) in data:
@@ -133,7 +133,7 @@ async def run_executed(ctx: Bot) -> None:
         for cog in tuple(bot.extensions):
             bot.reload_extension(cog)
 
-    with open("../data/dicts/score.json", "r+") as k:
+    with open(r"../data/dicts/score.json", "r+") as k:
         loaded1 = json.load(k)
         if str(ctx.author.id) not in loaded1:
             loaded1[str(ctx.author.id)] = {
@@ -143,20 +143,20 @@ async def run_executed(ctx: Bot) -> None:
             }
             update_json(k, loaded1)
 
-    with open("../data/dicts/score.json", "r+") as f:
+    with open(r"../data/dicts/score.json", "r+") as f:
         data = json.load(f)
 
         if str(ctx.author.id) in data:
             data[str(ctx.author.id)]["score"] += 1
             update_json(f, data)
 
-    with open("../data/dicts/commands_used.json") as y:
+    with open(r"../data/dicts/commands_used.json") as y:
         data = json.load(y)
         if str(ctx.command) not in data:
             data[str(ctx.command)] = {"score": 1}
-            with open("../data/dicts/commands_used.json", "r+") as y:
+            with open(r"../data/dicts/commands_used.json", "r+") as y:
                 update_json(y, data)
         else:
-            with open("../data/dicts/commands_used.json", "r+") as y:
+            with open(r"../data/dicts/commands_used.json", "r+") as y:
                 data[str(ctx.command)]["score"] += 1
                 update_json(y, data)

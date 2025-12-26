@@ -38,7 +38,7 @@ async def run_eval(ctx: Context, code, **kwargs) -> None:
     }
 
     if code == "reset":
-        with open("../data/dicts/Num.json", "r+") as k:
+        with open(r"../data/dicts/Num.json", "r+") as k:
             data = json.load(k)
             if str(ctx.author.id) in data:
                 data[str(ctx.author.id)]["Score"] = 0
@@ -48,7 +48,7 @@ async def run_eval(ctx: Context, code, **kwargs) -> None:
             update_json(k, data)
             return await ctx.reply("reset")
     else:
-        with open("../data/dicts/Num.json", "r+") as k:
+        with open(r"../data/dicts/Num.json", "r+") as k:
             data = json.load(k)
             if str(ctx.author.id) in data:
                 data[str(ctx.author.id)]["Score"] += 1
