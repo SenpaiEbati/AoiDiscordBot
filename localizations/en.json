@@ -4,7 +4,7 @@
         "add_2": "Thanks for your interest! 💋",
         "add_3": "Add Aoi青 to Your Server",
         "add_4": "https://discord.com/oauth2/authorize?client_id=1152289596969861203",
-        "req_info": " requested information",
+        "req_info": " asked for information and opened a bottle of champagne 🍾",
 
         "no_rights": "❌ NO RIGHTS ❌",
         "lang_1": "You do not have server administrator rights to change the bot language.",
@@ -21,7 +21,7 @@
 
         "lang_3": "👅 Language 👅",
         "lang_4": "Select which language will be installed for the bot in the selection menu below",
-        "changed_conf": " changed the configuration",
+        "changed_conf": " changed the configuration and will be in a coffin ⚰️",
         "lang_5": "Language has been switched to ",
         "english": "English",
         "russian": "Russian",
@@ -65,7 +65,7 @@
         "levelnextlevelexp": "**Next level exp:** ",
         "levelprogress": "**Level progress**",
 
-        "ping_1": "🏓 Pong 🏓",
+        "ping_1": "🎅 Ho-ho-ho!!! 🥂 Happy New Year ☃️ Merry Christmas 🎁",
         "ping_2": "Internal calculations for this command: **",
         "pingms": "ms**",
         "ping_3": "Discord API Gateway: **",
@@ -225,6 +225,8 @@
 
         "checks_1": "Commands don't work in DMs! My prefix is `a.`, or you can ping me in a guild!",
         "checks_2": "You cannot run this command, it is a `hidden` command which only bot admins can run.",
-        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots"
+        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots",
+
+        "halloween": "Merry Christmas 🎄 Happy New Year 🎁"
     }
 }
