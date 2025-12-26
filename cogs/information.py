@@ -1,7 +1,7 @@
 import datetime
 import disnake
 from disnake.ext import commands
-from core.utils import LanguageClass
+from core.utils import LanguageClass, get_colour
 import time
 
 class Information(commands.Cog):
@@ -11,11 +11,12 @@ class Information(commands.Cog):
     @commands.slash_command(name="add",
                             description="Add Aoi青 to Your Server/Добавь Aoi青 на свой сервер")
     async def add(self,ctx: disnake.ApplicationCommandInteraction):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
         embed = disnake.Embed(title=strings["add_1"],
                               description=strings["add_2"],
-                              color=0x1E90FF,
+                              color=get_colour("colour"),
                               timestamp=datetime.datetime.now())
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
@@ -27,7 +28,8 @@ class Information(commands.Cog):
     
     @commands.slash_command(name="avatar",
                             description="Look at your avatar!/Посмотри на свою аватарку!")
-    async def avatar(self, ctx, user: disnake.Member = None):
+    async def avatar(self, ctx: disnake.ApplicationCommandInteraction, user: disnake.Member = None):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
 
@@ -38,7 +40,7 @@ class Information(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        embed = disnake.Embed(color=0x1E90FF,
+        embed = disnake.Embed(color=get_colour("colour"),
                               title=strings["avatar_1"],
                               description=strings["avatar_2"] + user.display_name,
                               timestamp=datetime.datetime.now())
@@ -46,11 +48,12 @@ class Information(commands.Cog):
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
         )
-        await ctx.response.defer(embed=embed)
+        await ctx.edit_original_response(embed=embed)
     
     @commands.slash_command(name="botinfo",
                             description="Info about bot Aoi青/Информация о боте Aoi青")
-    async def botinfo(self, ctx):
+    async def botinfo(self, ctx: disnake.ApplicationCommandInteraction):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
 
@@ -70,7 +73,7 @@ class Information(commands.Cog):
             bot_status = strings["offline"]
 
         embed = disnake.Embed(title=strings["botinfo_1"],
-                              color=0x1E90FF,
+                              color=get_colour("colour"),
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
@@ -93,7 +96,8 @@ class Information(commands.Cog):
 
     @commands.slash_command(name="channelinfo",
                             description="Basic information about the channel/Основная информация о канале")
-    async def channelinfo(self, ctx, channel: disnake.abc.GuildChannel = None):
+    async def channelinfo(self, ctx: disnake.ApplicationCommandInteraction, channel: disnake.abc.GuildChannel = None):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
 
@@ -115,7 +119,7 @@ class Information(commands.Cog):
         is_nsfw = strings["yes"] if channel.is_nsfw() else strings["no"]
         channel_type = str(channel.type)
 
-        embed = disnake.Embed(title=strings["channelinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["channelinfo_1"], color=get_colour("colour"),timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -131,7 +135,8 @@ class Information(commands.Cog):
     
     @commands.slash_command(name="ping",
                             description="Discord API Gateway/REST ping and commands/Пинг Discord API Gateway/REST и команды")
-    async def ping(self, ctx):
+    async def ping(self, ctx: disnake.ApplicationCommandInteraction):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
         # Функция для расчета задержки (ping) Discord API Gateway
@@ -158,7 +163,7 @@ class Information(commands.Cog):
         # Внутренние расчеты задержки для команды ping
         command_ping = round(self.bot.latency * 1000, 2)
 
-        embed = disnake.Embed(color=0x1E90FF,
+        embed = disnake.Embed(color=get_colour("colour"),
                               title=strings["ping_1"],
                               description=strings["ping_2"] + f"{command_ping}" + strings["pingms"] + "\n" + 
                               strings["ping_3"] + f"{gateway_ping}" + strings["pingms"] + "\n" + 
@@ -167,11 +172,12 @@ class Information(commands.Cog):
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
         )
-        await ctx.response.defer(embed=embed)
+        await ctx.edit_original_response(embed=embed)
 
     @commands.slash_command(name="serverinfo",
                             description="Basic information about the server/Основная информация о сервере")
-    async def serverinfo(self, ctx):
+    async def serverinfo(self, ctx: disnake.ApplicationCommandInteraction):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
         
@@ -202,7 +208,7 @@ class Information(commands.Cog):
         status_count = f"● "+strings["online"]+f": **{online_count}**\n● "+strings["idle"]+f": **{idle_count}**\n● "+strings["dnd"]+f": **{dnd_count}**\n● "+strings["offline"]+f": **{offline_count}**"
         channel_count = f"● "+strings["serverchanneltotal"]+f": **{len(server.channels)}**\n● "+strings["serverchantexts"]+f": **{len(server.text_channels)}**\n● "+strings["serverchanforums"]+f": **{len(server.forum_channels)}**\n● "+strings["serverchanvoices"]+f": **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title=strings["serverinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["serverinfo_1"], color=get_colour("colour"), timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -219,11 +225,12 @@ class Information(commands.Cog):
         embed.add_field(name=strings["serverstatus"], value=status_count, inline=True)
         embed.add_field(name=strings["serverchannels"], value=channel_count, inline=True)
 
-        await ctx.response.defer(embed=embed)
+        await ctx.edit_original_response(embed=embed)
     
     @commands.slash_command(name="userinfo",
                             description="Basic user information/Основная информация о пользователе")
-    async def userinfo(self, ctx, user: disnake.Member = None):
+    async def userinfo(self, ctx: disnake.ApplicationCommandInteraction, user: disnake.Member = None):
+        await ctx.response.defer()
         lang = await LanguageClass.get_lang(LanguageClass,ctx)
         strings = await LanguageClass.get_strings(LanguageClass,lang)
         
@@ -249,7 +256,7 @@ class Information(commands.Cog):
             dateUTC = '%d.%m.%Y %H:%M'
 
         embed = disnake.Embed(title=strings["userinfo_1"] + f"{user.display_name}" + strings["userinfo_2"],
-                              color=0x1E90FF,
+                              color=get_colour("colour"),
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(
@@ -259,7 +266,7 @@ class Information(commands.Cog):
         embed.add_field(name=strings["username"] + f"{user.name}({user.display_name})", 
                         value=value_embed, inline=False)
         
-        await ctx.response.defer(embed=embed)
+        await ctx.edit_original_response(embed=embed)
 
 class NoSlash_Information(commands.Cog):
     def __init__(self, bot):
@@ -271,7 +278,7 @@ class NoSlash_Information(commands.Cog):
 
         embed = disnake.Embed(title=strings["add_1"], 
                               description=strings["add_2"],
-                              color=0x1E90FF,
+                              color=get_colour("colour"),
                               timestamp=datetime.datetime.now())
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
@@ -293,7 +300,7 @@ class NoSlash_Information(commands.Cog):
         if not user_icon:
             user_icon = disnake.DefaultAvatar.fuchsia
 
-        embed = disnake.Embed(color=0x1E90FF,
+        embed = disnake.Embed(color=get_colour("colour"),
                               title=strings["avatar_1"],
                               description=strings["avatar_2"] + user.display_name,
                               timestamp=datetime.datetime.now())
@@ -324,7 +331,7 @@ class NoSlash_Information(commands.Cog):
             bot_status = strings["offline"]
 
         embed = disnake.Embed(title=strings["botinfo_1"],
-                              color=0x1E90FF,
+                              color=get_colour("colour"),
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=bot_icon)
         embed.set_footer(
@@ -368,7 +375,7 @@ class NoSlash_Information(commands.Cog):
         is_nsfw = strings["yes"] if channel.is_nsfw() else strings["no"]
         channel_type = str(channel.type)
 
-        embed = disnake.Embed(title=strings["channelinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["channelinfo_1"], color=get_colour("colour"),timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -409,7 +416,7 @@ class NoSlash_Information(commands.Cog):
         # Внутренние расчеты задержки для команды ping
         command_ping = round(self.bot.latency * 1000, 2)
 
-        embed = disnake.Embed(color=0x1E90FF,
+        embed = disnake.Embed(color=get_colour("colour"),
                               title=strings["ping_1"],
                               description=strings["ping_2"] + f"{command_ping}" + strings["pingms"] + "\n" + 
                               strings["ping_3"] + f"{gateway_ping}" + strings["pingms"] + "\n" + 
@@ -452,7 +459,7 @@ class NoSlash_Information(commands.Cog):
         status_count = f"● "+strings["online"]+f": **{online_count}**\n● "+strings["idle"]+f": **{idle_count}**\n● "+strings["dnd"]+f": **{dnd_count}**\n● "+strings["offline"]+f": **{offline_count}**"
         channel_count = f"● "+strings["serverchanneltotal"]+f": **{len(server.channels)}**\n● "+strings["serverchantexts"]+f": **{len(server.text_channels)}**\n● "+strings["serverchanforums"]+f": **{len(server.forum_channels)}**\n● "+strings["serverchanvoices"]+f": **{len(server.voice_channels)}**"
 
-        embed = disnake.Embed(title=strings["serverinfo_1"], color=0x1E90FF,timestamp=datetime.datetime.now())
+        embed = disnake.Embed(title=strings["serverinfo_1"], color=get_colour("colour"),timestamp=datetime.datetime.now())
         if server_icon:
             embed.set_thumbnail(url=server_icon)
         embed.set_footer(
@@ -498,7 +505,7 @@ class NoSlash_Information(commands.Cog):
             dateUTC = '%d.%m.%Y %H:%M'
 
         embed = disnake.Embed(title=strings["userinfo_1"] + f"{user.display_name}" + strings["userinfo_2"],
-                              color=0x1E90FF,
+                              color=get_colour("colour"),
                               timestamp=datetime.datetime.now())
         embed.set_thumbnail(url=user_icon)
         embed.set_footer(

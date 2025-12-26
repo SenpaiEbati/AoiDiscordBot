@@ -1,7 +1,9 @@
 {
-    "colour": "ff0000",
+    "colour": "1E90FF",
     "red": "ff0000",
     "yellow": "FFFF33",
     "green": "32CD32",
-    "blue": "1E90FF"
+    "blue": "1E90FF",
+    "newyear":"C01B0E",
+    "halloween": "F98128"
 }

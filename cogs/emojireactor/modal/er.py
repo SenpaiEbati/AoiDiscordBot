@@ -138,7 +138,7 @@ class EmojiReactorModal(disnake.ui.Modal):
     async def callback(self, inter: disnake.ModalInteraction):
         strings = await LanguageClass.get_strings(LanguageClass, await LanguageClass.get_lang(LanguageClass, inter))
 
-        embed = disnake.Embed(color=0x1E90FF, timestamp=datetime.datetime.now()).set_footer(text=strings["role_selec"], icon_url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blue_checkbox-checked.svg/2048px-Blue_checkbox-checked.svg.png")
+        embed = disnake.Embed(color=get_colour("colour"), timestamp=datetime.datetime.now()).set_footer(text=strings["role_selec"], icon_url="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Blue_checkbox-checked.svg/2048px-Blue_checkbox-checked.svg.png")
 
         for key, value in inter.text_values.items():
             updated_value = value

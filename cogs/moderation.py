@@ -2,7 +2,7 @@ from asyncio import sleep
 from datetime import datetime, timedelta, timezone
 import disnake
 from disnake.ext import commands
-from core.utils import LanguageClass
+from core.utils import LanguageClass, get_colour
 
 class Moderation(commands.Cog):
     def __init__(self, bot):
@@ -98,7 +98,7 @@ class Moderation(commands.Cog):
 
             embed = disnake.Embed(title=strings["clear_title"], 
                                   description=f"{len(deleted)}" + strings["clear_discrip"],
-                                  color=disnake.Color(0x1E90FF),
+                                  color=get_colour("colour"),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -289,7 +289,7 @@ class Moderation(commands.Cog):
             else:
                 embed = disnake.Embed(title=strings["clear_title"],
                                       description=f"{len(deleted)}" + strings["clear_discrip"],
-                                      color=disnake.Color(0x1E90FF),
+                                      color=get_colour("colour"),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -638,7 +638,7 @@ class NoSlash_Moderation(commands.Cog):
             
             embed = disnake.Embed(title=strings["clear_title"], 
                                   description=f"{len(deleted) - 1}" + strings["clear_discrip"],
-                                  color=disnake.Color(0x1E90FF),
+                                  color=get_colour("colour"),
                                   timestamp=datetime.now())
             embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
@@ -823,7 +823,7 @@ class NoSlash_Moderation(commands.Cog):
             else:
                 embed = disnake.Embed(title=strings["clear_title"],
                                       description=f"{len(deleted) - 1}" + strings["clear_discrip"],
-                                      color=disnake.Color(0x1E90FF),
+                                      color=get_colour("colour"),
                                       timestamp=datetime.now())
                 embed.set_footer(
                     text=ctx.author.display_name + strings["mod_serv"]
