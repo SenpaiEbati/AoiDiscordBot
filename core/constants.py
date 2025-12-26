@@ -5,8 +5,6 @@ load_dotenv()
 
 BOT_TOKEN = environ["BOT_TOKEN"]
 
-STABILITY_KEY = environ["STABILITY_KEY"]
-
 THUMBS_UP = "👍"
 THUMBS_DOWN = "👎"
 

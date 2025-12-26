@@ -20,7 +20,7 @@ class Information(commands.Cog):
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
         )
-        await ctx.response.send_message(embed=embed,
+        await ctx.edit_original_response(embed=embed,
                         components=[
                             disnake.ui.Button(label=strings["add_3"],url=strings["add_4"]),]
                         )
@@ -46,7 +46,7 @@ class Information(commands.Cog):
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
         )
-        await ctx.send(embed=embed)
+        await ctx.response.defer(embed=embed)
     
     @commands.slash_command(name="botinfo",
                             description="Info about bot Aoi青/Информация о боте Aoi青")
@@ -89,7 +89,7 @@ class Information(commands.Cog):
                         strings["botdev"] + "senpaiebati(SenpaiEbati)" + "\n" + 
                         strings["botdisnake"] + "\n" +
                         strings["botmaintains_1"] + f"{len(self.bot.guilds)}" + strings["botmaintains_2"], inline=False)
-        await ctx.send(embed=embed)
+        await ctx.edit_original_response(embed=embed)
 
     @commands.slash_command(name="channelinfo",
                             description="Basic information about the channel/Основная информация о канале")
@@ -127,7 +127,7 @@ class Information(commands.Cog):
                         strings["channelcateg"] + f"{channel_category}\n" + 
                         strings["channelnsfw"] + f"{is_nsfw}\n" + 
                         strings["channeltype"] + f"{channel_type}", inline=False)
-        await ctx.send(embed=embed)
+        await ctx.edit_original_response(embed=embed)
     
     @commands.slash_command(name="ping",
                             description="Discord API Gateway/REST ping and commands/Пинг Discord API Gateway/REST и команды")
@@ -167,7 +167,7 @@ class Information(commands.Cog):
         embed.set_footer(
             text=ctx.author.display_name + strings["req_info"]
         )
-        await ctx.send(embed=embed)
+        await ctx.response.defer(embed=embed)
 
     @commands.slash_command(name="serverinfo",
                             description="Basic information about the server/Основная информация о сервере")
@@ -219,7 +219,7 @@ class Information(commands.Cog):
         embed.add_field(name=strings["serverstatus"], value=status_count, inline=True)
         embed.add_field(name=strings["serverchannels"], value=channel_count, inline=True)
 
-        await ctx.send(embed=embed)
+        await ctx.response.defer(embed=embed)
     
     @commands.slash_command(name="userinfo",
                             description="Basic user information/Основная информация о пользователе")
@@ -259,7 +259,7 @@ class Information(commands.Cog):
         embed.add_field(name=strings["username"] + f"{user.name}({user.display_name})", 
                         value=value_embed, inline=False)
         
-        await ctx.send(embed=embed)
+        await ctx.response.defer(embed=embed)
 
 class NoSlash_Information(commands.Cog):
     def __init__(self, bot):
