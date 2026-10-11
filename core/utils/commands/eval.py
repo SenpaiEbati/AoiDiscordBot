@@ -6,7 +6,7 @@ from traceback import format_exception
 
 import disnake
 from disnake.ext import commands
-
+from pathlib import Path
 from core.context import Context
 from core.paginator import Paginator
 from core.utils import update_json
@@ -37,8 +37,11 @@ async def run_eval(ctx: Context, code, **kwargs) -> None:
         "message": ctx.message,
     }
 
+    current_dir = Path(__file__).resolve().parent
+
     if code == "reset":
-        with open(r"../data/dicts/Num.json", "r+") as k:
+        json_path = current_dir / "dicts" / "Num.json"
+        with open(json_path, "r", encoding="utf-8") as k:
             data = json.load(k)
             if str(ctx.author.id) in data:
                 data[str(ctx.author.id)]["Score"] = 0
@@ -48,7 +51,8 @@ async def run_eval(ctx: Context, code, **kwargs) -> None:
             update_json(k, data)
             return await ctx.reply("reset")
     else:
-        with open(r"../data/dicts/Num.json", "r+") as k:
+        json_path = current_dir/ "dicts" / "Num.json"
+        with open(json_path, "r", encoding="utf-8") as k:
             data = json.load(k)
             if str(ctx.author.id) in data:
                 data[str(ctx.author.id)]["Score"] += 1

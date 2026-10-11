@@ -3,7 +3,7 @@ import json
 import disnake
 from disnake import Message
 from disnake.ext.commands import Bot, Context
-
+from pathlib import Path
 from core.constants import THUMBS_DOWN, THUMBS_UP
 from core.utils.utils import get_colour, send_embed, update_json
 
@@ -71,7 +71,9 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
             return False
         return True
 
-    with open(r"../data/dicts/Check.json") as k:
+    current_dir = Path(__file__).resolve().parent
+    json_path = current_dir / "dicts" / "Check.json"
+    with open(json_path, "r", encoding="utf-8") as k:
         data = json.load(k)
 
         if str(ctx.author.id) in data:
@@ -80,8 +82,8 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
                     "you cant run this command for some reason, possibly blacklisted"
                 )
                 return False
-
-    with open(r"../data/dicts/Suggest.json") as k:
+    json_path = current_dir / "dicts" / "Suggest.json"
+    with open(json_path, "r", encoding="utf-8") as k:
         data = json.load(k)
 
         if str(ctx.channel.id) in data:
@@ -93,7 +95,9 @@ async def run_check(bot: Bot, ctx: Context) -> bool:
 async def run_precheck(bot: Bot, message: Message) -> None:
     await bot.wait_until_ready()
 
-    with open(r"../data/dicts/Suggest.json") as k:
+    current_dir = Path(__file__).resolve().parent
+    json_path = current_dir / "dicts" / "Suggest.json"
+    with open(json_path, "r", encoding="utf-8") as k:
         data = json.load(k)
 
         if str(message.channel.id) in data:
@@ -133,7 +137,9 @@ async def run_executed(ctx: Bot) -> None:
         for cog in tuple(bot.extensions):
             bot.reload_extension(cog)
 
-    with open(r"../data/dicts/score.json", "r+") as k:
+    current_dir = Path(__file__).resolve().parent
+    json_path = current_dir / "dicts" / "score.json"
+    with open(json_path, "r", encoding="utf-8") as k:
         loaded1 = json.load(k)
         if str(ctx.author.id) not in loaded1:
             loaded1[str(ctx.author.id)] = {
@@ -143,20 +149,21 @@ async def run_executed(ctx: Bot) -> None:
             }
             update_json(k, loaded1)
 
-    with open(r"../data/dicts/score.json", "r+") as f:
+    with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
         if str(ctx.author.id) in data:
             data[str(ctx.author.id)]["score"] += 1
             update_json(f, data)
 
-    with open(r"../data/dicts/commands_used.json") as y:
+    json_path = current_dir / "dicts" / "commands_used.json"
+    with open(json_path, "r", encoding="utf-8") as y:
         data = json.load(y)
         if str(ctx.command) not in data:
             data[str(ctx.command)] = {"score": 1}
-            with open(r"../data/dicts/commands_used.json", "r+") as y:
+            with open(json_path, "r", encoding="utf-8") as y:
                 update_json(y, data)
         else:
-            with open(r"../data/dicts/commands_used.json", "r+") as y:
+            with open(json_path, "r", encoding="utf-8") as y:
                 data[str(ctx.command)]["score"] += 1
                 update_json(y, data)

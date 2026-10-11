@@ -1,7 +1,7 @@
 import datetime
 from io import TextIOWrapper
 import json
-
+from pathlib import Path
 import disnake
 
 
@@ -14,7 +14,9 @@ def update_json(_file: TextIOWrapper, _data: dict) -> None:
 
 
 def get_colour(colour=None) -> int:
-    with open(r"../data/dicts/Colour.json") as fp:
+    current_dir = Path(__file__).resolve().parent
+    json_path = current_dir / "dicts" / "Colour.json"
+    with open(json_path, "r", encoding="utf-8") as fp:
         data = json.load(fp)
     if isinstance(colour, str):
         color = data[colour]
