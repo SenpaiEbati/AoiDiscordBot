@@ -13,35 +13,35 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎃 Счастливого хеллуина !!",
+                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="😈 Используйте смайлики хеллуина)",
+                    placeholder="🎁 - А ты подготовил подарок ?",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🍬 Сладость или пакость !!!",
+                    placeholder="🌲 - В лесу родилась ёлочка...",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="👻 Буууууууууу",
+                    placeholder="🐎 - Это год Красной Огненной Лошади",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[4],
-                    placeholder="👽 Не бойся меня я друг...",
+                    placeholder="🍾 - Я так набухаюсь)...",
                     custom_id=result[4],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -51,28 +51,28 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎃 Счастливого хеллуина !!",
+                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="😈 Используйте смайлики хеллуина)",
+                    placeholder="🎁 - А ты подготовил подарок ?",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🍬 Сладость или пакость !!!",
+                    placeholder="🌲 - В лесу родилась ёлочка...",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="👻 Буууууууууу",
+                    placeholder="🐎 - Это год Красной Огненной Лошади",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -82,21 +82,21 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎃 Счастливого хеллуина !!",
+                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="😈 Используйте смайлики хеллуина)",
+                    placeholder="🎁 - А ты подготовил подарок ?",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🍬 Сладость или пакость !!!",
+                    placeholder="🌲 - В лесу родилась ёлочка...",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -106,14 +106,14 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎃 Счастливого хеллуина !!",
+                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="😈 Используйте смайлики хеллуина)",
+                    placeholder="🎁 - А ты подготовил подарок ?",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -123,7 +123,7 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎃 Счастливого хеллуина !!",
+                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,

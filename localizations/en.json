@@ -6,7 +6,7 @@
         "add_4": "https://discord.com/api/oauth2/authorize?client_id=1152289596969861203&permissions=8&scope=bot",
         
         "_comment1": "!!!------Change in halloween or New Year------!!!",
-        "req_info": " requested information and got eaten by a zombie 🧟",
+        "req_info": " asked for information and opened a bottle of champagne 🍾",
 
         "no_rights": "❌ NO RIGHTS ❌",
         "lang_1": "You do not have server administrator rights to change the bot language.",
@@ -25,7 +25,7 @@
         "lang_4": "Select which language will be installed for the bot in the selection menu below",
         
         "_comment2": "!!!------Change in halloween or New Year------!!!",
-        "changed_conf": " changed the configuration and will be in a coffin ⚰️",
+        "changed_conf": " changed the configuration and opened the gift 🎁",
         
         "lang_5": "Language has been switched to ",
         "english": "English",
@@ -71,7 +71,7 @@
         "levelprogress": "**Level progress**",
 
         "_comment3": "!!!------Change in halloween or New Year------!!!",
-        "ping_1": "🎃 Trick or treat 🍬 Happy Halloween 👻",
+        "ping_1": "🎅 Ho-ho-ho!!! 🥂 Happy New Year ☃️ Merry Christmas 🎁",
         
         "ping_2": "Internal calculations for this command: **",
         "pingms": "ms**",
@@ -178,7 +178,7 @@
         "on_timeout_modal_desc": "Please repeat the command and try to complete your tasks in a shorter period of time",
         
         "_comment4": "!!!------Change in halloween or New Year------!!!",
-        "role_selec": "🎃 Trick or treat 🍬 Happy Halloween 👻",
+        "role_selec": "Merry Christmas 🎄 Happy New Year 🎁",
 
         "missingperm": "You do not have permissions to do that!",
         "badargument1": "```yaml\nParameter '",
@@ -236,6 +236,6 @@
         "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots",
 
         "_comment5": "!!!------Change in halloween or New Year------!!!",
-        "halloween": "🎃 Trick or treat 🍬 Happy Halloween 👻"
+        "halloween": "Merry Christmas 🎄 Happy New Year 🎁"
     }
 }
