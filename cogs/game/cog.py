@@ -10,7 +10,7 @@ class NoSlash_Games(Cog):
     
     @command(aliases=["rr", "gun_game", "russianroulette", "gungame"])
     async def russian_roulette(self, ctx: Context):
-        embed = Embed(title="Russian Roulette", colour=get_colour("blue")).set_footer(
+        embed = Embed(title="Russian Roulette", color=get_colour("colour")).set_footer(
             text="Dont die!"
         )
 
@@ -22,7 +22,7 @@ class Games(Cog):
 
     @slash_command(name="russianroulette")
     async def russian_roulette(self, ctx):
-        embed = Embed(title="Russian Roulette", colour=get_colour("blue")).set_footer(
+        embed = Embed(title="Russian Roulette", color=get_colour("colour")).set_footer(
             text="Dont die!"
         )
 

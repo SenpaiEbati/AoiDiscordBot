@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from stability_sdk import client
-
 import asyncio
 import datetime
 import os
@@ -20,8 +18,7 @@ from disnake.ext.commands import AutoShardedBot, CommandSyncFlags, when_mentione
 from disnake.ext.tasks import loop
 from core.utils import LanguageClass
 from .constants import (
-    BOT_TOKEN,
-    STABILITY_KEY
+    BOT_TOKEN
 )
 from .context import Context
 from .database import Database
@@ -184,15 +181,6 @@ class AoiBot(AutoShardedBot):
         print("-----------------------------------")
         await LanguageClass.loadjsonmain(LanguageClass, './localizations')
         print("Language pack loaded!")
-        print("-----------------------------------")
-        # Set up our connection to the API.
-        self.stability_api = client.StabilityInference(
-            key=STABILITY_KEY, # API Key reference.
-            verbose=True, # Print debug messages.
-            engine="stable-diffusion-xl-1024-v1-0", # Set the engine to use for generation.
-            # Check out the following link for a list of available engines: https://platform.stability.ai/docs/features/api-parameters#engine
-        )
-        print("Stability Ai Client Ready!")
         print("-----------------------------------")
         selected_channel = self.get_guild(1152151796870025228).get_channel(
             1223514729532751882

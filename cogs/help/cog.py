@@ -53,7 +53,7 @@ class HelpUtils:
                 title=FIRE +" "+ strings["main_help_embed_title"] +" "+ FIRE,
                 description=description,
                 timestamp=datetime.datetime.now(),
-                colour=get_colour("blue"),
+                color=get_colour("colour"),
             )
             .add_field(
                 name=f"{CATEGORIES} " + strings["main_help_embed_categ"] + "\n\u200b",
@@ -64,7 +64,7 @@ class HelpUtils:
                 value="\n".join(cogs[i] for i in range(1, len(cogs), 2)),
             )
             .add_field(
-                name=f"{LINK} "+strings["main_help_embed_links"], value=f"**> ["+strings["main_help_embed_official"]+"](https://discord.gg/RAjhN7FqdR) │ ["+strings["main_help_embed_botinvite"]+"](-)**", inline=False
+                name=f"{LINK} "+strings["main_help_embed_links"], value=f"**> ["+strings["main_help_embed_official"]+"](https://discord.gg/RAjhN7FqdR) │ ["+strings["main_help_embed_botinvite"]+"](https://discord.com/oauth2/authorize?client_id=1152289596969861203)**", inline=False
             )
         )
 
@@ -79,7 +79,7 @@ class HelpUtils:
     ) -> disnake.Embed:
         strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,ctx))
         return (
-            disnake.Embed(title=strings["help"],colour=get_colour("blue"),timestamp=datetime.datetime.now())
+            disnake.Embed(title=strings["help"],color=get_colour("colour"),timestamp=datetime.datetime.now())
             .add_field(
                 name=strings["specific_command_name"], value=f"`{command.name.capitalize()}`", inline=False
             )
@@ -116,7 +116,7 @@ class HelpUtils:
         return (
             disnake.Embed(
                 title=f"{COG_EMOJIS[cog.qualified_name]} {cog.qualified_name} {COG_EMOJIS[cog.qualified_name]}",
-                description=strings["specific_cog_desc"] + strings[f"{cog.qualified_name}"], colour=get_colour("blue")
+                description=strings["specific_cog_desc"] + strings[f"{cog.qualified_name}"], color=get_colour("colour")
             )
             .add_field(
                 name="\u200b",
@@ -132,7 +132,7 @@ class HelpUtils:
         strings = await LanguageClass.get_strings(LanguageClass,await LanguageClass.get_lang(LanguageClass,ctx))
         
         return (
-            disnake.Embed(colour=get_colour("blue"))
+            disnake.Embed(color=get_colour("colour"))
             .set_author(
                 name=f"{cmd}" + strings["not_command!"]
             )

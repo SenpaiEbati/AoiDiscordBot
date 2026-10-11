@@ -4,6 +4,8 @@
         "add_2": "Thanks for your interest! 💋",
         "add_3": "Add Aoi青 to Your Server",
         "add_4": "https://discord.com/api/oauth2/authorize?client_id=1152289596969861203&permissions=8&scope=bot",
+        
+        "_comment1": "!!!------Change in halloween or New Year------!!!",
         "req_info": " requested information",
 
         "no_rights": "❌ NO RIGHTS ❌",
@@ -21,7 +23,10 @@
 
         "lang_3": "👅 Language 👅",
         "lang_4": "Select which language will be installed for the bot in the selection menu below",
+        
+        "_comment2": "!!!------Change in halloween or New Year------!!!",
         "changed_conf": " changed the configuration",
+        
         "lang_5": "Language has been switched to ",
         "english": "English",
         "russian": "Russian",
@@ -65,7 +70,9 @@
         "levelnextlevelexp": "**Next level exp:** ",
         "levelprogress": "**Level progress**",
 
+        "_comment3": "!!!------Change in halloween or New Year------!!!",
         "ping_1": "🏓 Pong 🏓",
+        
         "ping_2": "Internal calculations for this command: **",
         "pingms": "ms**",
         "ping_3": "Discord API Gateway: **",
@@ -169,7 +176,8 @@
 
         "on_timeout_modal": "⚠️ The waiting time for the modal window has expired ⚠️",
         "on_timeout_modal_desc": "Please repeat the command and try to complete your tasks in a shorter period of time",
-
+        
+        "_comment4": "!!!------Change in halloween or New Year------!!!",
         "role_selec": "Emoji Checklist",
 
         "missingperm": "You do not have permissions to do that!",
@@ -225,6 +233,9 @@
 
         "checks_1": "Commands don't work in DMs! My prefix is `a.`, or you can ping me in a guild!",
         "checks_2": "You cannot run this command, it is a `hidden` command which only bot admins can run.",
-        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots"
+        "checks_3": "You cant run this command for some reason, possibly blacklisted or this channel is prohibited for bots",
+
+        "_comment5": "!!!------Change in halloween or New Year------!!!",
+        "halloween": "Merry Christmas 🎄 Happy New Year 🎁"
     }
 }

@@ -1,6 +1,5 @@
-aiosqlite
+./aiosqlite-0.22.1-py3-none-any.whl
 disnake
 python-dotenv
 disnake_paginator
 emoji
-stability-sdk
