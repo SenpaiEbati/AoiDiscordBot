@@ -13,35 +13,35 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 - А ты подготовил подарок ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🌲 - В лесу родилась ёлочка...",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="🐎 - Это год Красной Огненной Лошади",
+                    placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[4],
-                    placeholder="🍾 - Я так набухаюсь)...",
+                    placeholder="🦝- Я енотик полоскун...",
                     custom_id=result[4],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -51,28 +51,28 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 - А ты подготовил подарок ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🌲 - В лесу родилась ёлочка...",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[3],
-                    placeholder="🐎 - Это год Красной Огненной Лошади",
+                    placeholder="🐉- 我将是一条龙",
                     custom_id=result[3],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -82,21 +82,21 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 - А ты подготовил подарок ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[2],
-                    placeholder="🌲 - В лесу родилась ёлочка...",
+                    placeholder="🐦- Я буду воробушком",
                     custom_id=result[2],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -106,14 +106,14 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
                 ),
                 disnake.ui.TextInput(
                     label=result[1],
-                    placeholder="🎁 - А ты подготовил подарок ?",
+                    placeholder="🦅- I'll be a AH-64 Apache.",
                     custom_id=result[1],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
@@ -123,7 +123,7 @@ class EmojiReactorModal(disnake.ui.Modal):
             components = [
                 disnake.ui.TextInput(
                     label=result[0],
-                    placeholder="🎅 - Хо-хо-хо !!! С Новым Годом !!!",
+                    placeholder="🦆- Я выбираю быть кря",
                     custom_id=result[0],
                     style=TextInputStyle.paragraph,
                     max_length=1024,
